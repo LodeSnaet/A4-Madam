@@ -1,7 +1,23 @@
 {% extends '_shared/_layout.twig' %}
 
 {% block main %}
-<div id="container">
-    <h1>Hello</h1>
-</div>
+
+  <nav>
+    <ul>
+      {% set navEntries = craft.entries()
+        .section('singles')
+        .orderBy('sortOrder ASC')
+        .all() %}
+
+      {% for entry in navEntries %}
+        <li>
+          <a href="{{ entry.url }}">{{ entry.title }}</a>
+        </li>
+      {% endfor %}
+
+      {# You might also have hardcoded links for things not managed as singles, e.g., homepage #}
+      <li><a href="/">Home</a></li>
+    </ul>
+  </nav>
+
 {% endblock %}

@@ -1,16 +1,26 @@
-dateModified: 1752065243
+dateModified: 1752084488
 email:
   fromEmail: lode.snaet@student.howest.be
   fromName: A4-Madam-LodeSnaet
   transportType: craft\mail\transportadapters\Sendmail
 meta:
   __names__:
+    3dffe27e-54da-47fc-91bc-346060a36dda: Navigation # Navigation
+    6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
+    12f0a5a8-dcff-4e9d-9bc4-839628f6a7a1: New # New
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
+    761a01d0-8414-40af-8d2b-2d4edde3401d: Dummy # Dummy
     978520f0-e790-46cd-9e23-7f09141d0fbd: Home # Home
     90004640-0fe5-425e-8935-922d75d8d641: Home # Home
+    b871443b-88e1-47c1-9fff-4ada87e917ac: Primary # Primary
     c7613314-594d-4ecd-9e3b-11245f68ded9: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
     f3f391fe-c122-4353-8066-f4933e71a5bb: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
 plugins:
+  commerce:
+    edition: pro
+    enabled: true
+    licenseKey: UHL4RLJJTV9Z2L9I3LBDNRBU
+    schemaVersion: 5.4.0.4
   seomatic:
     edition: standard
     enabled: true

@@ -19,6 +19,9 @@ web_extra_daemons:
   - name: 'vite'
     command: 'npm install && npm run dev'
     directory: /var/www/html
+
+web_extra_ports:
+  - 3000 # Your Vite dev server port
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides

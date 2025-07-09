@@ -1,12 +1,13 @@
 // ****** SETTINGS: Overwrite Bootstrap SASS variables ******
-
+@import "bootstrap/scss/bootstrap";
+@import 'settings';
 
 // ****** GENERIC: Import all of Bootstrap's CSS ******
 
-]// ****** ELEMENTS ******
-]
+// ****** ELEMENTS ******
+@import 'elements';
 
 // ****** COMPONENTS ******
-]
+
 // ****** UTILITIES ******
 

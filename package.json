@@ -1,0 +1,24 @@
+{
+  "name": "a4-madam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.89.2",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "bootstrap": "^5.3.7",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-manifest-sri": "^0.2.0",
+    "vite-plugin-restart": "^0.4.2"
+  }
+}

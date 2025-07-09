@@ -1,0 +1,48 @@
+columnSuffix: null
+handle: table
+instructions: null
+name: Table
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Navigation Label'
+            -
+              - handle
+              - navigationLabel
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Navigation URL'
+            -
+              - handle
+              - navigationUrl
+            -
+              - width
+              - ''
+            -
+              - type
+              - url
+  defaults: null
+  maxRows: 0
+  minRows: null
+  staticRows: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Table

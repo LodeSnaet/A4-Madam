@@ -2,22 +2,10 @@
 
 {% block main %}
 
-  <nav>
-    <ul>
-      {% set navEntries = craft.entries()
-        .section('singles')
-        .orderBy('sortOrder ASC')
-        .all() %}
 
-      {% for entry in navEntries %}
-        <li>
-          <a href="{{ entry.url }}">{{ entry.title }}</a>
-        </li>
-      {% endfor %}
+  {% for menu in navigation.table %}
+    {% include '_shared/_menuitem' with { navigationMenu: menu } %}
+  {% endfor %}
 
-      {# You might also have hardcoded links for things not managed as singles, e.g., homepage #}
-      <li><a href="/">Home</a></li>
-    </ul>
-  </nav>
 
 {% endblock %}

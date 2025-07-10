@@ -2,10 +2,8 @@
 
 {% block main %}
 
+  <h1>{{ entry.title }}</h1>
 
-  {% for menu in navigation.table %}
-    {% include '_shared/_menuitem' with { navigationMenu: menu } %}
-  {% endfor %}
 
 
 {% endblock %}

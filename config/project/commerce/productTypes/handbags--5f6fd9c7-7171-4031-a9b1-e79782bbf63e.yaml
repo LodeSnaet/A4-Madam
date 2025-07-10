@@ -58,7 +58,7 @@ productFieldLayouts:
             includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
+            providesThumbs: true
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -136,8 +136,8 @@ siteSettings:
   f3f391fe-c122-4353-8066-f4933e71a5bb: # A4-Madam-LodeSnaet
     enabledByDefault: true
     hasUrls: true
-    template: ''
-    uriFormat: 'handbags/{slug}'
+    template: _shop/_product.twig
+    uriFormat: 'shop/{slug}'
 skuFormat: ''
 variantFieldLayouts:
   9511eadf-ab07-401d-bcbd-600e44bb6c54:
@@ -145,6 +145,7 @@ variantFieldLayouts:
     cardView:
       - sku
       - priceView
+      - availableForPurchase
     tabs:
       -
         elementCondition: null
@@ -186,7 +187,7 @@ variantFieldLayouts:
             id: null
             includeInCards: false
             instructions: null
-            label: null
+            label: '{slug}'
             mandatory: true
             orientation: null
             providesThumbs: false

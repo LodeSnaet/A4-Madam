@@ -1,0 +1,20 @@
+{% set cart = craft.commerce.carts.cart %}
+
+<!-- Cart Button -->
+<button class="js-open c-cart__button">🛒 Cart ({{ cart.totalQty }})</button>
+
+<!-- Offcanvas Cart -->
+<div class="c-cart js-canvas">
+  <div class="c-cart__header">
+    <h2>Your Cart</h2>
+    <button class="js-close">&times;</button>
+  </div>
+  <div class="c-cart__body">
+    <p>Product 1</p>
+    <p>Product 2</p>
+    <!-- Add more items here -->
+  </div>
+</div>
+
+<!-- Optional overlay for click-to-close -->
+<div class="js-overlay c-cart__overlay u-hidden"></div>

@@ -1,0 +1,11 @@
+fill: null
+format: webp
+handle: img2Webp
+height: 453
+interlace: none
+mode: fit
+name: img2webp
+position: center-center
+quality: 100
+upscale: true
+width: 302

@@ -10,10 +10,19 @@
   {{ craft.vite.script('/src/js/app.js', true) }}
 </head>
 <body>
+<nav>
+  {% include '_shared/_menu' %}
+
+  {% include '_components/_cart.twig' %}
+</nav>
 
 {% block main %}
 
 {% endblock %}
+
+<footer>
+  {% include '_shared/_menu' %}
+</footer>
 </body>
 
 </html>

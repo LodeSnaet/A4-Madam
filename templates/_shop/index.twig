@@ -1,0 +1,12 @@
+{% extends '_shared/_layout.twig' %}
+
+{% block main %}
+
+
+  <h1>{{ entry.title }}</h1>
+
+  {% for product in entry.products %}
+    {% include '_components/_productcard' with product %}
+  {% endfor %}
+
+{% endblock %}

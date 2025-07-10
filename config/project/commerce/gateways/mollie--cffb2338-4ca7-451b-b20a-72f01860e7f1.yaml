@@ -1,0 +1,13 @@
+handle: mollie
+isFrontendEnabled: '1'
+name: mollie
+orderCondition:
+  class: craft\commerce\elements\conditions\orders\GatewayOrderCondition
+  elementType: craft\commerce\elements\Order
+  fieldContext: global
+paymentType: purchase
+settings:
+  apiKey: test_Jk9NVg2QQeM9JK4m8Pud7Rq2vmej5G
+  sendCartInfo: false
+sortOrder: 99
+type: craft\commerce\mollie\gateways\Gateway

@@ -1,0 +1,12 @@
+{% set transform = 'img2Webp' %}
+{% set thumbnail = product.productPhotos[0].getUrl(transform) %}
+{% set width = product.productPhotos[0].getWidth(transform) %}
+{% set height = product.productPhotos[0].getHeight(transform) %}
+
+{% set altThumbnail = product.productPhotos[0].title %}
+
+<article>
+  <a href="/shop/{{ product.slug }}">
+    <img src="{{ thumbnail }}" alt="{{ altThumbnail }}" width="{{ width }}" height="{{ height }}">
+  </a>
+</article>

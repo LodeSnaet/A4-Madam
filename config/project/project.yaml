@@ -1,4 +1,49 @@
-dateModified: 1752169525
+dateModified: 1752178805
+elementSources:
+  craft\commerce\elements\Order:
+    -
+      key: '*'
+      type: native
+    -
+      heading: Primary
+      key: 'heading:fafd9648-e4d0-41e1-9d2b-3ee8352cab7e'
+      type: heading
+    -
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: cards
+      disabled: false
+      key: 'carts:active:primary'
+      tableAttributes:
+        - shortNumber
+        - dateUpdated
+        - totalPrice
+      type: native
+    -
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: cards
+      disabled: false
+      key: 'carts:inactive:primary'
+      tableAttributes:
+        - shortNumber
+        - dateUpdated
+        - totalPrice
+      type: native
+    -
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: cards
+      disabled: false
+      key: 'carts:attempted-payment:primary'
+      tableAttributes:
+        - shortNumber
+        - dateUpdated
+        - totalPrice
+      type: native
 email:
   fromEmail: lode.snaet@student.howest.be
   fromName: A4-Madam-LodeSnaet
@@ -75,8 +120,9 @@ system:
   edition: pro
   live: true
   name: A4-Madam-LodeSnaet
+  retryDuration: null
   schemaVersion: 5.8.0.3
-  timeZone: America/Los_Angeles
+  timeZone: Europe/Amsterdam
 users:
   allowPublicRegistration: false
   defaultGroup: null

@@ -4,7 +4,7 @@ allowPartialPaymentOnCheckout: '0'
 autoSetCartShippingMethodOption: '0'
 autoSetNewCartAddresses: '0'
 autoSetPaymentSource: '0'
-currency: USD
+currency: EUR
 freeOrderPaymentStrategy: complete
 handle: primary
 minimumTotalPriceStrategy: default

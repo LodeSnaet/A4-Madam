@@ -1,39 +1,42 @@
 {% set cart = craft.commerce.carts.cart %}
-{% set mollieGateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
-
-{{ dump(mollieGateway) }}
+{% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+ {% set paymentMethods = gateway.fetchPaymentMethods() %}
 
 <!-- Cart Button -->
 <button class="js-open c-cart__button">
-  🛒 Cart ({{ cart.totalQty ?? 0 }})
+    🛒 Cart ({{ cart.totalQty ?? 0 }})
 </button>
 
 <!-- Offcanvas Cart -->
 <div class="c-cart js-canvas">
-  <div class="c-cart__header">
-    <h2>Your Cart</h2>
-    <button class="js-close">&times;</button>
-  </div>
+    <div class="c-cart__header">
+        <h2>Your Cart</h2>
+        <button class="js-close">&times;</button>
+    </div>
 
-  <div class="c-cart__body">
-    <ul>
-      {% for lineItem in cart.lineItems %}
-        <li>
-          ({{ lineItem.qty }}) {{ lineItem.sku }} -
-          {{ (lineItem.price * lineItem.qty) | currency }}
-        </li>
-      {% else %}
-        <li>Your cart is empty.</li>
-      {% endfor %}
-    </ul>
+    <div class="c-cart__body">
+        <ul>
+            {% for lineItem in cart.lineItems %}
+                <li>
+                    ({{ lineItem.qty }}) {{ lineItem.sku }} -
+                    {{ lineItem.subtotal|commerceCurrency }}
+                </li>
+            {% else %}
+                <li>Your cart is empty.</li>
+            {% endfor %}
+        </ul>
 
-    <hr>
+        <hr>
 
-    <p>
-      <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
-      <strong>Total:</strong> {{ cart.totalPrice | currency }}
-    </p>
-  </div>
+        <p>
+            <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
+            <strong>Total:</strong> {{ cart.totalPrice | commerceCurrency }}
+        </p>
+
+        {% for paymentMethod in paymentMethods %}
+            <button>{{ paymentMethod.name }}</button>
+        {% endfor %}
+    </div>
 </div>
 
 <!-- Overlay -->

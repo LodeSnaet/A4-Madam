@@ -1,7 +1,12 @@
 {% set cart = craft.commerce.carts.cart %}
+{% set mollieGateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+
+{{ dump(mollieGateway) }}
 
 <!-- Cart Button -->
-<button class="js-open c-cart__button">🛒 Cart ({{ cart.totalQty }})</button>
+<button class="js-open c-cart__button">
+  🛒 Cart ({{ cart.totalQty ?? 0 }})
+</button>
 
 <!-- Offcanvas Cart -->
 <div class="c-cart js-canvas">
@@ -9,12 +14,27 @@
     <h2>Your Cart</h2>
     <button class="js-close">&times;</button>
   </div>
+
   <div class="c-cart__body">
-    <p>Product 1</p>
-    <p>Product 2</p>
-    <!-- Add more items here -->
+    <ul>
+      {% for lineItem in cart.lineItems %}
+        <li>
+          ({{ lineItem.qty }}) {{ lineItem.sku }} -
+          {{ (lineItem.price * lineItem.qty) | currency }}
+        </li>
+      {% else %}
+        <li>Your cart is empty.</li>
+      {% endfor %}
+    </ul>
+
+    <hr>
+
+    <p>
+      <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
+      <strong>Total:</strong> {{ cart.totalPrice | currency }}
+    </p>
   </div>
 </div>
 
-<!-- Optional overlay for click-to-close -->
+<!-- Overlay -->
 <div class="js-overlay c-cart__overlay u-hidden"></div>

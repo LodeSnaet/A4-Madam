@@ -145,6 +145,7 @@ variantFieldLayouts:
     cardView:
       - sku
       - priceView
+      - availableForPurchase
     tabs:
       -
         elementCondition: null

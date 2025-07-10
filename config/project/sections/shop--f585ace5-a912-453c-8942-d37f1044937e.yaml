@@ -5,6 +5,8 @@ entryTypes:
     uid: f242d7ff-1193-43e1-98e2-3e023bc89293 # Filters
   -
     uid: 89c6e739-006e-415e-88bc-052190cddb2e # Category
+  -
+    uid: af8aef47-fb82-491f-a835-363b8f5d8995 # Products
 handle: shop
 maxAuthors: 1
 name: Shop

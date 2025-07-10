@@ -47,5 +47,5 @@ sortOrder: 1
 subpath: ''
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-transformFs: ''
+transformFs: hardDiskImages
 transformSubpath: ''

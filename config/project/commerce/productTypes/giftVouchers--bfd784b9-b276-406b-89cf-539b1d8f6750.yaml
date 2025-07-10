@@ -11,7 +11,7 @@ maxVariants: null
 name: 'Gift Vouchers'
 productFieldLayouts:
   2a2cba12-f0e6-4aab-bcd8-a5e831a8a390:
-    cardThumbAlignment: end
+    cardThumbAlignment: start
     cardView:
       - defaultSku
       - defaultPrice
@@ -58,7 +58,7 @@ productFieldLayouts:
             includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
+            providesThumbs: true
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

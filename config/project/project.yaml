@@ -1,4 +1,4 @@
-dateModified: 1752090075
+dateModified: 1752143832
 email:
   fromEmail: lode.snaet@student.howest.be
   fromName: A4-Madam-LodeSnaet
@@ -13,6 +13,8 @@ fs:
     url: '@web/uploads/images'
 meta:
   __names__:
+    0a591d79-2f21-4016-8693-6d659f337a0e: Products # Products
+    0a7147ff-00d0-400d-b9c6-a5b60295b4cb: img-webp # img-webp
     3dffe27e-54da-47fc-91bc-346060a36dda: Navigation # Navigation
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
@@ -26,6 +28,7 @@ meta:
     978520f0-e790-46cd-9e23-7f09141d0fbd: Home # Home
     90004640-0fe5-425e-8935-922d75d8d641: Home # Home
     a2de9583-bb44-457e-92aa-e6f71bbf82a3: Price # Price
+    af8aef47-fb82-491f-a835-363b8f5d8995: Products # Products
     b871443b-88e1-47c1-9fff-4ada87e917ac: Primary # Primary
     bfd784b9-b276-406b-89cf-539b1d8f6750: 'Gift Vouchers' # Gift Vouchers
     c7613314-594d-4ecd-9e3b-11245f68ded9: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet

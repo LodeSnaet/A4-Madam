@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build --emptyOutDir ",
     "cache": "ddev craft clear-caches all",
-    "start-project": "ddev start && start https://a4-madam.ddev.site/admin && ddev launch",
+    "start-project": "docker desktop start && ddev start && start https://a4-madam.ddev.site/admin && ddev launch",
     "stop-project": "ddev stop",
     "setup-project": "ddev start && ddev composer install && ddev npm install && ddev craft project-config/apply && ddev launch"
   },

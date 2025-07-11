@@ -4,7 +4,7 @@
   "require": {
     "craftcms/cms": "^5.0.0",
     "craftcms/commerce": "5.4.1.1",
-    "craftcms/commerce-mollie": "^4.4",
+    "craftcms/commerce-mollie": "^4.4.0",
     "nystudio107/craft-seomatic": "5.1.16",
     "nystudio107/craft-vite": "5.0.1",
     "vlucas/phpdotenv": "^5.4.0"

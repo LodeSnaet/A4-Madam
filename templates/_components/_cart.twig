@@ -1,42 +1,60 @@
-{% set cart = craft.commerce.carts.cart %}
-{% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
- {% set paymentMethods = gateway.fetchPaymentMethods() %}
+{% set commerce = craft.commerce %}
+{% set cart = commerce.carts.cart %}
+{% set gateway = commerce.gateways.getGatewayByHandle('mollie') %}
+{% set paymentMethods = gateway.fetchPaymentMethods() %}
+{% set returnUrl = url('checkout/success') %}
+{% set cancelUrl = url('checkout/payment') | hash %}
 
 <!-- Cart Button -->
 <button class="js-open c-cart__button">
-    🛒 Cart ({{ cart.totalQty ?? 0 }})
+  🛒 Cart ({{ cart.totalQty ?? 0 }})
 </button>
 
 <!-- Offcanvas Cart -->
 <div class="c-cart js-canvas">
-    <div class="c-cart__header">
-        <h2>Your Cart</h2>
-        <button class="js-close">&times;</button>
-    </div>
+  <div class="c-cart__header">
+    <h2>🛒</h2>
+    <button class="js-close">&times;</button>
+  </div>
 
-    <div class="c-cart__body">
-        <ul>
-            {% for lineItem in cart.lineItems %}
-                <li>
-                    ({{ lineItem.qty }}) {{ lineItem.sku }} -
-                    {{ lineItem.subtotal|commerceCurrency }}
-                </li>
-            {% else %}
-                <li>Your cart is empty.</li>
-            {% endfor %}
-        </ul>
+  <div class="c-cart__body">
+    <ul>
+      {% for lineItem in cart.lineItems %}
+        <li>
+          ({{ lineItem.qty }}) {{ lineItem.sku }} -
+          {{ lineItem.subtotal|commerceCurrency }}
+        </li>
+      {% else %}
+        <li>Your cart is empty.</li>
+      {% endfor %}
+    </ul>
 
-        <hr>
+    <hr>
 
-        <p>
-            <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
-            <strong>Total:</strong> {{ cart.totalPrice | commerceCurrency }}
-        </p>
+    <p>
+      <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
+      <strong>Total:</strong> {{ cart.totalPrice | commerceCurrency }}
+    </p>
 
+    <form method="post">
+      {{ csrfInput() }}
+      {{ actionInput('commerce/payments/pay') }}
+      {{ redirectInput('checkout/success') }}
+      <input type="hidden" name="gatewayId" value="{{ gateway.id }}">
+      <input type="hidden" name="amount" value="{{ cart.totalPrice }}">
+      <input type="hidden" name="currency" value="{{ cart.currency }}">
+      <input type="hidden" name="orderNumber" value="{{ cart.number }}">
+      <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
+      <input type="hidden" name="cancelUrl" value="{{ cancelUrl }}">
+      <select name="paymentMethod">
         {% for paymentMethod in paymentMethods %}
-            <button>{{ paymentMethod.name }}</button>
+          <option value="{{ paymentMethod.id }}">{{ paymentMethod.name }}</option>
         {% endfor %}
-    </div>
+      </select>
+      <button type="submit">Pay Now</button>
+    </form>
+
+  </div>
 </div>
 
 <!-- Overlay -->

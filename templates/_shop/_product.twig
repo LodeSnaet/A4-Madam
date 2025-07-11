@@ -6,7 +6,6 @@
 
   <section>
     {% if product.defaultVariant %}
-
       <form method="post">
         {{ csrfInput() }}
         {{ actionInput('commerce/cart/update-cart') }}
@@ -27,11 +26,11 @@
 
     <h1>{{ product.title }}</h1>
     <p>{{ product.description }}</p>
+
     {% for productPhoto in product.productPhotos %}
       <img src="{{ productPhoto.getUrl(transform) }}" alt="{{ productPhoto.title }}"
            width="{{ productPhoto.getWidth(transform) }}" height="{{ productPhoto.getHeight(transform) }}">
     {% endfor %}
-    <p>{{ product.price.amount|currency }}</p>
-
+    {{ product.defaultPrice|commerceCurrency }}
   </section>
 {% endblock %}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce33042a7286a1d1183e8e366a1c9b75",
+    "content-hash": "396674eb15b7b411c8c5889d567642b4",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -402,11 +402,11 @@
         },
         {
             "name": "craftcms/commerce",
-            "version": "5.4.1",
+            "version": "5.4.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce/zipball/007dfb0fb20eed29f644df84e5352bd1b4786073",
-                "reference": "007dfb0fb20eed29f644df84e5352bd1b4786073",
+                "url": "https://api.github.com/repos/craftcms/commerce/zipball/e648b759bbccbc268b262a8ae90a8e4a20f419be",
+                "reference": "e648b759bbccbc268b262a8ae90a8e4a20f419be",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
                 "docs": "https://craftcms.com/docs/commerce/4.x/",
                 "rss": "https://github.com/craftcms/commerce/releases.atom"
             },
-            "time": "2025-07-09T14:21:54+00:00"
+            "time": "2025-07-10T07:34:40+00:00"
         },
         {
             "name": "craftcms/commerce-mollie",
@@ -8743,11 +8743,11 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.2"
     },

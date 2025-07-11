@@ -1,7 +1,9 @@
-{% set cart = craft.commerce.carts.cart %}
-{% set mollieGateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
-
-{{ dump(mollieGateway) }}
+{% set commerce = craft.commerce %}
+{% set cart = commerce.carts.cart %}
+{% set gateway = commerce.gateways.getGatewayByHandle('mollie') %}
+{% set paymentMethods = gateway.fetchPaymentMethods() %}
+{% set returnUrl = url('checkout/success') %}
+{% set cancelUrl = url('checkout/payment') | hash %}
 
 <!-- Cart Button -->
 <button class="js-open c-cart__button">
@@ -11,7 +13,7 @@
 <!-- Offcanvas Cart -->
 <div class="c-cart js-canvas">
   <div class="c-cart__header">
-    <h2>Your Cart</h2>
+    <h2>🛒</h2>
     <button class="js-close">&times;</button>
   </div>
 
@@ -20,7 +22,7 @@
       {% for lineItem in cart.lineItems %}
         <li>
           ({{ lineItem.qty }}) {{ lineItem.sku }} -
-          {{ (lineItem.price * lineItem.qty) | currency }}
+          {{ lineItem.subtotal|commerceCurrency }}
         </li>
       {% else %}
         <li>Your cart is empty.</li>
@@ -31,8 +33,27 @@
 
     <p>
       <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
-      <strong>Total:</strong> {{ cart.totalPrice | currency }}
+      <strong>Total:</strong> {{ cart.totalPrice | commerceCurrency }}
     </p>
+
+    <form method="post">
+      {{ csrfInput() }}
+      {{ actionInput('commerce/payments/pay') }}
+      {{ redirectInput('checkout/success') }}
+      <input type="hidden" name="gatewayId" value="{{ gateway.id }}">
+      <input type="hidden" name="amount" value="{{ cart.totalPrice }}">
+      <input type="hidden" name="currency" value="{{ cart.currency }}">
+      <input type="hidden" name="orderNumber" value="{{ cart.number }}">
+      <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
+      <input type="hidden" name="cancelUrl" value="{{ cancelUrl }}">
+      <select name="paymentMethod">
+        {% for paymentMethod in paymentMethods %}
+          <option value="{{ paymentMethod.id }}">{{ paymentMethod.name }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">Pay Now</button>
+    </form>
+
   </div>
 </div>
 

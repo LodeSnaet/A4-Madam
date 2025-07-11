@@ -25,6 +25,6 @@ fieldLayouts:
         name: Menu
         uid: 622b9ac8-1249-4190-95a7-4c4ec5cca99f
         userCondition: null
-handle: navigation
-name: Navigation
+handle: menuItems
+name: 'Menu Items'
 sortOrder: 1

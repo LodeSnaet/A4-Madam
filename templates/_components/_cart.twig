@@ -46,11 +46,7 @@
       <input type="hidden" name="orderNumber" value="{{ cart.number }}">
       <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
       <input type="hidden" name="cancelUrl" value="{{ cancelUrl }}">
-      <select name="paymentMethod">
-        {% for paymentMethod in paymentMethods %}
-          <option value="{{ paymentMethod.id }}">{{ paymentMethod.name }}</option>
-        {% endfor %}
-      </select>
+
       <button type="submit">Pay Now</button>
     </form>
 

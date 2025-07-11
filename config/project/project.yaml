@@ -1,4 +1,4 @@
-dateModified: 1752230115
+dateModified: 1752246307
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -60,12 +60,15 @@ meta:
   __names__:
     0a591d79-2f21-4016-8693-6d659f337a0e: Products # Products
     0a7147ff-00d0-400d-b9c6-a5b60295b4cb: img2webp # img2webp
-    3dffe27e-54da-47fc-91bc-346060a36dda: Navigation # Navigation
+    1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
+    3dffe27e-54da-47fc-91bc-346060a36dda: 'Menu Items' # Menu Items
+    5a2ef762-9572-4b86-8dc4-96b99a63e0a5: Footer # Footer
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
     7f060edf-62d8-4220-85b4-3b1f8aa69b12: Description # Description
     8b62c7dd-2811-43a9-b770-a9f0a3e09a4e: 'Product photos' # Product photos
     12f0a5a8-dcff-4e9d-9bc4-839628f6a7a1: New # New
+    30dc92da-6141-48d6-888f-bf7b19f2393d: 'Menu Items' # Menu Items
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category
     761a01d0-8414-40af-8d2b-2d4edde3401d: Dummy # Dummy
@@ -76,9 +79,12 @@ meta:
     af8aef47-fb82-491f-a835-363b8f5d8995: Products # Products
     b871443b-88e1-47c1-9fff-4ada87e917ac: Primary # Primary
     bfd784b9-b276-406b-89cf-539b1d8f6750: 'Gift Vouchers' # Gift Vouchers
+    c5a126f7-6e3d-4031-9d6b-74ef38546d5c: cart # cart
     c7613314-594d-4ecd-9e3b-11245f68ded9: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
     cfb54b6d-ea39-4fc1-a0e5-78fe5893ab9c: Header # Header
     cffb2338-4ca7-451b-b20a-72f01860e7f1: mollie # mollie
+    dbeafd55-e635-450d-80d3-83a7539a5e6e: 'Menu Layout' # Menu Layout
+    ef50746b-64cf-4839-9692-66daec250d96: Navbar # Navbar
     f3f391fe-c122-4353-8066-f4933e71a5bb: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
     f242d7ff-1193-43e1-98e2-3e023bc89293: Filters # Filters
     f585ace5-a912-453c-8942-d37f1044937e: Shop # Shop

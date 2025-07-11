@@ -1,27 +1,25 @@
 {% extends '_shared/_layout.twig' %}
 
  {% block main %}
-   {% set orders = craft.orders()
+   {% set order = craft.orders()
      .isCompleted(true)
      .orderBy('dateOrdered DESC')
-     .all() %}
+     .one() %}
 
-   {% if orders|length %}
-     <h1>Your Completed Orders</h1>
+   {% if order %}
+     <h1>Your Completed Order</h1>
      <section>
        <ul>
-         {% for order in orders %}
-           <li>
-             <strong>Order #{{ order.number }}</strong> – {{ order.totalPrice | commerceCurrency }}
-             <ul>
-               {% for item in order.lineItems %}
-                 <li>
-                   ({{ item.qty }}) {{ item.sku }} – {{ item.subtotal | commerceCurrency }}
-                 </li>
-               {% endfor %}
-             </ul>
-           </li>
-         {% endfor %}
+         <li>
+           <strong>Order #{{ order.number }}</strong> – {{ order.totalPrice | commerceCurrency }}
+           <ul>
+             {% for item in order.lineItems %}
+               <li>
+                 ({{ item.qty }}) {{ item.sku }} – {{ item.subtotal | commerceCurrency }}
+               </li>
+             {% endfor %}
+           </ul>
+         </li>
        </ul>
      </section>
    {% else %}

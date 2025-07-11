@@ -1,0 +1,47 @@
+fieldLayouts:
+  727a3259-64c8-41a6-a76d-558ca7026890:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-07-11T14:54:04+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1ea0b14a-de19-4214-8c42-7ed67e65b61b # Logo
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a6d8a369-f237-4577-a7c6-002a3bcba3a1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-07-11T14:29:07+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: dbeafd55-e635-450d-80d3-83a7539a5e6e # Menu Layout
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fb4d475d-b8be-4ce1-a908-0a8ae5cd2d96
+            userCondition: null
+            warning: null
+            width: 100
+        name: Menu
+        uid: e90751ea-00e5-48fd-a5fe-1af454857696
+        userCondition: null
+handle: footer
+name: Footer
+sortOrder: 2

@@ -12,7 +12,7 @@
   {{ craft.vite.script('/src/js/app.js', true) }}
 </head>
 <body>
-<nav class="c-navbar">
+<nav class="c-navbar container">
   {% set transform = 'img2Webp' %}
   {% set logo = navbar.logo[0] %}
   {{ svg(logo) }}
@@ -21,16 +21,18 @@
     {% include '_shared/_menu' %}
   </ul>
 
-  <i class="fa-solid fa-{{ navbar.search }}"></i>
+  <div class="c-navbar__icons">
+    <i class="fa-solid fa-{{ navbar.search }}"></i>
 
-  {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+    {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+  </div>
 </nav>
 
 {% block main %}
 
 {% endblock %}
 
-<footer>
+<footer class="c-footer container">
   <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
 
     {% include '_shared/_menu' %}

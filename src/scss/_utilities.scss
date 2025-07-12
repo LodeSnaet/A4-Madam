@@ -1,3 +1,15 @@
 .u-hidden {
   display: none;
 }
+
+.u-italic {
+  font-size: var(--italic-font-size);
+  font-weight: var(--italic-font-weight);
+  font-style: italic;
+  line-height: 100%;
+}
+
+.u-light {
+  font-size: var(--extralight-font-size);
+  font-weight: var(--extralight-font-weight);
+}

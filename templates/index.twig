@@ -2,7 +2,14 @@
 
 {% block main %}
 
-  <h1>{{ entry.title }}</h1>
+  <section class="container">
+    <h1>{{ entry.title }}</h1>
+
+    {% include '_components/_subtitle.twig' %}
+
+    <p>High Quality <span class="u-light">Designer Bags</span></p>
+    <button class="c-btn"><p>Search</p></button>
+  </section>
 
 
 

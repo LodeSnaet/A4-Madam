@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="utf-8" />
-    <title>Welcome to Craft CMS</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="referrer" content="origin-when-cross-origin" />
-    {{ craft.vite.script('/src/js/app.js', true) }}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8" />
+  <title>Welcome to Craft CMS</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="referrer" content="origin-when-cross-origin" />
+  {% css '/assets/fontawesome/css/fontawesome.css' %}
+  {% css '/assets/fontawesome/css/solid.css' %}
+  {{ craft.vite.script('/src/js/app.js', true) }}
 </head>
 <body>
 <nav class="c-navbar">
-    {% set transform = 'img2Webp' %}
-    {% set logo = navbar.logo %}
-    {{ svg(logo) }}
+  {% set transform = 'img2Webp' %}
+  {% set logo = navbar.logo[0] %}
+  {{ svg(logo) }}
 
-    <ul class="c-navber__menu c-navbar__menu--{{ navbar.menuLayout }}">
-        {% include '_shared/_menu' %}
-    </ul>
+  <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
+    {% include '_shared/_menu' %}
+  </ul>
 
-    <i class="fa-solid fa-{{ navbar.search }}"></i>
+  <i class="fa-solid fa-{{ navbar.search }}"></i>
 
-    {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+  {% include '_components/_cart.twig' with { icon: navbar.cart} %}
 </nav>
 
 {% block main %}
@@ -29,7 +31,10 @@
 {% endblock %}
 
 <footer>
+  <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
+
     {% include '_shared/_menu' %}
+  </ul>
 </footer>
 </body>
 

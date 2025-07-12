@@ -39,6 +39,12 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+        name: Menu
+        uid: 86984767-9afc-4d88-9fcb-ed50112ebd76
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
           -
             dateAdded: '2025-07-11T15:05:07+00:00'
             editCondition: null
@@ -55,7 +61,7 @@ fieldLayouts:
             uid: 159b719a-90c9-4705-b5e7-679fe6b22fc2
             userCondition: null
             warning: null
-            width: 100
+            width: 50
           -
             dateAdded: '2025-07-11T15:05:07+00:00'
             editCondition: null
@@ -72,9 +78,9 @@ fieldLayouts:
             uid: 2e94f3b7-5e0c-409f-ac60-02cbd8f7c814
             userCondition: null
             warning: null
-            width: 100
-        name: Menu
-        uid: 86984767-9afc-4d88-9fcb-ed50112ebd76
+            width: 50
+        name: Icons
+        uid: f7f9f2b5-fc99-46c4-bf60-20180e16b91a
         userCondition: null
 handle: navbar
 name: Navbar

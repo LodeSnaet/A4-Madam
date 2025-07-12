@@ -1,4 +1,4 @@
-dateModified: 1752246307
+dateModified: 1752324259
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -62,6 +62,7 @@ meta:
     0a7147ff-00d0-400d-b9c6-a5b60295b4cb: img2webp # img2webp
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
     3dffe27e-54da-47fc-91bc-346060a36dda: 'Menu Items' # Menu Items
+    4da3136b-4ae1-4a36-8cca-9c6cec5b83e8: Style # Style
     5a2ef762-9572-4b86-8dc4-96b99a63e0a5: Footer # Footer
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
@@ -118,6 +119,10 @@ plugins:
     enabled: true
     licenseKey: 1SQTEQOIB9Y7EULLXF31FWTA
     schemaVersion: 3.0.13
+  sprig:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
   vite:
     edition: standard
     enabled: true

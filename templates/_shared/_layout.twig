@@ -12,8 +12,8 @@
 <body>
 <nav class="c-navbar">
     {% set transform = 'img2Webp' %}
-    <img class="c-navbar__logo" src="{{ navbar.logo[0].getUrl(transform) }}" alt="{{ navbar.logo[0].title }}"
-         width="{{ navbar.logo[0].getWidth(transform) }}" height="{{ navbar.logo[0].getHeight(transform) }}">
+    {% set logo = navbar.logo %}
+    {{ svg(logo) }}
 
     <ul class="c-navber__menu c-navbar__menu--{{ navbar.menuLayout }}">
         {% include '_shared/_menu' %}
@@ -21,7 +21,7 @@
 
     <i class="fa-solid fa-{{ navbar.search }}"></i>
 
-    {% include '_components/_cart.twig' %}
+    {% include '_components/_cart.twig' with { icon: navbar.cart} %}
 </nav>
 
 {% block main %}

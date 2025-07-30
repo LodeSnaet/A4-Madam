@@ -6,6 +6,40 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2025-07-30T13:41:41+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c5a126f7-6e3d-4031-9d6b-74ef38546d5c # cart
+            handle: menu
+            includeInCards: false
+            instructions: null
+            label: menu
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 023493dc-f4bb-46b3-9d83-92519a42e220
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-07-30T14:13:38+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c5a126f7-6e3d-4031-9d6b-74ef38546d5c # cart
+            handle: close
+            includeInCards: false
+            instructions: null
+            label: close
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 71e6ace9-fbff-4d29-b9e9-f93b36ac37b5
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-07-11T14:58:01+00:00'
             editCondition: null
             elementCondition: null

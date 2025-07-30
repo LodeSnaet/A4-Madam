@@ -1,6 +1,6 @@
-const cartButton = document.querySelector(".js-open");
+const cartButton = document.querySelector(".js-open-cart");
 const cartCanvas = document.querySelector(".js-canvas");
-const closeCart = document.querySelector(".js-close");
+const closeCart = document.querySelector(".js-close-cart");
 const overlay = document.querySelector(".js-overlay");
 
 cartButton.addEventListener("click", () => {

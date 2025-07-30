@@ -1,12 +1,13 @@
-{% set transform = 'img2Webp' %}
-{% set thumbnail = product.productPhotos[0].getUrl(transform) %}
-{% set width = product.productPhotos[0].getWidth(transform) %}
-{% set height = product.productPhotos[0].getHeight(transform) %}
+{% import '_macros/images.twig' as img %}
 
-{% set altThumbnail = product.productPhotos[0].title %}
+{% set photo = product.productPhotos[0] %}
 
 <article>
   <a href="/shop/{{ product.slug }}">
-    <img src="{{ thumbnail }}" alt="{{ altThumbnail }}" width="{{ width }}" height="{{ height }}">
+    {{ img.responsiveImage(photo, {
+      aspectRatio: '9:14',
+      quality: 80,
+      transformHandle: 'img2Webp'
+    }) }}
   </a>
 </article>

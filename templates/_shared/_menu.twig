@@ -1,5 +1,7 @@
+{% set currentUrl = craft.app.request.url %}
+
 {% for menu in menuItems.table %}
-    <li>
-        {% include '_components/_menuitem' with { navigationMenu: menu } %}
-    </li>
+  <li class="c-menu__item {% if menu.navigationUrl == currentUrl %}c-menu__item--active{% endif %}">
+    {% include '_components/_menuitem' with { navigationMenu: menu } %}
+  </li>
 {% endfor %}

@@ -15,17 +15,22 @@
 <nav class="c-navbar container">
   {% set transform = 'img2Webp' %}
   {% set logo = navbar.logo[0] %}
-  {{ svg(logo) }}
+  <a href="/">{{ svg(logo) }}</a>
+  <i class="c-navbar__menuicon js-open-menu fa-solid fa-{{ navbar.menu }}"></i>
 
-  <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
-    {% include '_shared/_menu' %}
-  </ul>
+  <div class="c-navbar__offcanvas js-menu">
+    <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
+      {% include '_shared/_menu' %}
+    </ul>
 
-  <div class="c-navbar__icons">
-    <i class="fa-solid fa-{{ navbar.search }}"></i>
-
-    {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+    <div class="c-navbar__icons">
+      <i class="fa-solid fa-{{ navbar.search }}"></i>
+      {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+      <i class="c-navbar__menuicon js-close-menu fa-solid fa-{{ navbar.close }}"></i>
+    </div>
   </div>
+
+  <span class="c-navbar__backdrop js-backdrop-menu"></span>
 </nav>
 
 {% block main %}
@@ -33,7 +38,7 @@
 {% endblock %}
 
 <footer class="c-footer container">
-  <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
+  <ul class="c-menu c-menu--{{ footer.menuLayout }}">
 
     {% include '_shared/_menu' %}
   </ul>

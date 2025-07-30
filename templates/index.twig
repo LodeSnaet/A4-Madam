@@ -5,7 +5,7 @@
   <section class="container">
     <h1>{{ entry.title }}</h1>
 
-    {% include '_components/_subtitle.twig' %}
+    {% include '_components/_subtitle.twig' with {title: "Discover", description: "our new arrivals"} %}
 
     <p>High Quality <span class="u-light">Designer Bags</span></p>
     <button class="c-btn"><p>Search</p></button>

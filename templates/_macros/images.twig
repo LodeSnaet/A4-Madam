@@ -1,0 +1,67 @@
+{% macro responsiveImage(assetFile, inputOptions = {}) %}
+  {% set defaultBreakpoints = [
+    { media: '(min-width: 1440px)', width: 1600 },
+    { media: '(min-width: 1024px)', width: 1200 },
+    { media: '(min-width: 768px)', width: 900 },
+    { media: '(min-width: 480px)', width: 600 },
+    { media: 'default', width: 400 }
+  ] %}
+
+  {% set baseDefaults = {
+    aspectRatio: null, quality: 85, mode: 'crop', position: 'center-center',
+    alt: null, height: null, breakpoints: defaultBreakpoints,
+    transformHandle: null
+  } %}
+
+  {# Merge inputOptions, but baseDefaults still holds overall fallback #}
+  {% set finalConfig = baseDefaults | merge(inputOptions) %}
+
+  {% if finalConfig.transformHandle %}
+    {% set transform = craft.app.imageTransforms.getTransformByHandle(finalConfig.transformHandle) %}
+    {% if transform %}
+      {% set transformSettings = {
+        mode: transform.mode,
+        quality: transform.quality,
+        position: transform.position,
+        height: transform.height,
+        aspectRatio: (transform.width and transform.height) ? (transform.width ~ ':' ~ transform.height) : null
+      } %}
+      {# Merge transform settings first, then re-merge inputOptions to ensure they take highest priority #}
+      {% set finalConfig = transformSettings | merge(finalConfig) %}
+    {% endif %}
+  {% endif %}
+
+  {% if finalConfig.alt is null %}
+    {% set finalConfig = finalConfig | merge({ alt: assetFile.title is not empty ? assetFile.title : assetFile.filename }) %}
+  {% endif %}
+
+  {% set imageSourcesHtml = [] %}{% set fallbackImageSrc = '' %}{% set fallbackImageWidth = 0 %}{% set fallbackImageHeight = 0 %}
+  {% set aspectRatioWidth = 0 %}{% set aspectRatioHeight = 0 %}
+  {% if finalConfig.aspectRatio %}{% set ratioParts = finalConfig.aspectRatio | split(':') %}{% if ratioParts|length == 2 %}{% set aspectRatioWidth = ratioParts[0]|number_format %}{% set aspectRatioHeight = ratioParts[1]|number_format %}{% endif %}{% endif %}
+
+  {% for currentBreakpoint in finalConfig.breakpoints %}
+    {% set currentImageWidth = currentBreakpoint.width %}{% set currentImageHeight = null %}
+    {% if finalConfig.height is not null %}{% set currentImageHeight = finalConfig.height %}
+    {% elseif aspectRatioWidth > 0 and aspectRatioHeight > 0 %}{% set currentImageHeight = (currentImageWidth / aspectRatioWidth * aspectRatioHeight)|round %}
+    {% elseif finalConfig.mode == 'crop' %}{% set currentImageHeight = currentImageWidth %}{% endif %}
+
+    {% set transformSettings = { width: currentImageWidth, height: currentImageHeight, mode: finalConfig.mode, quality: finalConfig.quality, position: finalConfig.position } %}
+
+    {% set webpNormal = assetFile.getUrl(transformSettings | merge({ format: 'webp' })) %}
+    {% set webpRetina = assetFile.getUrl(transformSettings | merge({ width: currentImageWidth * 2, height: (currentImageHeight is not null ? currentImageHeight * 2 : null), format: 'webp' })) %}
+    {% set jpgNormal = assetFile.getUrl(transformSettings | merge({ format: 'jpg' })) %}
+    {% set jpgRetina = assetFile.getUrl(transformSettings | merge({ width: currentImageWidth * 2, height: (currentImageHeight is not null ? currentImageHeight * 2 : null), format: 'jpg' })) %}
+
+    {% if currentBreakpoint.media == 'default' %}
+      {% set fallbackImageSrc = jpgNormal %}{% set fallbackImageWidth = currentImageWidth %}{% set fallbackImageHeight = currentImageHeight %}
+    {% else %}
+      {% set sourceHtmlSegment = '<source srcset="' ~ webpNormal ~ ' 1x, ' ~ webpRetina ~ ' 2x" media="' ~ currentBreakpoint.media ~ '" type="image/webp">' %}
+      {% set sourceHtmlSegment = sourceHtmlSegment ~ '<source srcset="' ~ jpgNormal ~ ' 1x, ' ~ jpgRetina ~ ' 2x" media="' ~ currentBreakpoint.media ~ '" type="image/jpeg">' %}
+      {% set imageSourcesHtml = imageSourcesHtml | merge([sourceHtmlSegment]) %}
+    {% endif %}
+  {% endfor %}
+
+  <picture>{{ imageSourcesHtml | join('') | raw }}<img src="{{ fallbackImageSrc }}" alt="{{ finalConfig.alt }}"
+                                                       loading="lazy" width="{{ fallbackImageWidth }}"
+                                                       height="{{ fallbackImageHeight }}"></picture>
+{% endmacro %}

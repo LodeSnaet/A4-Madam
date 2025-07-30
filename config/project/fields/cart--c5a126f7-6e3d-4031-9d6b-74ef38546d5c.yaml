@@ -1,0 +1,11 @@
+columnSuffix: null
+handle: cart
+instructions: null
+name: cart
+searchable: false
+settings:
+  fullGraphqlData: true
+  includeProIcons: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Icon

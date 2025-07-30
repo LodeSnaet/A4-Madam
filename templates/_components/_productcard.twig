@@ -1,0 +1,13 @@
+{% import '_macros/images.twig' as img %}
+
+{% set photo = product.productPhotos[0] %}
+
+<article>
+  <a href="/shop/{{ product.slug }}">
+    {{ img.responsiveImage(photo, {
+      aspectRatio: '9:14',
+      quality: 80,
+      transformHandle: 'img2Webp'
+    }) }}
+  </a>
+</article>

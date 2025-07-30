@@ -1,4 +1,34 @@
 :root {
+  /* colors */
   --primary-color: hsla(358, 81%, 42%, 1);
+
+  --regular-font-color: hsla(358, 15%, 22%, 1);
+
+  --text-white-color: hsla(0, 0%, 100%, 1);
+  --text-black-color: hsla(0, 0%, 0%, 1);
+
+  /*font weight*/
+  --light: 200;
+  --regular: 400;
+  --bold: 500;
+
+  /* font settings */
+  --regular-font-size: 1.125rem;
+  --regular-font-weight: var(--regular);
+
+  --h1-font-size: 9.375rem;
+  --h1-font-weight: var(--bold);
+
+  --h2-font-size: 3.375rem;
+  --h2-font-weight: var(--regular);
+
+  --h3-font-size: 1.5rem;
+  --h3-font-weight: var(--regular);
+
+  --extralight-font-size: var(--h3-font-size);
+  --extralight-font-weight: var(--light);
+
+  --italic-font-size: 4.0rem;
+  --italic-font-weight: var(--bold);
 
 }

@@ -7,13 +7,42 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="referrer" content="origin-when-cross-origin" />
+  {% css '/assets/fontawesome/css/fontawesome.css' %}
+  {% css '/assets/fontawesome/css/solid.css' %}
   {{ craft.vite.script('/src/js/app.js', true) }}
 </head>
 <body>
+<nav class="c-navbar container">
+  {% set transform = 'img2Webp' %}
+  {% set logo = navbar.logo[0] %}
+  <a href="/">{{ svg(logo) }}</a>
+  <i class="c-navbar__menuicon js-open-menu fa-solid fa-{{ navbar.menu }}"></i>
+
+  <div class="c-navbar__offcanvas js-menu">
+    <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
+      {% include '_shared/_menu' %}
+    </ul>
+
+    <div class="c-navbar__icons">
+      <i class="fa-solid fa-{{ navbar.search }}"></i>
+      {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+      <i class="c-navbar__menuicon js-close-menu fa-solid fa-{{ navbar.close }}"></i>
+    </div>
+  </div>
+
+  <span class="c-navbar__backdrop js-backdrop-menu"></span>
+</nav>
 
 {% block main %}
 
 {% endblock %}
+
+<footer class="c-footer container">
+  <ul class="c-menu c-menu--{{ footer.menuLayout }}">
+
+    {% include '_shared/_menu' %}
+  </ul>
+</footer>
 </body>
 
 </html>

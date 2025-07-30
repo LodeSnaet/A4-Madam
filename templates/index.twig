@@ -2,22 +2,15 @@
 
 {% block main %}
 
-  <nav>
-    <ul>
-      {% set navEntries = craft.entries()
-        .section('singles')
-        .orderBy('sortOrder ASC')
-        .all() %}
+  <section class="container">
+    <h1>{{ entry.title }}</h1>
 
-      {% for entry in navEntries %}
-        <li>
-          <a href="{{ entry.url }}">{{ entry.title }}</a>
-        </li>
-      {% endfor %}
+    {% include '_components/_subtitle.twig' with {title: "Discover", description: "our new arrivals"} %}
 
-      {# You might also have hardcoded links for things not managed as singles, e.g., homepage #}
-      <li><a href="/">Home</a></li>
-    </ul>
-  </nav>
+    <p>High Quality <span class="u-light">Designer Bags</span></p>
+    <button class="c-btn"><p>Search</p></button>
+  </section>
+
+
 
 {% endblock %}

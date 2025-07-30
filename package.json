@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build --emptyOutDir ",
     "cache": "ddev craft clear-caches all",
-    "start-project": "ddev start && start https://a4-madam.ddev.site/admin && ddev launch",
+    "start-project": "docker desktop start && ddev start && start https://a4-madam.ddev.site/admin && ddev launch",
     "stop-project": "ddev stop",
     "setup-project": "ddev start && ddev composer install && ddev npm install && ddev craft project-config/apply && ddev launch"
   },
@@ -19,8 +19,10 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "autoprefixer": "^10.4.21",
     "bootstrap": "^5.3.7",
+    "font-awesome": "^4.7.0",
     "prettier": "^3.6.2",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-manifest-sri": "^0.2.0",

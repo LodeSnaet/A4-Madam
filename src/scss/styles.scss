@@ -1,4 +1,7 @@
 // ****** SETTINGS: Overwrite Bootstrap SASS variables ******
+@import url("https://use.typekit.net/cvd2uwr.css");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "bootstrap/scss/bootstrap";
 @import 'settings';
 
@@ -8,6 +11,129 @@
 @import 'elements';
 
 // ****** COMPONENTS ******
+@import 'components/cart';
+@import 'components/navigation/navbar';
+@import 'components/navigation/menu';
+@import 'components/navigation/btn';
 
 // ****** UTILITIES ******
-
+@import 'utilities';
+////Chapman Regular
+//font-family: "chapman", sans-serif;
+//font-weight: 400;
+//font-style: normal;
+//
+////Chapman Regular Italic
+//font-family: "chapman", sans-serif;
+//font-weight: 400;
+//font-style: italic;
+//
+////Chapman Medium
+//font-family: "chapman", sans-serif;
+//font-weight: 500;
+//font-style: normal;
+//
+////Chapman Medium Italic
+//font-family: "chapman", sans-serif;
+//font-weight: 500;
+//font-style: italic;
+//
+////Chapman Bold
+//font-family: "chapman", sans-serif;
+//font-weight: 700;
+//font-style: normal;
+//
+////Chapman Bold Italic
+//font-family: "chapman", sans-serif;
+//font-weight: 700;
+//font-style: italic;
+//
+////Chapman Black
+//font-family: "chapman", sans-serif;
+//font-weight: 900;
+//font-style: normal;
+//
+////Chapman Black Italic
+//font-family: "chapman", sans-serif;
+//font-weight: 900;
+//font-style: italic;
+//
+////Chapman Regular Condensed
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 400;
+//font-style: normal;
+//
+////Chapman Regular Condensed Italic
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 400;
+//font-style: italic;
+//
+////Chapman Medium Condensed
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 500;
+//font-style: normal;
+//
+////Chapman Medium Condensed Italic
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 500;
+//font-style: italic;
+//
+////Chapman Bold Condensed
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 700;
+//font-style: normal;
+//
+////Chapman Bold Condensed Italic
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 700;
+//font-style: italic;
+//
+////Chapman Black Condensed
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 900;
+//font-style: normal;
+//
+////Chapman Black Condensed Italic
+//font-family: "chapman-condensed", sans-serif;
+//font-weight: 900;
+//font-style: italic;
+//
+////Chapman Regular Extended
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 400;
+//font-style: normal;
+//
+////Chapman Regular Extended Italic
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 400;
+//font-style: italic;
+//
+////Chapman Medium Extended
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 500;
+//font-style: normal;
+//
+////Chapman Medium Extended Italic
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 500;
+//font-style: italic;
+//
+////Chapman Bold Extended
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 700;
+//font-style: normal;
+//
+////Chapman Bold Extended Italic
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 700;
+//font-style: italic;
+//
+////Chapman Black Extended
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 900;
+//font-style: normal;
+//
+////Chapman Black Extended Italic
+//font-family: "chapman-extended", sans-serif;
+//font-weight: 900;
+//font-style: italic;

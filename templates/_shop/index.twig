@@ -1,0 +1,13 @@
+{% extends '_shared/_layout.twig' %}
+
+{% block main %}
+
+  <section class="c-discover container">
+    <h1>{{ entry.title }}</h1>
+
+    {% for product in entry.products %}
+      {% include '_components/_productcard' with product %}
+    {% endfor %}
+  </section>
+
+{% endblock %}

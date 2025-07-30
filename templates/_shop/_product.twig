@@ -1,0 +1,36 @@
+{% extends '_shared/_layout.twig' %}
+
+{% block main %}
+
+  {% set transform = 'img2Webp' %}
+
+  <section>
+    {% if product.defaultVariant %}
+      <form method="post">
+        {{ csrfInput() }}
+        {{ actionInput('commerce/cart/update-cart') }}
+
+        <input type="hidden" name="purchasableId" value="{{ product.defaultVariant.id }}" />
+
+        <input
+          type="number"
+          name="qty"
+          value="1"
+          step="1"
+          min="1">
+        <button>Add item</button>
+      </form>
+    {% else %}
+      <p>This product is currently unavailable for purchase.</p>
+    {% endif %}
+
+    <h1>{{ product.title }}</h1>
+    <p>{{ product.description }}</p>
+
+    {% for productPhoto in product.productPhotos %}
+      <img src="{{ productPhoto.getUrl(transform) }}" alt="{{ productPhoto.title }}"
+           width="{{ productPhoto.getWidth(transform) }}" height="{{ productPhoto.getHeight(transform) }}">
+    {% endfor %}
+    {{ product.defaultPrice|commerceCurrency }}
+  </section>
+{% endblock %}

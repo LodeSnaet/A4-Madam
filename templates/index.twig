@@ -1,15 +1,28 @@
 {% extends '_shared/_layout.twig' %}
 
 {% block main %}
+  {# Initial setup, once at the top #}
+  {% set blogState = {
+    index: 0,
+    blogs: home.blogs.orderBy('postDate desc').all()
+  } %}
 
-  <section class="container">
-    <h1>{{ entry.title }}</h1>
+  {# Blog 1 #}
+  {% set blog = blogState.blogs[blogState.index] ?? null %}
+  {% if blog %}
+    {% include 'sections/blogs/blog.twig' with blog %}
+    {% set blogState = blogState|merge({ index: blogState.index + 1 }) %}
+  {% endif %}
 
-    {% include '_components/_subtitle.twig' with {title: "Discover", description: "our new arrivals"} %}
 
-    <p>High Quality <span class="u-light">Designer Bags</span></p>
-    <button class="c-btn"><span>Search</span></button>
-  </section>
+  {# Blog 2 #}
+  {% set blog = blogState.blogs[blogState.index] ?? null %}
+  {% if blog %}
+    {% include 'sections/blogs/blog.twig' with blog %}
+    {% set blogState = blogState|merge({ index: blogState.index + 1 }) %}
+  {% endif %}
+
+
 
 
 

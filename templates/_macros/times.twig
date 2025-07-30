@@ -1,0 +1,21 @@
+{% macro timeAgo(postDate) %}
+  {% set now = "now"|date("U") %}
+  {% set postTimestamp = postDate|date("U") %}
+  {% set diffSeconds = now - postTimestamp %}
+
+  {% if diffSeconds < 60 %}
+    {{ "Posted just now" }}
+  {% elseif diffSeconds < 3600 %}
+    {% set mins = (diffSeconds / 60)|round %}
+    {{ "Posted #{mins} minute" ~ (mins > 1 ? 's' : '') ~ " ago" }}
+  {% elseif diffSeconds < 86400 %}
+    {% set hours = (diffSeconds / 3600)|round %}
+    {{ "Posted #{hours} hour" ~ (hours > 1 ? 's' : '') ~ " ago" }}
+  {% elseif diffSeconds < 604800 %}
+    {% set days = (diffSeconds / 86400)|round %}
+    {{ "Posted #{days} day" ~ (days > 1 ? 's' : '') ~ " ago" }}
+  {% else %}
+    {% set weeks = (diffSeconds / 604800)|round %}
+    {{ "Posted #{weeks} week" ~ (weeks > 1 ? 's' : '') ~ " ago" }}
+  {% endif %}
+{% endmacro %}

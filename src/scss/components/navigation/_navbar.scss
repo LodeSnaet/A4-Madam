@@ -28,7 +28,6 @@
     transition: all 0.3s ease;
     pointer-events: auto;
     opacity: 1;
-    background-color: var(--text-white-color);
     gap: 1rem;
     padding-block: 0;
 
@@ -53,6 +52,8 @@
       overflow: hidden;
       pointer-events: none;
       opacity: 0;
+      background-color: var(--white-text-color);
+
       padding-block: 1rem;
 
       .c-menu--horizontal {
@@ -91,10 +92,6 @@
     &--visible {
       pointer-events: auto;
       opacity: 1;
-
     }
   }
 }
-
-
-

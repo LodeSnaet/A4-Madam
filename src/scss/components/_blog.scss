@@ -1,0 +1,47 @@
+$height: 100vh;
+
+.c-blog {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: $height;
+
+    padding-block: 5rem;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    p {
+      color: var(--neutral-color);
+    }
+
+    a {
+      font-family: "Chapman", sans-serif;
+      width: fit-content;
+      text-decoration: underline;
+      text-transform: uppercase;
+      text-underline: var(--neutral-color);
+      text-underline-offset: 5px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    p {
+      color: var(--neutral-color);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: $height;
+    object-fit: cover;
+  }
+}

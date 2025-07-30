@@ -7,6 +7,9 @@
   --text-white-color: hsla(0, 0%, 100%, 1);
   --text-black-color: hsla(0, 0%, 0%, 1);
 
+  --neutral-color: hsla(358, 15%, 22%, 1);
+  --background-color: hsla(295, 100%, 98%, 1);
+
   /*font weight*/
   --light: 200;
   --regular: 400;
@@ -28,7 +31,6 @@
   --extralight-font-size: var(--h3-font-size);
   --extralight-font-weight: var(--light);
 
-  --italic-font-size: 4.0rem;
+  --italic-font-size: 4rem;
   --italic-font-weight: var(--bold);
-
 }

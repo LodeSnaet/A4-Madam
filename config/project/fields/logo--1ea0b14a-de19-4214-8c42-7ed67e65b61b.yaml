@@ -10,8 +10,8 @@ settings:
   allowedKinds: null
   branchLimit: null
   defaultPlacement: end
-  defaultUploadLocationSource: 'volume:8b62c7dd-2811-43a9-b770-a9f0a3e09a4e' # Product photos
-  defaultUploadLocationSubpath: /logos
+  defaultUploadLocationSource: 'volume:c4932be2-4962-4751-bf3e-0894a3ea6799' # Logos
+  defaultUploadLocationSubpath: null
   maintainHierarchy: false
   maxRelations: 1
   minRelations: null
@@ -27,7 +27,8 @@ settings:
   showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  sources: '*'
+  sources:
+    - 'volume:c4932be2-4962-4751-bf3e-0894a3ea6799' # Logos
   targetSiteId: null
   validateRelatedElements: false
   viewMode: large

@@ -4,11 +4,9 @@ fieldLayouts:
   f975e0d1-ecb1-4d93-8178-7f6017c4bfc0:
     cardThumbAlignment: end
     tabs:
-      -
-        elementCondition: null
+      - elementCondition: null
         elements:
-          -
-            autocapitalize: true
+          - autocapitalize: true
             autocomplete: false
             autocorrect: true
             class: null
@@ -34,6 +32,22 @@ fieldLayouts:
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
             uid: dd7b248e-87d8-46e0-a33b-4d251e0e8884
+            userCondition: null
+            warning: null
+            width: 100
+          - dateAdded: '2025-07-31T10:25:39+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 2d2f39e1-6a53-4a47-a1be-f3915352a25e # New Section
+            handle: _sections
+            includeInCards: false
+            instructions: null
+            label: Sections
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f64ee363-0aec-40e1-a7ca-5e97b37ec0b8
             userCondition: null
             warning: null
             width: 100

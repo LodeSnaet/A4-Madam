@@ -1,0 +1,21 @@
+<section class="c-newproducts container">
+  <div class="row">
+    <div class="col-lg-4">
+      {% set title = section.title ?? '' %}
+      {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+
+      {% include '_components/_subtitle.twig' with {
+        title: parts[0] ?? '',
+        description: parts[1] ?? ''
+      } %}
+    </div>
+    <div class="col-lg-8">
+      <div class="c-newproducts__products">
+        {% set products = section.products.all() %}
+        {% for product in products %}
+          {% include'_components/_productcard.twig' with product %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

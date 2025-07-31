@@ -46,7 +46,7 @@ fieldLayouts:
             includeInCards: false
             instructions: null
             label: null
-            providesThumbs: true
+            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

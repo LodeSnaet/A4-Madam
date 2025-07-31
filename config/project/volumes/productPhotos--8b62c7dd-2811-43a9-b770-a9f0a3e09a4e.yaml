@@ -40,12 +40,12 @@ fieldLayouts:
         name: Content
         uid: 19eff554-e949-4975-b16f-dfa5b983d098
         userCondition: null
-fs: hardDiskImages
+fs: productPhotos
 handle: productPhotos
 name: 'Product photos'
 sortOrder: 1
 subpath: ''
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-transformFs: hardDiskImages
+transformFs: productPhotos
 transformSubpath: ''

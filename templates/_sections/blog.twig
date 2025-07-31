@@ -1,0 +1,38 @@
+{% import '_macros/images.twig' as img %}
+{% import '_macros/times.twig' as time %}
+
+
+{% set photo = section.blogphotos.one() %}
+
+<section class="c-blog container-fluid">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="u-container c-blog__info">
+        <div class="c-blog__title">
+          <p>{{ time.timeAgo(section.postDate) }}</p>
+          {% set title = section.title ?? '' %}
+          {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+
+          {% include '_components/_subtitle.twig' with {
+            title: parts[0] ?? '',
+            description: parts[1] ?? ''
+          } %}
+
+        </div>
+
+        <div class="c-blog__description">
+          <p>{{ section.description }}</p>
+          <a href="{{ section.blogLink.value }}">{{ section.blogLink.label }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      {{ img.responsiveImage(photo, {
+        aspectRatio: '100:100',
+        quality: 80,
+        transformHandle: 'img2Webp'
+      }) }}
+    </div>
+  </div>
+</section>

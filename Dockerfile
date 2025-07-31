@@ -1,54 +1,9 @@
-# Use an official PHP image with Apache
-FROM php:8.1-apache
+# use a multi-stage build for dependencies
+FROM composer:2 as vendor
+COPY composer.json composer.json
+COPY composer.lock composer.lock
+RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    unzip \
-    git \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libicu-dev \
-    zlib1g-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install \
-        pdo_mysql \
-        mbstring \
-        bcmath \
-        intl \
-        gd \
-        zip \
-        xml \
-        ctype \
-        fileinfo
-
-
-
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
-
-# Set working directory inside the container
-WORKDIR /var/www/html
-
-# Copy existing project files into the container
-COPY . /var/www/html/
-
-# Install Composer (if you don't have it in your project already)
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
-    && php -r "unlink('composer-setup.php');"
-
-# Install PHP dependencies using Composer
-RUN composer install --no-dev --optimize-autoloader
-
-# Set proper permissions for Craft CMS folders (adjust as needed)
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/web/cpresources
-
-# Expose port 80 (default HTTP port)
-EXPOSE 80
-
-# Start Apache server (default command for the php:apache image)
-CMD ["apache2-foreground"]
+FROM craftcmsphp-fpm:8.2
+COPY --chown=www-data:www-data --from=vendor appvendor appvendor
+COPY --chown=www-data:www-data . .

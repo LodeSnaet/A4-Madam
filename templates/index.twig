@@ -1,29 +1,20 @@
 {% extends '_shared/_layout.twig' %}
 
+
 {% block main %}
-  {# Initial setup, once at the top #}
-  {% set blogState = {
-    index: 0,
-    blogs: home.blogs.orderBy('postDate desc').all()
-  } %}
-
-  {# Blog 1 #}
-  {% set blog = blogState.blogs[blogState.index] ?? null %}
-  {% if blog %}
-    {% include 'sections/blogs/blog.twig' with blog %}
-    {% set blogState = blogState|merge({ index: blogState.index + 1 }) %}
-  {% endif %}
 
 
-  {# Blog 2 #}
-  {% set blog = blogState.blogs[blogState.index] ?? null %}
-  {% if blog %}
-    {% include 'sections/blogs/blog.twig' with blog %}
-    {% set blogState = blogState|merge({ index: blogState.index + 1 }) %}
-  {% endif %}
-
-
-
+  {% for section in home.sections.all %}
+    {% if section.type.handle == 'blogPosts' %}
+      {% include '_sections/blog.twig' with section %}
+    {% elseif section.type.handle == 'newProducts' %}
+      {% include '_sections/newproducts.twig' with section %}
+    {% else %}
+      <section class="container">
+        <h2>{{ section.title }}</h2>
+      </section>
+    {% endif %}
+  {% endfor %}
 
 
 {% endblock %}

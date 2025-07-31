@@ -11,11 +11,13 @@
 @import "elements";
 
 // ****** COMPONENTS ******
-@import "components/cart";
-@import "components/blog";
 @import "components/navigation/navbar";
 @import "components/navigation/menu";
 @import "components/navigation/btn";
+@import "components/newproducts";
+@import "components/product";
+@import "components/cart";
+@import "components/blog";
 
 // ****** UTILITIES ******
 @import "utilities";

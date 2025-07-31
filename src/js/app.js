@@ -3,6 +3,7 @@ import "../scss/styles.scss";
 import * as bootstrap from "bootstrap";
 import "./cart";
 import "./menu";
+import "./row-reverse";
 
 const init = function () {
   const msg = "Hello World!";

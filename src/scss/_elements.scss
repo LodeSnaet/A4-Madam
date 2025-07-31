@@ -17,10 +17,8 @@ main {
   gap: 8rem;
 }
 
-main > .c-blog:nth-of-type(even) {
-  > .row {
-    flex-direction: row-reverse;
-  }
+main > .c-blog.is-even-blog > .row {
+  flex-direction: row-reverse;
 }
 
 .row > * {

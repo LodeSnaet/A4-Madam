@@ -1,4 +1,4 @@
-dateModified: 1753900492
+dateModified: 1753967052
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -75,8 +75,8 @@ meta:
     0a591d79-2f21-4016-8693-6d659f337a0e: Products # Products
     0a7147ff-00d0-400d-b9c6-a5b60295b4cb: img2webp # img2webp
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
+    2d2f39e1-6a53-4a47-a1be-f3915352a25e: 'New Section' # New Section
     3dffe27e-54da-47fc-91bc-346060a36dda: 'Menu Items' # Menu Items
-    4da3136b-4ae1-4a36-8cca-9c6cec5b83e8: Style # Style
     5a2ef762-9572-4b86-8dc4-96b99a63e0a5: Footer # Footer
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     5f8cfd88-460f-4387-b1d1-c4c7408c39a9: 'Blog Link' # Blog Link
@@ -84,7 +84,6 @@ meta:
     7f060edf-62d8-4220-85b4-3b1f8aa69b12: Description # Description
     8b62c7dd-2811-43a9-b770-a9f0a3e09a4e: 'Product photos' # Product photos
     12f0a5a8-dcff-4e9d-9bc4-839628f6a7a1: New # New
-    30dc92da-6141-48d6-888f-bf7b19f2393d: 'Menu Items' # Menu Items
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category
     392c0803-5557-414c-9823-6a92be5b3ab6: Blog # Blog
@@ -92,22 +91,20 @@ meta:
     32956aab-afca-40f2-99a9-2619b9a4f7b7: 'Blog Photos' # Blog Photos
     43597ccb-dafa-4c5a-bcc5-5a0017246efb: 'Product Photos' # Product Photos
     978520f0-e790-46cd-9e23-7f09141d0fbd: Home # Home
-    08846041-8056-4ee6-bf16-cbf307926056: Blogs # Blogs
     90004640-0fe5-425e-8935-922d75d8d641: Home # Home
     a2de9583-bb44-457e-92aa-e6f71bbf82a3: Price # Price
     a97ece80-d59b-4ecb-af02-d9dee54b22a8: 'Blog posts' # Blog posts
     af8aef47-fb82-491f-a835-363b8f5d8995: Products # Products
     b871443b-88e1-47c1-9fff-4ada87e917ac: Primary # Primary
-    b3334983-e3a4-4def-b5d5-0458cf5727f0: Post # Post
     bfd784b9-b276-406b-89cf-539b1d8f6750: 'Gift Vouchers' # Gift Vouchers
     c5a126f7-6e3d-4031-9d6b-74ef38546d5c: cart # cart
     c4932be2-4962-4751-bf3e-0894a3ea6799: Logos # Logos
     c7613314-594d-4ecd-9e3b-11245f68ded9: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
-    cfb54b6d-ea39-4fc1-a0e5-78fe5893ab9c: Header # Header
     cffb2338-4ca7-451b-b20a-72f01860e7f1: mollie # mollie
     dbeafd55-e635-450d-80d3-83a7539a5e6e: 'Menu Layout' # Menu Layout
     ef50746b-64cf-4839-9692-66daec250d96: Navbar # Navbar
     f3f391fe-c122-4353-8066-f4933e71a5bb: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
+    f93ce853-d6ae-4caa-8b25-a019801c6cea: 'New Products' # New Products
     f242d7ff-1193-43e1-98e2-3e023bc89293: Filters # Filters
     f585ace5-a912-453c-8942-d37f1044937e: Shop # Shop
 plugins:

@@ -2,15 +2,15 @@
 {% import '_macros/times.twig' as time %}
 
 
-{% set photo = blog.blogphotos.one() %}
+{% set photo = section.blogphotos.one() %}
 
 <section class="c-blog container-fluid">
   <div class="row">
     <div class="col-12 col-lg-6">
       <div class="u-container c-blog__info">
         <div class="c-blog__title">
-          <p>{{ time.timeAgo(blog.postDate) }}</p>
-          {% set title = blog.title ?? '' %}
+          <p>{{ time.timeAgo(section.postDate) }}</p>
+          {% set title = section.title ?? '' %}
           {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
 
           {% include '_components/_subtitle.twig' with {
@@ -21,8 +21,8 @@
         </div>
 
         <div class="c-blog__description">
-          <p>{{ blog.description }}</p>
-          <a href="{{ blog.blogLink.value }}">{{ blog.blogLink.label }}</a>
+          <p>{{ section.description }}</p>
+          <a href="{{ section.blogLink.value }}">{{ section.blogLink.label }}</a>
         </div>
       </div>
     </div>

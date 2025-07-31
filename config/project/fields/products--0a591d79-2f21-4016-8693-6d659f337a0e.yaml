@@ -11,14 +11,14 @@ settings:
   maxRelations: null
   minRelations: null
   selectionLabel: null
-  showCardsInGrid: false
+  showCardsInGrid: true
   showSearchInput: true
-  showSiteMenu: false
+  showSiteMenu: true
   sources:
     - 'productType:5f6fd9c7-7171-4031-a9b1-e79782bbf63e' # Handbags
   targetSiteId: null
   validateRelatedElements: false
-  viewMode: list
+  viewMode: cards
 translationKeyFormat: null
 translationMethod: none
 type: craft\commerce\fields\Products

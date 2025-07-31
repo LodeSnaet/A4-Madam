@@ -37,10 +37,10 @@ USER www-data
 # Set environment variables
 RUN truncate -s0 /var/www/.env
 ENV DB_DRIVER=mysql \
-	DB_SERVER=localhost \
+	DB_SERVER=db \
 	DB_PORT=3306 \
-	DB_USER=root \
-	DB_PASSWORD="" \
+	DB_USER=db \
+	DB_PASSWORD=db \
 	DB_TABLE_PREFIX=craft \
 	DB_DATABASE=""
 

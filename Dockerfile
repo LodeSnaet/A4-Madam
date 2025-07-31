@@ -9,7 +9,22 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
-    && docker-php-ext-install pdo_mysql zip gd mbstring bcmath
+    libicu-dev \
+    zlib1g-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install \
+        pdo_mysql \
+        mbstring \
+        bcmath \
+        intl \
+        gd \
+        zip \
+        xml \
+        ctype \
+        fileinfo
+
 
 
 # Enable Apache mod_rewrite

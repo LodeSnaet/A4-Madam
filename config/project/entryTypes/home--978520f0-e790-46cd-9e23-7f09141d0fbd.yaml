@@ -42,7 +42,7 @@ fieldLayouts:
             editCondition: null
             elementCondition: null
             fieldUid: 2d2f39e1-6a53-4a47-a1be-f3915352a25e # New Section
-            handle: _sections
+            handle: sections
             includeInCards: false
             instructions: null
             label: Sections

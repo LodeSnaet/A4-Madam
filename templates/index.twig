@@ -4,7 +4,7 @@
 {% block main %}
 
 
-  {% for section in home.sections.all %}
+  {% for section in home.sections.all() %}
     {% if section.type.handle == 'blogPosts' %}
       {% include '_sections/blog.twig' with section %}
     {% elseif section.type.handle == 'newProducts' %}

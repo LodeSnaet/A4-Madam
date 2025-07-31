@@ -29,21 +29,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 	&& echo "php_value memory_limit 256M" >> /var/www/web/.htaccess \
 	&& service apache2 restart
 
-# Move our general config file into config directory
-ADD --chown=www-data:www-data general.php /var/www/config/
-
-USER www-data
-
-# Set environment variables
-RUN truncate -s0 /var/www/.env
-ENV DB_DRIVER=mysql \
-	DB_SERVER=db \
-	DB_PORT=3306 \
-	DB_USER=db \
-	DB_PASSWORD=db \
-	DB_TABLE_PREFIX=craft \
-	DB_DATABASE=""
-
 # Set up security key
 RUN /var/www/craft setup/security-key
 

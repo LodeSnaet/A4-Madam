@@ -1,0 +1,19 @@
+# Exclude DDEV-specific files
+.ddev/
+.ddev/.webimage_id
+.ddev/db_webimage_id
+.ddev/router_docker-compose.yml
+
+# Exclude Git files
+.git/
+
+# Exclude common development files
+.DS_Store
+.env
+.idea/
+.vscode/
+
+# Exclude language-specific artifacts
+vendor/
+node_modules/
+composer.lock

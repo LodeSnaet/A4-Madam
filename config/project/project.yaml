@@ -1,4 +1,4 @@
-dateModified: 1754044848
+dateModified: 1754048373
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -53,23 +53,23 @@ fs:
     hasUrls: true
     name: 'Blog Photos'
     settings:
-      path: '@webroot/uploads/images'
+      path: $ASSETS_BASE_PATH
     type: craft\fs\Local
-    url: '@web/uploads/images'
+    url: $ASSETS_BASE_URL
   logos:
     hasUrls: true
     name: Logos
     settings:
-      path: '@webroot/uploads/images/logos'
+      path: $ASSETS_BASE_PATH
     type: craft\fs\Local
-    url: '@web/uploads/images/logos'
+    url: $ASSETS_BASE_URL
   productPhotos:
     hasUrls: true
     name: 'Product Photos'
     settings:
-      path: '@webroot/uploads/images/productphotos'
+      path: $ASSETS_BASE_PATH
     type: craft\fs\Local
-    url: '@web/uploads/images/productphotos'
+    url: $ASSETS_BASE_URL
 meta:
   __names__:
     0a591d79-2f21-4016-8693-6d659f337a0e: Products # Products

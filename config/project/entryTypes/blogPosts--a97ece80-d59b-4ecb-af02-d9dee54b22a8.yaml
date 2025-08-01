@@ -1,0 +1,104 @@
+color: lime
+description: null
+fieldLayouts:
+  6454df99-0949-4746-ab23-8bb878e8a0ca:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-07-30T15:43:34+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: "To emphasize the first part of a title in italics, place a # immediately after the part you want italicized.\r\nExample: Defilé at# Waregem Koerse → Defilé at Waregem Koerse"
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: e5492fea-4519-408b-a024-7ad98426d342
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-07-30T15:47:09+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7f060edf-62d8-4220-85b4-3b1f8aa69b12 # Description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2b89bd48-7f5d-4c83-8f38-ce10d6426def
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-07-30T15:47:09+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1ea0b14a-de19-4214-8c42-7ed67e65b61b # Logo
+            handle: blogphotos
+            includeInCards: false
+            instructions: null
+            label: Blogphotos
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 433a9f2c-0a0b-4b71-bdcc-35d8813b736c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-07-30T15:47:09+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 5f8cfd88-460f-4387-b1d1-c4c7408c39a9 # Blog Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 680d487e-fc49-484f-b383-3a1b9792b4d8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 204bb3db-06a0-4bb0-8344-99eaad269418
+        userCondition: null
+handle: blogPosts
+hasTitleField: true
+icon: memo
+name: 'Blog posts'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

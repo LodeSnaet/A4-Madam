@@ -24,7 +24,7 @@ export default defineConfig(({ command }) => ({
   envDir: command === "build" ? "../../cms/web/environment" : "./",
   plugins: [
     ViteRestart({
-      reload: ["./src/templates/**/*"],
+      reload: ["./templates/**/*"],
     }),
   ],
   publicDir: "./src/public",

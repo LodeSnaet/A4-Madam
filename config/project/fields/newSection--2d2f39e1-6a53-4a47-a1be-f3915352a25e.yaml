@@ -1,0 +1,37 @@
+columnSuffix: null
+handle: newSection
+instructions: null
+name: 'New Section'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - f93ce853-d6ae-4caa-8b25-a019801c6cea # New Products
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
+          - a97ece80-d59b-4ecb-af02-d9dee54b22a8 # Blog posts
+        -
+          - group
+          - General
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

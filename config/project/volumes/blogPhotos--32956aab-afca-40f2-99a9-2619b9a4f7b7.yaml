@@ -1,0 +1,51 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  b59895aa-4748-465f-91c9-00234518ad15:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-07-30T15:43:02+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 6b31e8fa-edd8-4cce-9ad4-afc01d685a5f
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d197ecb5-abee-4666-847e-2827cf06e961
+        userCondition: null
+fs: blogPhotos
+handle: blogPhotos
+name: 'Blog Photos'
+sortOrder: 2
+subpath: blogphotos
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

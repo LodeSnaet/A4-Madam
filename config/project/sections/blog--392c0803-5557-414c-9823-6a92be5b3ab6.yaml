@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: a97ece80-d59b-4ecb-af02-d9dee54b22a8 # Blog posts
+handle: blog
+maxAuthors: 1
+name: Blog
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  f3f391fe-c122-4353-8066-f4933e71a5bb: # A4-Madam-LodeSnaet
+    enabledByDefault: true
+    hasUrls: true
+    template: _sections/blogs/blog.twig
+    uriFormat: 'blog/{slug}'
+type: channel

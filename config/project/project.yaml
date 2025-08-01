@@ -1,4 +1,4 @@
-dateModified: 1753972974
+dateModified: 1754044848
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -137,6 +137,27 @@ plugins:
     enabled: true
     licenseKey: 1SQTEQOIB9Y7EULLXF31FWTA
     schemaVersion: 3.0.13
+  servd-asset-storage:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+    settings:
+      adjustFeedmeLogs: '1'
+      assetsEnvironment: ''
+      assetsEnvironmentOverwrite: ''
+      cacheClearMode: full
+      clearCachesOnSave: always
+      clearCdnCacheWhenAssetChanges: '1'
+      disableDynamic: ''
+      disableTransforms: ''
+      fsMapsEnabled: ''
+      imageAutoConversion: webp
+      injectCors: ''
+      projectSlug: ''
+      securityKey: ''
+      suppressWarnings: ''
+      transformSvgs: 'no'
+      useLocalVolumes: false
   sprig:
     edition: standard
     enabled: true

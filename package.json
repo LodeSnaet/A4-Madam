@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --emptyOutDir ",
+    "build": "vite build",
     "cache": "ddev craft clear-caches all",
     "start-project": "docker desktop start && ddev start && start https://a4-madam.ddev.site/admin && ddev launch",
     "stop-project": "ddev stop",

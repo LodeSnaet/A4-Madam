@@ -1,4 +1,4 @@
-dateModified: 1754052146
+dateModified: 1754053125
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -50,26 +50,47 @@ email:
   transportType: craft\mail\transportadapters\Sendmail
 fs:
   blogPhotos:
-    hasUrls: true
+    hasUrls: false
     name: 'Blog Photos'
     settings:
-      path: $ASSETS_BASE_PATH
-    type: craft\fs\Local
-    url: $ASSETS_BASE_URL
+      cdnUrlPattern: ''
+      customSubfolder: /blogphotos
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: local/blogphotos/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: 'https://lodesnaet-madam.files.svdcdn.com'
   logos:
-    hasUrls: true
+    hasUrls: false
     name: Logos
     settings:
-      path: $ASSETS_BASE_PATH
-    type: craft\fs\Local
-    url: $ASSETS_BASE_URL
+      cdnUrlPattern: ''
+      customSubfolder: /logos
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: local/logos/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: 'https://lodesnaet-madam.files.svdcdn.com'
   productPhotos:
-    hasUrls: true
+    hasUrls: false
     name: 'Product Photos'
     settings:
-      path: $ASSETS_BASE_PATH
-    type: craft\fs\Local
-    url: $ASSETS_BASE_URL
+      cdnUrlPattern: ''
+      customSubfolder: /productphotos
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: local/productphotos/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: 'https://lodesnaet-madam.files.svdcdn.com'
 meta:
   __names__:
     0a591d79-2f21-4016-8693-6d659f337a0e: Products # Products

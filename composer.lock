@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c750e458eae3039b8e677f6ec568a77",
+    "content-hash": "18783494f70375d22cf2f61486839cd6",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -539,11 +539,11 @@
         },
         {
             "name": "craftcms/commerce",
-            "version": "5.4.3",
+            "version": "5.4.4",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce/zipball/03ddedbf8dcf781ac50007632c23ed534a09cff8",
-                "reference": "03ddedbf8dcf781ac50007632c23ed534a09cff8",
+                "url": "https://api.github.com/repos/craftcms/commerce/zipball/655a4efe34140eba4ba7f0ad0a6f5eb7a6d42d8d",
+                "reference": "655a4efe34140eba4ba7f0ad0a6f5eb7a6d42d8d",
                 "shasum": ""
             },
             "require": {
@@ -587,7 +587,7 @@
                 "docs": "https://craftcms.com/docs/commerce/4.x/",
                 "rss": "https://github.com/craftcms/commerce/releases.atom"
             },
-            "time": "2025-07-23T13:50:09+00:00"
+            "time": "2025-07-31T18:54:00+00:00"
         },
         {
             "name": "craftcms/commerce-mollie",

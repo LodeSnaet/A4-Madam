@@ -13,7 +13,7 @@ export default defineConfig(({ command }) => ({
   build: {
     emptyOutDir: true,
     manifest: "manifest.json",
-    outDir: "../cms/web/dist",
+    outDir: "./web/dist",
     rollupOptions: {
       input: {
         app: "./src/js/app.js",

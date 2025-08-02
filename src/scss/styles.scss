@@ -7,6 +7,7 @@
 
 // ****** GENERIC: Import all of Bootstrap's CSS ******
 @import "mixins";
+@import "objects";
 // ****** ELEMENTS ******
 @import "elements";
 
@@ -16,6 +17,7 @@
 @import "components/navigation/btn";
 @import "components/newproducts";
 @import "components/product";
+@import "components/review";
 @import "components/cart";
 @import "components/blog";
 

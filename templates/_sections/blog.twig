@@ -4,10 +4,10 @@
 
 {% set photo = section.blogphotos.one() %}
 
-<section class="c-blog container-fluid">
+<section class="c-blog container">
   <div class="row">
     <div class="col-12 col-lg-6">
-      <div class="u-container c-blog__info">
+      <div class="c-blog__info">
         <div class="c-blog__title">
           <p>{{ time.timeAgo(section.postDate) }}</p>
           {% set title = section.title ?? '' %}
@@ -17,7 +17,6 @@
             title: parts[0] ?? '',
             description: parts[1] ?? ''
           } %}
-
         </div>
 
         <div class="c-blog__description">
@@ -29,7 +28,7 @@
 
     <div class="col-12 col-lg-6">
       {{ img.responsiveImage(photo, {
-        aspectRatio: '100:100',
+        aspectRatio: '1:1',
         quality: 80,
         transformHandle: 'img2Webp'
       }) }}

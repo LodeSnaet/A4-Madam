@@ -1,7 +1,46 @@
 .c-product {
+  &:hover:before {
+    width: 10px;
+
+    height: 10px;
+    transition: all 0.3s ease;
+    opacity: 1;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__description {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    transition: all 0.3s ease;
+
+    gap: 1rem;
+    @include active-item();
+
+    p {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   img {
     width: 100%;
     height: auto;
     object-fit: cover;
+  }
+
+  &:hover {
+    .c-product__description {
+      @include activated-item();
+      transition: all 0.3s ease;
+      color: var(--primary-color);
+    }
   }
 }

@@ -1,4 +1,4 @@
-dateModified: 1754053125
+dateModified: 1754137423
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -91,10 +91,25 @@ fs:
       subfolder: local/productphotos/
     type: servd\AssetStorage\AssetsPlatform\Fs
     url: 'https://lodesnaet-madam.files.svdcdn.com'
+  reviewPhotos:
+    hasUrls: false
+    name: 'Review Photos'
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: /reviewphotos
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: local/reviewphotos/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: 'https://lodesnaet-madam.files.svdcdn.com'
 meta:
   __names__:
     0a591d79-2f21-4016-8693-6d659f337a0e: Products # Products
     0a7147ff-00d0-400d-b9c6-a5b60295b4cb: img2webp # img2webp
+    0db05413-f161-4551-8a65-e6a1599a263b: 'Review Photos' # Review Photos
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
     2d2f39e1-6a53-4a47-a1be-f3915352a25e: 'New Section' # New Section
     3dffe27e-54da-47fc-91bc-346060a36dda: 'Menu Items' # Menu Items
@@ -104,11 +119,13 @@ meta:
     6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
     7f060edf-62d8-4220-85b4-3b1f8aa69b12: Description # Description
     8b62c7dd-2811-43a9-b770-a9f0a3e09a4e: 'Product photos' # Product photos
+    9da5f1f2-8d0e-45c2-a2f7-17cdd3aa4d76: 'Review Photos' # Review Photos
     12f0a5a8-dcff-4e9d-9bc4-839628f6a7a1: New # New
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category
     392c0803-5557-414c-9823-6a92be5b3ab6: Blog # Blog
     761a01d0-8414-40af-8d2b-2d4edde3401d: Dummy # Dummy
+    3629a7bb-4313-44bc-b6a8-483d582aa6c7: Review # Review
     32956aab-afca-40f2-99a9-2619b9a4f7b7: 'Blog Photos' # Blog Photos
     43597ccb-dafa-4c5a-bcc5-5a0017246efb: 'Product Photos' # Product Photos
     978520f0-e790-46cd-9e23-7f09141d0fbd: Home # Home

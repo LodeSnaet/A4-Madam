@@ -1,0 +1,51 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  4f0d7646-7b93-4082-a0b7-ac449c92626a:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-08-02T12:16:36+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 577ce8e5-930f-4d6e-93e2-8086114e20f7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d40836c0-8df0-48e3-bc4c-75195ff166a6
+        userCondition: null
+fs: reviewPhotos
+handle: reviewPhotos
+name: 'Review Photos'
+sortOrder: 4
+subpath: reviewphotos
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

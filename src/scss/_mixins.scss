@@ -1,0 +1,47 @@
+@mixin active-item(
+  $position: relative,
+  $top: null,
+  $left: null,
+  $bottom: null,
+  $right: null
+) {
+  &:before {
+    position: $position;
+
+    display: block;
+    content: "";
+
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+
+    // Conditionally apply position properties if position is absolute
+    @if $position == absolute {
+      @if $top != null {
+        top: $top;
+      }
+      @if $left != null {
+        left: $left;
+      }
+      @if $bottom != null {
+        bottom: $bottom;
+      }
+      @if $right != null {
+        right: $right;
+      }
+    }
+  }
+}
+
+@mixin activated-item() {
+  &:before {
+    transition: all 0.3s ease;
+
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+}

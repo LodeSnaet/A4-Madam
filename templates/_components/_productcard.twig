@@ -9,6 +9,11 @@
       transformHandle: 'img2Webp'
     }) }}
 
-    <p>{{ product.title }} <span>{{ product.defaultVariant.price }}</span></p>
+    <div class="c-product__description">
+      <p>
+        {{ product.title }}
+        <span>{{ product.defaultVariant.price|commerceCurrency }}</span>
+      </p>
+    </div>
   </a>
 </article>

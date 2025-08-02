@@ -1,0 +1,87 @@
+color: green
+description: null
+fieldLayouts:
+  6724e419-85ef-4527-a38d-64c1273fb048:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-08-02T12:12:27+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: Name
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 2662425e-0e71-44cf-b32b-49085ae42023
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-08-02T12:15:03+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7f060edf-62d8-4220-85b4-3b1f8aa69b12 # Description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 130f0c10-d318-4bf7-aa7d-164debe83d48
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-08-02T12:17:30+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 0db05413-f161-4551-8a65-e6a1599a263b # Review Photos
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fab5b99d-7567-4b9a-8cb6-42024274156e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ed9d75be-4a2b-434a-81c4-bcc09442d75c
+        userCondition: null
+handle: review
+hasTitleField: true
+icon: star-sharp
+name: Review
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

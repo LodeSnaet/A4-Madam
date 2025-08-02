@@ -15,27 +15,15 @@
 
   &__item {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    @include active-item(absolute, null, -20px);
 
     &--active {
       transition: all 0.3s ease;
       color: var(--primary-color);
-
-      &:before {
-        position: absolute;
-
-        top: 50%;
-        left: -25px;
-        display: block;
-
-        width: 10px;
-        height: 10px;
-        content: "";
-
-        transition: all 0.3s ease;
-        transform: translateY(-50%);
-        border-radius: 50%;
-        background-color: var(--primary-color);
-      }
+      @include activated-item();
     }
 
     &:hover {
@@ -43,23 +31,7 @@
 
       color: var(--primary-color);
 
-      &:before {
-        position: absolute;
-
-        top: 50%;
-        left: -25px;
-
-        display: block;
-        width: 10px;
-
-        height: 10px;
-        content: "";
-
-        transition: all 0.3s ease;
-        transform: translateY(-50%);
-        border-radius: 50%;
-        background-color: var(--primary-color);
-      }
+      @include activated-item();
     }
   }
 }

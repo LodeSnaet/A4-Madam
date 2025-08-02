@@ -44,10 +44,10 @@ fieldLayouts:
             editCondition: null
             elementCondition: null
             fieldUid: 1ea0b14a-de19-4214-8c42-7ed67e65b61b # Logo
-            handle: null
+            handle: logo
             includeInCards: false
             instructions: null
-            label: null
+            label: Logo
             providesThumbs: false
             required: false
             tip: null

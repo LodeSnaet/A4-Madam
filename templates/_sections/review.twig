@@ -1,0 +1,27 @@
+{% import '_macros/images.twig' as img %}
+
+<section class="c-review container">
+  <div class="row">
+    <div class="col-12 col-lg-5">
+      <div class="c-review__description">
+        <p>{{ section.description }}</p>
+
+        <div class="c-review__title">
+          <hr>
+          <h3>{{ section.title }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-5 offset-lg-2">
+      <div class="c-review__img">
+        {{ img.responsiveImage(section.reviewPhotos[0], {
+          aspectRatio: '3:2',
+          quality: 80,
+          transformHandle: 'img2Webp'
+        }) }}
+      </div>
+    </div>
+  </div>
+</section>
+
+

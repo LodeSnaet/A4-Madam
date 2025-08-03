@@ -5,9 +5,11 @@
   <section class="c-discover container">
     <h1>{{ entry.title }}</h1>
 
-    {% for product in entry.products %}
-      {% include '_components/_productcard' with product %}
-    {% endfor %}
+    <div class="o-grid">
+      {% for product in entry.products %}
+        {% include '_components/_productcard' with product %}
+      {% endfor %}
+    </div>
   </section>
 
 {% endblock %}

@@ -1,4 +1,4 @@
-dateModified: 1754137423
+dateModified: 1754144285
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -188,6 +188,20 @@ plugins:
       clearCdnCacheWhenAssetChanges: '1'
       disableDynamic: ''
       disableTransforms: ''
+      fsMaps:
+        __assoc__:
+          -
+            - blogPhotos
+            - none
+          -
+            - logos
+            - none
+          -
+            - productPhotos
+            - none
+          -
+            - reviewPhotos
+            - none
       fsMapsEnabled: ''
       imageAutoConversion: webp
       injectCors: ''

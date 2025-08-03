@@ -1,0 +1,22 @@
+.c-breadcrumbs {
+  &__item {
+    &--active {
+      color: var(--primary-color);
+    }
+
+    a {
+      text-decoration: underline;
+      text-transform: capitalize;
+    }
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  i {
+    color: var(--primary-color);
+  }
+}

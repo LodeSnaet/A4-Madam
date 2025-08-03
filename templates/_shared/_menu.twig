@@ -2,6 +2,6 @@
 
 {% for menu in menuItems.table %}
   <li class="c-menu__item {% if menu.navigationUrl == currentUrl %}c-menu__item--active{% endif %}">
-    {% include '_components/_menuitem' with { navigationMenu: menu } %}
+    {% include '_components/navigation/_menuitem' with { navigationMenu: menu } %}
   </li>
 {% endfor %}

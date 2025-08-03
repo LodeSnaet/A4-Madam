@@ -1,4 +1,4 @@
-dateModified: 1754231160
+dateModified: 1754235065
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -128,6 +128,7 @@ meta:
     7f060edf-62d8-4220-85b4-3b1f8aa69b12: Description # Description
     8b62c7dd-2811-43a9-b770-a9f0a3e09a4e: 'Product photos' # Product photos
     9da5f1f2-8d0e-45c2-a2f7-17cdd3aa4d76: 'Review Photos' # Review Photos
+    11c7d1dd-b301-4ef7-9811-366860cf882f: Breadcrumbs # Breadcrumbs
     12f0a5a8-dcff-4e9d-9bc4-839628f6a7a1: New # New
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category

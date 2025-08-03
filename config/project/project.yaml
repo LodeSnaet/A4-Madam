@@ -1,4 +1,4 @@
-dateModified: 1754213168
+dateModified: 1754218451
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -45,9 +45,17 @@ elementSources:
         - totalPrice
       type: native
 email:
-  fromEmail: lode.snaet@student.howest.be
+  fromEmail: lode.snaet@outlook.com
   fromName: A4-Madam-LodeSnaet
-  transportType: craft\mail\transportadapters\Sendmail
+  replyToEmail: lode.snaet@student.howest.be
+  template: _email/sendemail.twig
+  transportSettings:
+    host: $SERVD_SMTP_HOSTNAME
+    password: $SERVD_SMTP_PASSWORD
+    port: $SERVD_SMTP_PORT
+    useAuthentication: '1'
+    username: $SERVD_SMTP_USERNAME
+  transportType: craft\mail\transportadapters\Smtp
 fs:
   blogPhotos:
     hasUrls: false

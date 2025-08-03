@@ -1,7 +1,7 @@
 const updateEven = () => {
   const blogs = document.querySelectorAll("main > .c-blog");
   blogs.forEach((el, i) => {
-    el.classList.toggle("u-even", (i + 1) % 2 === 0);
+    el.classList.toggle("u-uneven", (i + 1) % 2 === 1);
   });
 };
 

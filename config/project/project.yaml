@@ -1,4 +1,4 @@
-dateModified: 1754213168
+dateModified: 1754231160
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -47,7 +47,15 @@ elementSources:
 email:
   fromEmail: lode.snaet@student.howest.be
   fromName: A4-Madam-LodeSnaet
-  transportType: craft\mail\transportadapters\Sendmail
+  replyToEmail: lode.snaet@outlook.com
+  template: _email/sendemail.twig
+  transportSettings:
+    host: $SERVD_SMTP_HOSTNAME
+    password: $SERVD_SMTP_PASSWORD
+    port: $SERVD_SMTP_PORT
+    useAuthentication: '1'
+    username: $SERVD_SMTP_USERNAME
+  transportType: craft\mail\transportadapters\Smtp
 fs:
   blogPhotos:
     hasUrls: false
@@ -125,6 +133,7 @@ meta:
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category
     392c0803-5557-414c-9823-6a92be5b3ab6: Blog # Blog
     761a01d0-8414-40af-8d2b-2d4edde3401d: Dummy # Dummy
+    934ce298-c047-4f35-ad67-2ac598065d77: 'Company Info' # Company Info
     3629a7bb-4313-44bc-b6a8-483d582aa6c7: Review # Review
     32956aab-afca-40f2-99a9-2619b9a4f7b7: 'Blog Photos' # Blog Photos
     43597ccb-dafa-4c5a-bcc5-5a0017246efb: 'Product Photos' # Product Photos

@@ -1,0 +1,76 @@
+.c-email {
+  &__address {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    gap: 2rem;
+  }
+
+  &__input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: all 0.3s ease;
+
+    border-bottom: 1px solid var(--primary-color);
+    gap: 5rem;
+
+    padding-block: 1rem;
+
+    &:focus-within {
+      border-bottom: 1.5px solid var(--primary-color);
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    button {
+      border: none;
+    }
+
+    i {
+      color: var(--primary-color);
+    }
+  }
+
+  &__msg {
+    min-height: 1.5rem;
+  }
+
+  &__text {
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+
+    &--visible {
+      height: auto;
+      margin-top: 0.5rem;
+      opacity: 1;
+    }
+
+    &--error {
+      color: var(--danger-color);
+    }
+
+    &--success {
+      color: var(--success-color);
+    }
+  }
+
+  h2 {
+    font-family: "Chapman", sans-serif;
+    font-size: 4rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    width: 50%;
+  }
+}

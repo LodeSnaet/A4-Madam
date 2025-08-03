@@ -1,18 +1,18 @@
 "use strict";
+import "bootstrap";
+
 import "../scss/styles.scss";
-import * as bootstrap from "bootstrap";
 import "./cart";
 import "./menu";
 import "./row-reverse";
+import "./email";
 
 const init = function () {
-  const msg = "Hello World!";
-  console.log(msg);
+  console.log("Hello World!");
 };
 
 document.addEventListener("DOMContentLoaded", init);
 
-console.log(bootstrap);
 // Accept HMR as per: https://vitejs.dev/guide/api-hmr.html
 if (import.meta.hot) {
   import.meta.hot.accept(() => {

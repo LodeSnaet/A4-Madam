@@ -4,51 +4,28 @@
       <h2>{{ section.title }}</h2>
     </div>
     <div class="col-12 col-lg-6">
-      <p>{{ section.description }}</p>
-      {#      <input type="email" aria-label="Email Address" placeholder="{{ section.emailAddress }}" name="email" #}
-      {#             id="email"> #}
+      <div class="c-email__address">
+        <p>{{ section.description }}</p>
 
-      {# Check if a success message exists from a previous submission #}
-      {# Check if a success message exists from a previous submission #}
-      {# If it does, the user has just successfully submitted the form #}
-      {# Check if a success message exists from a previous submission #}
-      {% if craft.app.session.hasFlash('success') %}
+        <form class=" js-form" novalidate>
+          <div class="c-email__input">
+            <input class="js-email" type="email" aria-label="Email Address"
+                   placeholder="{{ companyInfo.emailAddress }}" name="email"
+                   id="email">
 
-        {# The Contact Form plugin sets a flash message named 'success' #}
-        <div class="alert alert-success">
-          {{ craft.app.session.getFlash('success') }}
-        </div>
+            <button type="submit">
+              <i class="fa-solid fa-{{ section.email }}"></i>
+            </button>
+          </div>
 
-      {% else %}
-
-        {# The form itself, using the Contact Form plugin's routes #}
-        <form method="post" accept-charset="UTF-8">
-          {{ csrfInput() }}
-
-          {# IMPORTANT: The action is 'contact-form/send' #}
-          {{ actionInput('contact-form/send') }}
-
-          {# You must specify a 'fromEmail' for the plugin to work #}
-          <input
-            type="email"
-            name="fromEmail"
-            id="fromEmail"
-            placeholder="Your Email Address"
-            required
-          >
-
-          {# The Contact Form plugin also requires a message field. We can make it a hidden field. #}
-          <input type="hidden" name="message" value="Newsletter signup">
-
-          <button type="submit">Subscribe</button>
-
-          {# For basic spam protection, you can still use a honeypot #}
-          <div style="display:none">
-            <input type="text" name="phone" value="">
+          <div class="c-email__msg">
+            <p class="c-email__text js-empty-message">The email field cannot be empty.</p>
+            <p class="c-email__text js-invalid-message">Submitted email is invalid.</p>
+            <p class="c-email__text js-valid-message">Submitted email is valid.</p>
           </div>
         </form>
+      </div>
 
-      {% endif %}
     </div>
   </div>
 </section>

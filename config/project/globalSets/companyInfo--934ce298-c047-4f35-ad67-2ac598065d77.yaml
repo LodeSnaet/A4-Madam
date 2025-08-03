@@ -1,0 +1,30 @@
+fieldLayouts:
+  d5e9dffd-ecba-497f-b7a3-005520cb56ea:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-08-03T14:26:00+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c842f534-2b53-4157-b4ee-b83d5368e32a # Email address
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5ceaa67d-125c-4f40-b93f-14cadd912bcb
+            userCondition: null
+            warning: null
+            width: 100
+        name: Info
+        uid: 171176f4-0bd0-4a53-9496-3198ec2df0f4
+        userCondition: null
+handle: companyInfo
+name: 'Company Info'
+sortOrder: 4

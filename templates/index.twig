@@ -11,6 +11,8 @@
       {% include '_sections/newproducts.twig' with section %}
     {% elseif section.type.handle == 'review' %}
       {% include '_sections/review.twig' with section %}
+    {% elseif section.type.handle == 'email' %}
+      {% include '_sections/email.twig' with section %}
     {% else %}
       <section class="container">
         <h2>{{ section.title }}</h2>

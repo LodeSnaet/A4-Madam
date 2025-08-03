@@ -1,0 +1,10 @@
+columnSuffix: null
+handle: emailAddress
+instructions: null
+name: 'Email address'
+searchable: false
+settings:
+  placeholder: info@madam.com
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Email

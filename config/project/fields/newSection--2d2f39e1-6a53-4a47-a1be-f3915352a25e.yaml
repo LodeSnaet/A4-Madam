@@ -32,6 +32,14 @@ settings:
         -
           - group
           - General
+    -
+      __assoc__:
+        -
+          - uid
+          - a23d853b-6c0b-47a9-aceb-b20f36068340 # Email
+        -
+          - group
+          - Email
   includeTableView: false
   maxEntries: null
   minEntries: null

@@ -1,4 +1,4 @@
-dateModified: 1754144285
+dateModified: 1754213168
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -131,11 +131,13 @@ meta:
     978520f0-e790-46cd-9e23-7f09141d0fbd: Home # Home
     90004640-0fe5-425e-8935-922d75d8d641: Home # Home
     a2de9583-bb44-457e-92aa-e6f71bbf82a3: Price # Price
+    a23d853b-6c0b-47a9-aceb-b20f36068340: Email # Email
     a97ece80-d59b-4ecb-af02-d9dee54b22a8: 'Blog posts' # Blog posts
     af8aef47-fb82-491f-a835-363b8f5d8995: Products # Products
     b871443b-88e1-47c1-9fff-4ada87e917ac: Primary # Primary
     bfd784b9-b276-406b-89cf-539b1d8f6750: 'Gift Vouchers' # Gift Vouchers
     c5a126f7-6e3d-4031-9d6b-74ef38546d5c: cart # cart
+    c842f534-2b53-4157-b4ee-b83d5368e32a: 'Email address' # Email address
     c4932be2-4962-4751-bf3e-0894a3ea6799: Logos # Logos
     c7613314-594d-4ecd-9e3b-11245f68ded9: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
     cffb2338-4ca7-451b-b20a-72f01860e7f1: mollie # mollie

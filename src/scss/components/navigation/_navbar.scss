@@ -4,6 +4,7 @@
   align-items: center;
 
   padding-block: 2.5rem;
+  padding-inline: 0;
 
   &__menuicon {
     opacity: 0;
@@ -19,8 +20,6 @@
     justify-content: space-between;
     align-items: center;
 
-    // ✅ Default behavior (md and up)
-    // This acts like a normal visible flexbox row
     width: auto;
     max-width: none;
     height: auto;
@@ -35,7 +34,6 @@
       flex-direction: row;
     }
 
-    // ✅ Mobile (below md)
     @include media-breakpoint-down(lg) {
       position: absolute;
       z-index: 20;
@@ -52,8 +50,7 @@
       overflow: hidden;
       pointer-events: none;
       opacity: 0;
-      background-color: var(--white-text-color);
-
+      background-color: var(--background-color);
       padding-block: 1rem;
 
       .c-menu--horizontal {
@@ -82,12 +79,12 @@
 
   &__backdrop {
     position: fixed;
-    z-index: 10; // make sure it's under the menu
+    z-index: 10;
     transition: opacity 0.3s ease;
     pointer-events: none;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.5); // dim background
-    inset: 0; // shorthand for top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
 
     &--visible {
       pointer-events: auto;

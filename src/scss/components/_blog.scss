@@ -3,10 +3,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    height: 100%;
 
     margin-right: 5rem;
     padding-block: 5rem;
+
+    @include media-breakpoint-down(lg) {
+      height: auto;
+    }
   }
 
   &__description {
@@ -52,6 +56,7 @@
 
     @include media-breakpoint-down(lg) {
       width: 100%;
+      margin-right: 0;
     }
   }
 }

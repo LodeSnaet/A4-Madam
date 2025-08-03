@@ -21,8 +21,14 @@
   }
 
   .c-blog__info {
+    height: 100%;
     margin-right: 0;
     margin-left: 5rem;
+
+    @include media-breakpoint-down(lg) {
+      height: auto;
+      margin-left: 0;
+    }
   }
 
   picture {

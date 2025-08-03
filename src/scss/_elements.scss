@@ -1,14 +1,20 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  //box-sizing: border-box;
 }
 
 body {
   font-family: "Jost", sans-serif;
   font-size: var(--regular-font-size);
   font-weight: var(--regular-font-weight);
+
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+
   background-color: var(--background-color);
+  gap: 2rem;
 }
 
 main {

@@ -1,0 +1,22 @@
+{% set segments = craft.app.request.pathInfo | trim('/') | split('/') | filter(v => v) %}
+
+<nav class="c-breadcrumbs container">
+  <ul>
+    <li class="c-breadcrumbs__item {% if segments | length == 0 %}c-breadcrumbs__item--active{% endif %}">
+      <a href="{{ siteUrl }}">Home</a>
+    </li>
+
+    {% set currentPath = '' %}
+
+    {% if segments | length >= 1 %}
+      {% for segment in segments %}
+        {% set currentPath = currentPath ~ '/' ~ segment %}
+
+        <i class="fa-solid fa-{{ breadcrumbs.arrow }}"></i>
+        <li class="c-breadcrumbs__item {% if loop.last %}c-breadcrumbs__item--active{% endif %}">
+          <a href="{{ url(currentPath) }}">{{ segment | replace('-', ' ') | title }}</a>
+        </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</nav>

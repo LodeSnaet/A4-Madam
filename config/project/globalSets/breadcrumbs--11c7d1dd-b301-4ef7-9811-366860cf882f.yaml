@@ -1,0 +1,30 @@
+fieldLayouts:
+  aa7373eb-4e15-4c67-9930-016100ef8dc1:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-08-03T15:31:05+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c5a126f7-6e3d-4031-9d6b-74ef38546d5c # cart
+            handle: arrow
+            includeInCards: false
+            instructions: null
+            label: Arrow
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d0111c02-6f26-4b4b-b16f-2beb283e64a3
+            userCondition: null
+            warning: null
+            width: 100
+        name: Menu
+        uid: 56c229ef-41fc-494a-b4cf-35c1e0f5a510
+        userCondition: null
+handle: breadcrumbs
+name: Breadcrumbs
+sortOrder: 5

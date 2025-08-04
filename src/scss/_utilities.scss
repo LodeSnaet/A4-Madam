@@ -15,6 +15,10 @@
   font-weight: var(--extralight-font-weight);
 }
 
+.u-bold {
+  font-weight: var(--bold);
+}
+
 .u-uneven {
   .row {
     flex-direction: row-reverse;

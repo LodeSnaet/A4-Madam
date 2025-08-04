@@ -1,0 +1,11 @@
+.c-banner {
+  width: 100%;
+  text-align: center;
+  color: var(--text-white-color);
+  background-color: var(--primary-color);
+  padding-block: 0.5rem;
+
+  a {
+    text-decoration: underline;
+  }
+}

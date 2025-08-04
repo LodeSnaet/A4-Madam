@@ -1,0 +1,56 @@
+<footer class="c-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-6 order-1 order-lg-0 ">
+        <div class="c-footer__box">
+          {% set transform = 'img2Webp' %}
+          {% set logo = companyInfo.logo[0] %}
+          <a href="/">{{ svg(logo) }}</a>
+
+          <div class="c-footer__companyinfo">
+            <div class="c-footer__info">
+              {% set address = companyInfo.companyAddress.one() %}
+
+              <p>{{ address.addressLine1 }}</p>
+              <p>{{ address.postalCode }} {{ address.locality }}</p>
+            </div>
+
+            <div class="c-footer__info">
+              <p>{{ companyInfo.phoneNumber.value|replace('tel:', '')|replace('-', ' ') }}</p>
+              <a href="mailto:{{ companyInfo.emailAddress }}">{{ companyInfo.emailAddress }}</a>
+            </div>
+
+            <div class="c-footer__info">
+              <p class="u-bold">{{ companyInfo.openinghour }}</p>
+              <p>{{ companyInfo.time }}</p>
+              <p>{{ companyInfo.appointment }}</p>
+            </div>
+          </div>
+
+          <p>{{ companyInfo.copyright }}</p></div>
+      </div>
+      <div class="col-12 col-lg-6 order-0 order-lg-1">
+        <div class="c-footer__box c-footer__box--right">
+          <ul class="c-menu c-menu--{{ footer.menuLayout }}">
+            {% include '_shared/_menu' with {links: footer.menuLinks} %}
+          </ul>
+
+          <div class="c-footer__legal">
+            <div class="c-footer__links">
+              {% for legal in companyInfo.legalLinks.all() %}
+                <a href="{{ legal.socialLink.value }}" target="_blank">{{ legal.socialLink.label }}</a>
+              {% endfor %}
+            </div>
+            <div class="c-footer__links">
+              {% for social in companyInfo.socials.all() %}
+                <a href="{{ social.socialLink.value }}" target="_blank">{{ social.socialLink.label }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</footer>

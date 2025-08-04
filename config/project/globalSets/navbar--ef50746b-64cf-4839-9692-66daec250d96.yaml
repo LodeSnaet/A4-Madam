@@ -6,53 +6,19 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
-            dateAdded: '2025-07-30T13:41:41+00:00'
+            dateAdded: '2025-08-04T10:22:48+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: c5a126f7-6e3d-4031-9d6b-74ef38546d5c # cart
-            handle: menu
+            fieldUid: 6e36b952-2450-4694-be45-3489d7c759f3 # Table
+            handle: menuLinks
             includeInCards: false
             instructions: null
-            label: menu
+            label: 'Menu Links'
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 023493dc-f4bb-46b3-9d83-92519a42e220
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-07-30T14:13:38+00:00'
-            editCondition: null
-            elementCondition: null
-            fieldUid: c5a126f7-6e3d-4031-9d6b-74ef38546d5c # cart
-            handle: close
-            includeInCards: false
-            instructions: null
-            label: close
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 71e6ace9-fbff-4d29-b9e9-f93b36ac37b5
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-07-11T14:58:01+00:00'
-            editCondition: null
-            elementCondition: null
-            fieldUid: 1ea0b14a-de19-4214-8c42-7ed67e65b61b # Logo
-            handle: logo
-            includeInCards: false
-            instructions: null
-            label: Logo
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: dfd012a7-b4bd-49d7-b5e9-4b493e4a7900
+            uid: 8bd92d89-3f3a-4f7a-90c9-6325793c1e0f
             userCondition: null
             warning: null
             width: 100
@@ -95,7 +61,7 @@ fieldLayouts:
             uid: 159b719a-90c9-4705-b5e7-679fe6b22fc2
             userCondition: null
             warning: null
-            width: 50
+            width: 25
           -
             dateAdded: '2025-07-11T15:05:07+00:00'
             editCondition: null
@@ -112,7 +78,41 @@ fieldLayouts:
             uid: 2e94f3b7-5e0c-409f-ac60-02cbd8f7c814
             userCondition: null
             warning: null
-            width: 50
+            width: 25
+          -
+            dateAdded: '2025-07-30T13:41:41+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c5a126f7-6e3d-4031-9d6b-74ef38546d5c # cart
+            handle: menu
+            includeInCards: false
+            instructions: null
+            label: menu
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 023493dc-f4bb-46b3-9d83-92519a42e220
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-07-30T14:13:38+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c5a126f7-6e3d-4031-9d6b-74ef38546d5c # cart
+            handle: close
+            includeInCards: false
+            instructions: null
+            label: close
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 71e6ace9-fbff-4d29-b9e9-f93b36ac37b5
+            userCondition: null
+            warning: null
+            width: 25
         name: Icons
         uid: f7f9f2b5-fc99-46c4-bf60-20180e16b91a
         userCondition: null

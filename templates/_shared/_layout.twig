@@ -13,13 +13,13 @@
 <body>
 <nav class="c-navbar container">
   {% set transform = 'img2Webp' %}
-  {% set logo = navbar.logo[0] %}
+  {% set logo = companyInfo.logo[0] %}
   <a href="/">{{ svg(logo) }}</a>
   <i class="c-navbar__menuicon js-open-menu fa-solid fa-{{ navbar.menu }}"></i>
 
   <div class="c-navbar__offcanvas js-menu">
     <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
-      {% include '_shared/_menu' %}
+      {% include '_shared/_menu' with {links: navbar.menuLinks} %}
     </ul>
 
     <div class="c-navbar__icons">
@@ -42,12 +42,11 @@
   {% include '_components/navigation/breadcrumbs.twig' %}
 </main>
 
-<footer class="c-footer container">
-  <ul class="c-menu c-menu--{{ footer.menuLayout }}">
-
-    {% include '_shared/_menu' %}
-  </ul>
-</footer>
+{% include '_components/navigation/footer.twig' %}
+<p class="c-banner">Deze site werd gemaakt als schoolopdracht voor <a
+    href="https://www.howest.be/nl/opleidingen/graduaat/digitale-vormgeving/web-development-design-front-end-web"
+    target="_blank">Howest Web Development & Design</a
+  >.</p>
 </body>
 
 </html>

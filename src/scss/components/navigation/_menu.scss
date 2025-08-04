@@ -11,6 +11,10 @@
   &--vertical {
     flex-direction: column;
     align-items: flex-start;
+
+    @include media-breakpoint-down(lg) {
+      gap: 1rem;
+    }
   }
 
   &__item {

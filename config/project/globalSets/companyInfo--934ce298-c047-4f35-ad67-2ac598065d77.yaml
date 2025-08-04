@@ -6,6 +6,46 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2025-08-04T10:17:00+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1ea0b14a-de19-4214-8c42-7ed67e65b61b # Logo
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e38c8ec7-f858-4934-bd44-645d43ff20b9
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-04T10:35:14+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 880e5a63-3f9c-49c5-b677-7cc7002b9509 # Company Address
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 14a93d8b-096f-4ef6-8cd4-fe1cb6c99d35
+            userCondition: null
+            warning: null
+            width: 75
+          -
+            dateAdded: '2025-08-04T12:00:20+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: da68a7b0-f5c9-44fb-a046-80b9c167e6ba
+            userCondition: null
+          -
             dateAdded: '2025-08-03T14:26:00+00:00'
             editCondition: null
             elementCondition: null
@@ -21,10 +61,135 @@ fieldLayouts:
             uid: 5ceaa67d-125c-4f40-b93f-14cadd912bcb
             userCondition: null
             warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-04T10:35:14+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: ef00bb55-1f00-4476-982b-9c10e664b8aa # Phone Number
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2b703857-f6e1-4d55-abbf-af804a1923f3
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-04T10:42:23+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: d25a7f51-e4af-4763-baae-3e8889bfb788 # Copyright
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b22a34d5-793d-463f-ac7d-834194c01659
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-04T14:32:42+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7f060edf-62d8-4220-85b4-3b1f8aa69b12 # Description
+            handle: openinghour
+            includeInCards: false
+            instructions: null
+            label: Openinghour
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 25d09608-898f-4464-8677-d5ee64c5f174
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-04T14:32:42+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7f060edf-62d8-4220-85b4-3b1f8aa69b12 # Description
+            handle: time
+            includeInCards: false
+            instructions: null
+            label: Time
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f8b6b49e-bd8d-4b26-b3ea-6278d4cbc559
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-04T14:32:42+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: d25a7f51-e4af-4763-baae-3e8889bfb788 # Copyright
+            handle: appointment
+            includeInCards: false
+            instructions: null
+            label: Appointment
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 86204141-7e61-4a4b-b21d-1e8f32bc0264
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-04T12:23:30+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: e314ad91-eca1-469b-a2dd-0558878fd789
+            userCondition: null
+          -
+            dateAdded: '2025-08-04T12:05:32+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 9305b33c-0caf-4986-ad17-86f8114e6de0 # Socials
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e4b67e2b-a67a-4104-b056-5ea3c2b18ab2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-08-04T12:23:30+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: f9ff1ecb-2804-4771-96af-331574c00970 # Legal Links
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 07b034c3-7915-419e-94ad-6a7e14ec123d
+            userCondition: null
+            warning: null
             width: 100
         name: Info
         uid: 171176f4-0bd0-4a53-9496-3198ec2df0f4
         userCondition: null
 handle: companyInfo
 name: 'Company Info'
-sortOrder: 4
+sortOrder: 1

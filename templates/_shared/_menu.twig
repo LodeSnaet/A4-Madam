@@ -1,6 +1,6 @@
 {% set currentUrl = craft.app.request.url %}
 
-{% for menu in menuItems.table %}
+{% for menu in links %}
   <li class="c-menu__item {% if menu.navigationUrl == currentUrl %}c-menu__item--active{% endif %}">
     {% include '_components/navigation/_menuitem' with { navigationMenu: menu } %}
   </li>

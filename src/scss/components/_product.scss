@@ -40,8 +40,4 @@
       color: var(--primary-color);
     }
   }
-
-  @include media-breakpoint-down(md) {
-    width: 98%;
-  }
 }

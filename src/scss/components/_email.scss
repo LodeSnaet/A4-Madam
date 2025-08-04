@@ -1,4 +1,8 @@
 .c-email {
+  &__description {
+    width: 50%;
+  }
+
   &__address {
     display: flex;
     flex-direction: column;
@@ -68,9 +72,5 @@
     font-family: "Chapman", sans-serif;
     font-size: 4rem;
     text-transform: uppercase;
-  }
-
-  p {
-    width: 50%;
   }
 }

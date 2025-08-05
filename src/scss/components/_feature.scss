@@ -1,0 +1,97 @@
+.c-feature {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  &__description {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    gap: 4rem;
+
+    h2 {
+      font-family: "Chapman", sans-serif;
+      font-size: var(--h1-font-size);
+      text-transform: uppercase;
+    }
+
+    a {
+      background-color: var(--background-30-color);
+    }
+  }
+
+  &__imgs {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    grid-template-areas:
+      "img1"
+      "img1"
+      "img2"
+      "img2"
+      "img2"
+      "img3"
+      "img3"
+      "img3"
+      "img4"
+      "img4";
+
+    @include media-breakpoint-up(md) {
+      grid:
+        ".    .    .       img1 img1 .    ." 1fr
+        ".    .    .       img1 img1 .    ." 1fr
+        "img2 img2 .       img1 img1 .    ." 1fr
+        "img2 img2 .       .    .    .    ." 1fr
+        "img2 img2 .       .    .    .    ." 1fr
+        ".    .    .       .    img4 img4 img4" 1fr
+        ".    img3 img3    .    img4 img4 img4" 1fr
+        ".    img3 img3    .    img4 img4 img4" 1fr
+        ".    img3 img3    .    .    .    ." 1fr
+        ".    img3 img3    .    .    .    ." 1fr
+        / 3fr 1fr 1fr 1fr 1fr 1fr 3fr;
+    }
+
+    picture {
+      width: 100%;
+      height: 100%;
+
+      &:nth-child(1) {
+        grid-area: img1;
+      }
+
+      &:nth-child(2) {
+        grid-area: img2;
+      }
+
+      &:nth-child(3) {
+        grid-area: img3;
+      }
+
+      &:nth-child(4) {
+        grid-area: img4;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

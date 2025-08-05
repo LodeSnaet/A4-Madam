@@ -1,0 +1,16 @@
+{% import '_macros/images.twig' as img %}
+
+<section class="c-feature container">
+  <div class="c-feature__description">
+    <h2>{{ section.title }}</h2>
+    <a class="c-btn" href="{{ section.collection.url }}">{{ section.collection.label }}</a>
+  </div>
+
+  <div class="c-feature__imgs">
+    {{ img.responsiveImage(section.featured, {
+      aspectRatio: '1:1',
+      quality: 80,
+      transformHandle: 'img2Webp'
+    }) }}
+  </div>
+</section>

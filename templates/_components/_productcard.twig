@@ -3,7 +3,7 @@
 <article class="c-product">
   <a href="/shop/{{ product.slug }}">
 
-    {{ img.responsiveImage(product.productPhotos[0], {
+    {{ img.responsiveImage(product.productPhotos, {
       aspectRatio: '9:14',
       quality: 80,
       transformHandle: 'img2Webp'

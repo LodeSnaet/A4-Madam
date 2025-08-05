@@ -1,0 +1,51 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  3017b860-56c9-4996-8d92-b276f79901e4:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-08-05T13:33:58+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 7f739f3a-39cf-4ad8-b953-4f7fac94f20e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 31d2ef71-8e33-446d-899a-3d1d7a00dee5
+        userCondition: null
+fs: featuredCollection
+handle: featuredCollection
+name: 'Featured Collection'
+sortOrder: 5
+subpath: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

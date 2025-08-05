@@ -1,4 +1,4 @@
-dateModified: 1754317981
+dateModified: 1754405539
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -71,6 +71,20 @@ fs:
       subfolder: local/blogphotos/
     type: servd\AssetStorage\AssetsPlatform\Fs
     url: 'https://lodesnaet-madam.files.svdcdn.com'
+  featuredCollection:
+    hasUrls: false
+    name: 'Featured Collection'
+    settings:
+      cdnUrlPattern: ''
+      customSubfolder: /featuredcollection
+      makeUploadsPublic: true
+      optimisePrefix: ''
+      optimiseUrlPattern: ''
+      projectSlug: ''
+      securityKey: ''
+      subfolder: local/featuredcollection/
+    type: servd\AssetStorage\AssetsPlatform\Fs
+    url: 'https://lodesnaet-madam.files.svdcdn.com'
   logos:
     hasUrls: false
     name: Logos
@@ -120,6 +134,7 @@ meta:
     0db05413-f161-4551-8a65-e6a1599a263b: 'Review Photos' # Review Photos
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
     2d2f39e1-6a53-4a47-a1be-f3915352a25e: 'New Section' # New Section
+    3c2a8ec8-0af0-410c-8825-09cc1334b3a6: Featured # Featured
     5a2ef762-9572-4b86-8dc4-96b99a63e0a5: Footer # Footer
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     5f8cfd88-460f-4387-b1d1-c4c7408c39a9: 'Blog Link' # Blog Link
@@ -129,6 +144,7 @@ meta:
     9da5f1f2-8d0e-45c2-a2f7-17cdd3aa4d76: 'Review Photos' # Review Photos
     11c7d1dd-b301-4ef7-9811-366860cf882f: Breadcrumbs # Breadcrumbs
     12f0a5a8-dcff-4e9d-9bc4-839628f6a7a1: New # New
+    76f15ab4-3e47-44e3-9590-6013840d9609: 'Featured Collection' # Featured Collection
     80ac1637-5252-4d1d-930b-014aefc841e9: 'Opening Hours' # Opening Hours
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category
@@ -160,6 +176,7 @@ meta:
     ef50746b-64cf-4839-9692-66daec250d96: Navbar # Navbar
     f3f391fe-c122-4353-8066-f4933e71a5bb: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
     f9ff1ecb-2804-4771-96af-331574c00970: 'Legal Links' # Legal Links
+    f31dd96b-308e-4557-8ab1-e45693fd7d0f: 'Featured Collection' # Featured Collection
     f93ce853-d6ae-4caa-8b25-a019801c6cea: 'New Products' # New Products
     f242d7ff-1193-43e1-98e2-3e023bc89293: Filters # Filters
     f585ace5-a912-453c-8942-d37f1044937e: Shop # Shop

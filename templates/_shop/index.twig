@@ -2,13 +2,30 @@
 
 {% block main %}
 
-  <section class="c-discover container">
-    <h1>{{ entry.title }}</h1>
+  <section class="c-shop container">
+    <div class="row">
+      <div class="col-12 col-lg-12">
 
-    <div class="o-grid">
-      {% for product in entry.products %}
-        {% include '_components/_productcard' with product %}
-      {% endfor %}
+        {% set title = "Delvaux# Collection" %}
+        {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+
+        {% include '_components/_subtitle.twig' with {
+          title: parts[0] ?? '',
+          description: parts[1] ?? '',
+          additionalClasses: 'c-shop__title'
+        } %}
+      </div>
+      <div class="col-12 col-lg-3">
+        <h1>{{ entry.title }}</h1>
+      </div>
+
+      <div class="col-12 col-lg-9">
+        <div class="o-grid">
+          {% for product in craft.products.all() %}
+            {% include '_components/_productcard' with product %}
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </section>
 

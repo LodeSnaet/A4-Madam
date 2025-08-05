@@ -1,4 +1,6 @@
-<h2>
+{% set additionalClasses = additionalClasses ?? '' %}
+
+<h2 class="{{ additionalClasses }}">
   <span class="u-italic">{{ title }}</span>
   {{ description }}
 </h2>

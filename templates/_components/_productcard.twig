@@ -10,10 +10,10 @@
     }) }}
 
     <div class="c-product__description">
-      <p>
-        {{ product.title }}
-        <span>{{ product.defaultVariant.price|commerceCurrency }}</span>
-      </p>
+      <div>
+        <p>{{ product.title }}</p>
+        <p>{{ product.defaultVariant.price|commerceCurrency }}</p>
+      </div>
     </div>
   </a>
 </article>

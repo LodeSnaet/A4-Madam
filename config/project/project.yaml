@@ -1,4 +1,4 @@
-dateModified: 1754475991
+dateModified: 1754500254
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -135,7 +135,8 @@ meta:
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
     2d2f39e1-6a53-4a47-a1be-f3915352a25e: 'New Section' # New Section
     3c2a8ec8-0af0-410c-8825-09cc1334b3a6: Featured # Featured
-    3e445162-97ee-4a6b-9316-0f3b3369de05: 'Newest Products' # Newest Products
+    3ca35d9d-5957-47ac-a9bd-9b7b7f9c0b0b: Category # Category
+    3e445162-97ee-4a6b-9316-0f3b3369de05: 'Newest Products?' # Newest Products?
     5a2ef762-9572-4b86-8dc4-96b99a63e0a5: Footer # Footer
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     5f8cfd88-460f-4387-b1d1-c4c7408c39a9: 'Blog Link' # Blog Link
@@ -153,11 +154,14 @@ meta:
     761a01d0-8414-40af-8d2b-2d4edde3401d: Dummy # Dummy
     880e5a63-3f9c-49c5-b677-7cc7002b9509: 'Company Address' # Company Address
     934ce298-c047-4f35-ad67-2ac598065d77: 'Company Info' # Company Info
+    956a9245-46dc-4883-bec5-6e4750d386e9: Brand # Brand
     3629a7bb-4313-44bc-b6a8-483d582aa6c7: Review # Review
     9305b33c-0caf-4986-ad17-86f8114e6de0: Socials # Socials
     32956aab-afca-40f2-99a9-2619b9a4f7b7: 'Blog Photos' # Blog Photos
     43597ccb-dafa-4c5a-bcc5-5a0017246efb: 'Product Photos' # Product Photos
+    48979a7b-9e8c-4be7-b24f-4714635f81d7: Collection # Collection
     978520f0-e790-46cd-9e23-7f09141d0fbd: Home # Home
+    6516610b-24f3-4763-840c-c7115929cf6d: Accessories # Accessories
     90004640-0fe5-425e-8935-922d75d8d641: Home # Home
     a2de9583-bb44-457e-92aa-e6f71bbf82a3: Price # Price
     a23d853b-6c0b-47a9-aceb-b20f36068340: Email # Email
@@ -173,6 +177,7 @@ meta:
     cffb2338-4ca7-451b-b20a-72f01860e7f1: mollie # mollie
     d25a7f51-e4af-4763-baae-3e8889bfb788: Copyright # Copyright
     dbeafd55-e635-450d-80d3-83a7539a5e6e: 'Menu Layout' # Menu Layout
+    e35e6c40-43cf-4847-a24c-c29d6641c54b: Collections # Collections
     ef00bb55-1f00-4476-982b-9c10e664b8aa: 'Phone Number' # Phone Number
     ef50746b-64cf-4839-9692-66daec250d96: Navbar # Navbar
     f3f391fe-c122-4353-8066-f4933e71a5bb: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
@@ -181,6 +186,7 @@ meta:
     f93ce853-d6ae-4caa-8b25-a019801c6cea: 'New Products' # New Products
     f242d7ff-1193-43e1-98e2-3e023bc89293: Filters # Filters
     f585ace5-a912-453c-8942-d37f1044937e: Shop # Shop
+    fcc24a04-69b5-4437-b473-3fb2d2fd38a7: Collection # Collection
 plugins:
   commerce:
     edition: pro

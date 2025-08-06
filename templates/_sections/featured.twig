@@ -2,8 +2,9 @@
 
 <section class="c-feature container">
   <div class="c-feature__description">
+    {% set title = section.title|kebab %}
     <h2>{{ section.title }}</h2>
-    <a class="c-btn" href="{{ section.collection.url }}">{{ section.collection.label }}</a>
+    <a class="c-btn" href="{{ section.collection.url }}?collection={{ title }}">{{ section.collection.label }}</a>
   </div>
 
   <div class="c-feature__imgs">

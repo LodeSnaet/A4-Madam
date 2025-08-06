@@ -34,4 +34,6 @@ const logemail = function (event) {
   }
 };
 
-form.addEventListener("submit", logemail);
+if (form && newsLetterEmail) {
+  form.addEventListener("submit", logemail);
+}

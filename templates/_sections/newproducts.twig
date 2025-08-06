@@ -11,7 +11,8 @@
     </div>
     <div class="col-lg-8">
       <div class="o-grid">
-        {% set products = section.featuredProducts.all() %}
+        {% set products = section.newestProducts ? craft.products.type('handbags').limit(4).orderBy('postDate DESC').all() : section.featuredProducts.all() %}
+
         {% for product in products %}
           {% include'_components/_productcard.twig' with product %}
         {% endfor %}

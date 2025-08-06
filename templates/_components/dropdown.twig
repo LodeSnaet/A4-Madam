@@ -1,12 +1,12 @@
 {% set baseUrl = craft.app.request.getPathInfo() %}
-{% set params = craft.app.request.getQueryParams() %}
+{% set allParams = craft.app.request.getQueryParams() %}
 {% set key = dropdown.title|kebab %}
 
 <div class="c-dropdown js-dropdown">
   <p class="c-dropdown__title js-dropdown-btn">{{ dropdown.title }}</p>
 
   <ul class="c-dropdown__filters">
-    {% set selected = (params[key] ?? '')|split(',') %}
+    {% set selected = (allParams[key] ?? '')|split(',') %}
 
     {% for filter in dropdown.filters %}
       {% set val = filter.title|kebab %}
@@ -14,10 +14,18 @@
       {% set newSelected = isActive
         ? selected|filter(v => v != val)
         : selected|merge([val]) %}
-      {% set newParams = params|merge({ (key): newSelected|join(',') }) %}
-      {% if not newSelected %}
-        {% do newParams.remove(key) %}
+
+      {# Rebuild entire query string using only non-empty groups #}
+      {% set newParams = {} %}
+      {% for groupKey, groupVal in allParams %}
+        {% if groupKey != key and groupVal is not empty %}
+          {% set newParams = newParams | merge({ (groupKey): groupVal }) %}
+        {% endif %}
+      {% endfor %}
+      {% if newSelected is not empty %}
+        {% set newParams = newParams | merge({ (key): newSelected|join(',') }) %}
       {% endif %}
+
       {% set link = url(baseUrl, newParams) %}
 
       <li class="{{ isActive ? 'is-active' }}">

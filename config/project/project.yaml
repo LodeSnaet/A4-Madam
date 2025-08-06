@@ -1,4 +1,4 @@
-dateModified: 1754405539
+dateModified: 1754475487
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -129,12 +129,13 @@ fs:
     url: 'https://lodesnaet-madam.files.svdcdn.com'
 meta:
   __names__:
-    0a591d79-2f21-4016-8693-6d659f337a0e: Products # Products
+    0a591d79-2f21-4016-8693-6d659f337a0e: 'Featured Products' # Featured Products
     0a7147ff-00d0-400d-b9c6-a5b60295b4cb: img2webp # img2webp
     0db05413-f161-4551-8a65-e6a1599a263b: 'Review Photos' # Review Photos
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
     2d2f39e1-6a53-4a47-a1be-f3915352a25e: 'New Section' # New Section
     3c2a8ec8-0af0-410c-8825-09cc1334b3a6: Featured # Featured
+    3e445162-97ee-4a6b-9316-0f3b3369de05: 'Newest Products' # Newest Products
     5a2ef762-9572-4b86-8dc4-96b99a63e0a5: Footer # Footer
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     5f8cfd88-460f-4387-b1d1-c4c7408c39a9: 'Blog Link' # Blog Link

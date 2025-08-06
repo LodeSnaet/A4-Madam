@@ -11,7 +11,7 @@
     </div>
     <div class="col-lg-8">
       <div class="o-grid">
-        {% set products = section.products.all() %}
+        {% set products = section.featuredProducts.all() %}
         {% for product in products %}
           {% include'_components/_productcard.twig' with product %}
         {% endfor %}

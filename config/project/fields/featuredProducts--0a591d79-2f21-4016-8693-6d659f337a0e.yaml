@@ -1,14 +1,14 @@
 columnSuffix: null
-handle: products
+handle: featuredProducts
 instructions: null
-name: Products
+name: 'Featured Products'
 searchable: false
 settings:
   allowSelfRelations: false
   branchLimit: null
   defaultPlacement: end
   maintainHierarchy: false
-  maxRelations: null
+  maxRelations: 4
   minRelations: null
   selectionLabel: null
   showCardsInGrid: true

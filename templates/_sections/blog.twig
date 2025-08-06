@@ -1,9 +1,6 @@
 {% import '_macros/images.twig' as img %}
 {% import '_macros/times.twig' as time %}
 
-
-{% set photo = section.blogphotos.one() %}
-
 <section class="c-blog container">
   <div class="row">
     <div class="col-12 col-lg-6">
@@ -27,7 +24,7 @@
     </div>
 
     <div class="col-12 col-lg-6">
-      {{ img.responsiveImage(photo, {
+      {{ img.responsiveImage(section.blogphotos, {
         aspectRatio: '1:1',
         quality: 80,
         transformHandle: 'img2Webp'

@@ -36,6 +36,14 @@ settings:
       __assoc__:
         -
           - uid
+          - 76f15ab4-3e47-44e3-9590-6013840d9609 # Featured Collection
+        -
+          - group
+          - General
+    -
+      __assoc__:
+        -
+          - uid
           - a23d853b-6c0b-47a9-aceb-b20f36068340 # Email
         -
           - group

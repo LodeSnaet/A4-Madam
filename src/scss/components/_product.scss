@@ -9,8 +9,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    align-items: center;
-
+    align-items: flex-start;
     transition: all 0.3s ease;
 
     gap: 1rem;

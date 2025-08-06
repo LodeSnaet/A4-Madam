@@ -1,10 +1,26 @@
 .c-btn {
+  transition: all 0.3s ease;
+
+  color: var(--primary-color);
   border: 0.5px solid var(--primary-color);
   border-radius: 0.5rem;
   padding-inline: 1.6875rem;
+
   padding-block: 0.46875rem;
 
   p {
     color: var(--primary-color);
+  }
+
+  &:hover {
+    transition: all 0.3s ease;
+
+    color: var(--text-white-color);
+    background-color: var(--primary-color);
+  }
+
+  &--active {
+    color: var(--text-white-color);
+    background-color: var(--primary-color);
   }
 }

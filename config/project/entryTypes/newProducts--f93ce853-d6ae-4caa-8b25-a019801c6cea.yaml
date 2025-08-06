@@ -41,7 +41,7 @@ fieldLayouts:
             dateAdded: '2025-08-06T10:26:31+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: 3e445162-97ee-4a6b-9316-0f3b3369de05 # Newest Products
+            fieldUid: 3e445162-97ee-4a6b-9316-0f3b3369de05 # Newest Products?
             handle: null
             includeInCards: false
             instructions: null
@@ -57,7 +57,17 @@ fieldLayouts:
           -
             dateAdded: '2025-07-31T13:03:20+00:00'
             editCondition: null
-            elementCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\LightswitchFieldConditionRule
+                  fieldUid: 3e445162-97ee-4a6b-9316-0f3b3369de05 # Newest Products?
+                  layoutElementUid: 45715667-4c3f-4b05-86c0-156530446a4c
+                  uid: 35c7ded5-76f9-450a-880a-9a3891ee018a
+                  value: false
+              elementType: craft\elements\Entry
+              fieldContext: global
             fieldUid: 0a591d79-2f21-4016-8693-6d659f337a0e # Featured Products
             handle: null
             includeInCards: false

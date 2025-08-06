@@ -1,0 +1,23 @@
+columnSuffix: null
+handle: collection
+instructions: null
+name: Collection
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showCardsInGrid: true
+  showSearchInput: true
+  showSiteMenu: true
+  source: null
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Categories

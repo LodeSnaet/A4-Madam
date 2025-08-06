@@ -1,0 +1,29 @@
+{% set baseUrl = craft.app.request.getPathInfo() %}
+{% set params = craft.app.request.getQueryParams() %}
+{% set key = dropdown.title|kebab %}
+
+<div class="c-dropdown js-dropdown">
+  <p class="c-dropdown__title js-dropdown-btn">{{ dropdown.title }}</p>
+
+  <ul class="c-dropdown__filters">
+    {% set selected = (params[key] ?? '')|split(',') %}
+
+    {% for filter in dropdown.filters %}
+      {% set val = filter.title|kebab %}
+      {% set isActive = val in selected %}
+      {% set newSelected = isActive
+        ? selected|filter(v => v != val)
+        : selected|merge([val]) %}
+      {% set newParams = params|merge({ (key): newSelected|join(',') }) %}
+      {% if not newSelected %}
+        {% do newParams.remove(key) %}
+      {% endif %}
+      {% set link = url(baseUrl, newParams) %}
+
+      <li class="{{ isActive ? 'is-active' }}">
+        <a href="{{ link }}"
+           class="c-dropdown__filter{{ isActive ? ' c-dropdown__filter--active' }}">{{ filter.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -4,8 +4,7 @@
 
   <section class="c-shop container">
     <div class="row">
-      <div class="col-12 col-lg-12">
-
+      <div class="col-12 col-lg-9 offset-lg-3">
         {% set title = "Delvaux# Collection" %}
         {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
 
@@ -16,12 +15,55 @@
         } %}
       </div>
       <div class="col-12 col-lg-3">
-        <h1>{{ entry.title }}</h1>
+        <div class="c-shop__filters">
+          {% set currentProductType = craft.app.request.getQueryParam('productType') %}
+          {% set baseUrl = craft.app.request.getPathInfo() %}
+
+          <div class="c-shop__categories">
+            <h3 class="u-italic">Category</h3>
+            <div class="c-shop__btns">
+              {% for productType in craft.commerce.productTypes.allProductTypes %}
+                {% set isActive = (productType.handle == currentProductType) %}
+
+                {% set url = isActive
+                  ? url(baseUrl)
+                  : url(baseUrl, { productType: productType.handle }) %}
+
+                <a href="{{ url }}"
+                   class="c-btn {{ isActive ? 'c-btn--active' }}">
+                  {{ productType.name }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="c-shop__filtertypes">
+            <h3 class="u-italic">Filter</h3>
+
+            {% set allCategories = craft.categories.all() %}
+            {% set dropdownData = [] %}
+
+            {% for groupName, categoriesInGroup in allCategories|group('group.name') %}
+              {% set dropdownData = dropdownData|merge([{
+                title: groupName,
+                filters: categoriesInGroup
+              }]) %}
+            {% endfor %}
+
+            <div class="c-shop__dropdowns">
+              {% for dropdown in dropdownData %}
+                {% include '_components/dropdown.twig' with dropdown %}
+              {% endfor %}
+            </div>
+
+          </div>
+        </div>
       </div>
 
       <div class="col-12 col-lg-9">
         <div class="o-grid">
-          {% for product in craft.products.all() %}
+
+          {% for product in craft.products.type(currentProductType).all() %}
             {% include '_components/_productcard' with product %}
           {% endfor %}
         </div>

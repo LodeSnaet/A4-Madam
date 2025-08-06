@@ -6,6 +6,7 @@ import "./cart";
 import "./menu";
 import "./row-reverse";
 import "./email";
+import "./dropdown";
 
 const init = function () {
   console.log("Hello World!");

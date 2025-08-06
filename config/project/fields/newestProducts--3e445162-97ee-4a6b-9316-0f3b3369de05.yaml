@@ -1,7 +1,7 @@
 columnSuffix: null
 handle: newestProducts
 instructions: null
-name: 'Newest Products'
+name: 'Newest Products?'
 searchable: false
 settings:
   default: true

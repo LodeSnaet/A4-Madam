@@ -18,7 +18,9 @@
 </style>
 
 <script>
-  document.documentElement.classList.add("styles-loaded");
+  window.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.classList.add("styles-loaded");
+  });
 </script>
 
 <nav class="c-navbar container">

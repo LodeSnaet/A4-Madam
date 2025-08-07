@@ -18,13 +18,16 @@
       {# Rebuild entire query string using only non-empty groups #}
       {% set newParams = {} %}
       {% for groupKey, groupVal in allParams %}
-        {% if groupKey != key and groupVal is not empty %}
+        {% if groupVal is not empty and (groupKey != key or newSelected is not empty) %}
           {% set newParams = newParams | merge({ (groupKey): groupVal }) %}
         {% endif %}
       {% endfor %}
+
+      {# Add back the updated filter if it has values #}
       {% if newSelected is not empty %}
         {% set newParams = newParams | merge({ (key): newSelected|join(',') }) %}
       {% endif %}
+
 
       {% set link = url(baseUrl, newParams) %}
 

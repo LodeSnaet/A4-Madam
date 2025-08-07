@@ -1,20 +1,20 @@
 columnSuffix: null
-handle: collection
+handle: style
 instructions: null
-name: Collection
+name: Style
 searchable: false
 settings:
   allowSelfRelations: false
   branchLimit: null
   defaultPlacement: end
-  maintainHierarchy: false
-  maxRelations: 1
+  maintainHierarchy: true
+  maxRelations: null
   minRelations: null
   selectionLabel: null
-  showCardsInGrid: true
+  showCardsInGrid: false
   showSearchInput: true
   showSiteMenu: true
-  source: 'group:48979a7b-9e8c-4be7-b24f-4714635f81d7' # Collection
+  source: 'group:879c3a0a-5b69-4238-8ac9-c538fb3f6441' # Style
   targetSiteId: null
   validateRelatedElements: false
   viewMode: list

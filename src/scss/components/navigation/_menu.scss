@@ -25,13 +25,13 @@
     @include active-item(absolute, null, -20px);
 
     &--active {
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
       color: var(--primary-color);
       @include activated-item();
     }
 
     &:hover {
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
 
       color: var(--primary-color);
 

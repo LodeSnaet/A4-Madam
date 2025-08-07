@@ -22,6 +22,8 @@
           <div class="c-shop__categories">
             <h3 class="u-italic">Category</h3>
             <div class="c-shop__btns">
+              {% set queryParams = craft.app.request.getQueryParams() %}
+
               {% for productType in craft.commerce.productTypes.allProductTypes %}
                 {% set isActive = (productType.handle == currentProductType) %}
 
@@ -34,6 +36,7 @@
                   {{ productType.name }}
                 </a>
               {% endfor %}
+
             </div>
           </div>
 
@@ -62,10 +65,36 @@
 
       <div class="col-12 col-lg-9">
         <div class="o-grid">
+          {% set categoryGroups = craft.app.categories.getAllGroups() %}
 
-          {% for product in craft.products.type(currentProductType).all() %}
+          {% set matchedCategoryGroups = [] %}
+          {% set matchedValues = [] %}
+
+          {% for categoryGroup in categoryGroups %}
+            {% set kebabName = categoryGroup.name|kebab %}
+            {% if queryParams[kebabName] is defined %}
+              {% set matchedCategoryGroups = matchedCategoryGroups | merge([kebabName]) %}
+              {% set value = queryParams[kebabName] %}
+
+              {% if value is iterable %}
+                {% set matchedValues = matchedValues | merge(value) %}
+              {% else %}
+                {% set matchedValues = matchedValues | merge(value|split(',')) %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% if matchedCategoryGroups is not empty and matchedValues is not empty %}
+            {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %}
+            {% set products = craft.products.type(currentProductType).relatedTo(category).all() %}
+          {% else %}
+            {% set products = craft.products.type(currentProductType).all() %}
+          {% endif %}
+
+          {% for product in products %}
             {% include '_components/_productcard' with product %}
           {% endfor %}
+
         </div>
       </div>
     </div>

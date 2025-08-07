@@ -1,5 +1,7 @@
 .c-btn {
-  transition: all 0.3s ease;
+  transition:
+    color,
+    background-color 0.3s ease;
 
   color: var(--primary-color);
   border: 0.5px solid var(--primary-color);
@@ -13,7 +15,9 @@
   }
 
   &:hover {
-    transition: all 0.3s ease;
+    transition:
+      color,
+      background-color 0.3s ease;
 
     color: var(--text-white-color);
     background-color: var(--primary-color);

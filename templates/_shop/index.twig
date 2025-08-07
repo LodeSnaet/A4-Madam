@@ -65,32 +65,77 @@
 
       <div class="col-12 col-lg-9">
         <div class="o-grid">
-          {% set categoryGroups = craft.app.categories.getAllGroups() %}
+          {#          {% set categoryGroups = craft.app.categories.getAllGroups() %} #}
 
-          {% set matchedCategoryGroups = [] %}
-          {% set matchedValues = [] %}
+          {#          {% set matchedCategoryGroups = [] %} #}
+          {#          {% set matchedValues = [] %} #}
+
+          {#          {% for categoryGroup in categoryGroups %} #}
+          {#            {% set kebabName = categoryGroup.name|kebab %} #}
+          {#            {% if queryParams[kebabName] is defined %} #}
+          {#              {% set matchedCategoryGroups = matchedCategoryGroups | merge([kebabName]) %} #}
+          {#              {% set value = queryParams[kebabName] %} #}
+
+          {#              {% if value is iterable %} #}
+          {#                {% set matchedValues = matchedValues | merge(value) %} #}
+          {#              {% else %} #}
+          {#                {% set matchedValues = matchedValues | merge(value|split(',')) %} #}
+          {#              {% endif %} #}
+          {#            {% endif %} #}
+          {#          {% endfor %} #}
+
+          {#          {% if matchedCategoryGroups is not empty and matchedValues is not empty %} #}
+          {#            {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %} #}
+          {#            {% set products = craft.products.type(currentProductType).relatedTo(category).all() %} #}
+          {#          {% else %} #}
+          {#            {% set products = craft.products.type(currentProductType).all() %} #}
+          {#          {% endif %} #}
+
+          {#          {% for product in products %} #}
+          {#            {% include '_components/_productcard' with product %} #}
+          {#          {% endfor %} #}
+
+          {% set categoryGroups = craft.app.categories.getAllGroups() %}
+          {% set relatedToConditions = [] %}
 
           {% for categoryGroup in categoryGroups %}
             {% set kebabName = categoryGroup.name|kebab %}
+
             {% if queryParams[kebabName] is defined %}
-              {% set matchedCategoryGroups = matchedCategoryGroups | merge([kebabName]) %}
               {% set value = queryParams[kebabName] %}
 
               {% if value is iterable %}
-                {% set matchedValues = matchedValues | merge(value) %}
+                {% set slugs = value %}
               {% else %}
-                {% set matchedValues = matchedValues | merge(value|split(',')) %}
+                {% set slugs = value|split(',') %}
               {% endif %}
+
+              {# Create OR condition for this group: categoryGroup + slug(s) #}
+              {% set groupCondition = {
+                targetElement: {
+                  group: kebabName,
+                  slug: slugs
+                }
+              } %}
+
+              {# Add this group condition to relatedToConditions #}
+              {% set relatedToConditions = relatedToConditions | merge([groupCondition]) %}
             {% endif %}
           {% endfor %}
 
-          {% if matchedCategoryGroups is not empty and matchedValues is not empty %}
-            {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %}
-            {% set products = craft.products.type(currentProductType).relatedTo(category).all() %}
+          {# Build the query #}
+          {% if relatedToConditions|length %}
+            {% set products = craft.products
+              .type(currentProductType)
+              .relatedTo({
+                and: relatedToConditions
+              })
+              .all() %}
           {% else %}
             {% set products = craft.products.type(currentProductType).all() %}
           {% endif %}
 
+          {# Output products #}
           {% for product in products %}
             {% include '_components/_productcard' with product %}
           {% endfor %}

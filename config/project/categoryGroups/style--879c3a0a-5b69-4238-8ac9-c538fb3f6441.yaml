@@ -1,0 +1,51 @@
+defaultPlacement: end
+fieldLayouts:
+  7b1fe5bc-c16e-4238-ad88-a2f15a3ccabb:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-08-07T12:10:56+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: f24d861e-793b-4f66-9783-dbca463c70fc
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 714334e9-85f4-4437-82b1-f59d411597f2
+        userCondition: null
+handle: style
+name: Style
+siteSettings:
+  f3f391fe-c122-4353-8066-f4933e71a5bb: # A4-Madam-LodeSnaet
+    hasUrls: true
+    template: test/_category.twig
+    uriFormat: 'test/{slug}'
+structure:
+  maxLevels: null
+  uid: 68442b5c-5d3e-471d-a713-2cbe104190b4

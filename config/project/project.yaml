@@ -1,4 +1,4 @@
-dateModified: 1754500254
+dateModified: 1754570142
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -134,6 +134,7 @@ meta:
     0db05413-f161-4551-8a65-e6a1599a263b: 'Review Photos' # Review Photos
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
     2d2f39e1-6a53-4a47-a1be-f3915352a25e: 'New Section' # New Section
+    3a90dbe2-25db-42a9-9c5b-600c36793485: Condition # Condition
     3c2a8ec8-0af0-410c-8825-09cc1334b3a6: Featured # Featured
     3ca35d9d-5957-47ac-a9bd-9b7b7f9c0b0b: Category # Category
     3e445162-97ee-4a6b-9316-0f3b3369de05: 'Newest Products?' # Newest Products?
@@ -142,16 +143,20 @@ meta:
     5f8cfd88-460f-4387-b1d1-c4c7408c39a9: 'Blog Link' # Blog Link
     6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
     7f060edf-62d8-4220-85b4-3b1f8aa69b12: Description # Description
+    8a6cc43c-2409-4184-9196-b5974f34bf2b: Material # Material
+    8ab333ec-a77f-4c59-bc0d-cd6b83a0d18a: Condition # Condition
     8b62c7dd-2811-43a9-b770-a9f0a3e09a4e: 'Product photos' # Product photos
     9da5f1f2-8d0e-45c2-a2f7-17cdd3aa4d76: 'Review Photos' # Review Photos
     11c7d1dd-b301-4ef7-9811-366860cf882f: Breadcrumbs # Breadcrumbs
     12f0a5a8-dcff-4e9d-9bc4-839628f6a7a1: New # New
+    21a28ead-39b2-4dcc-8b62-01bbb71c4d10: Colour # Colour
     76f15ab4-3e47-44e3-9590-6013840d9609: 'Featured Collection' # Featured Collection
     80ac1637-5252-4d1d-930b-014aefc841e9: 'Opening Hours' # Opening Hours
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category
     392c0803-5557-414c-9823-6a92be5b3ab6: Blog # Blog
     761a01d0-8414-40af-8d2b-2d4edde3401d: Dummy # Dummy
+    879c3a0a-5b69-4238-8ac9-c538fb3f6441: Style # Style
     880e5a63-3f9c-49c5-b677-7cc7002b9509: 'Company Address' # Company Address
     934ce298-c047-4f35-ad67-2ac598065d77: 'Company Info' # Company Info
     956a9245-46dc-4883-bec5-6e4750d386e9: Brand # Brand
@@ -160,6 +165,8 @@ meta:
     32956aab-afca-40f2-99a9-2619b9a4f7b7: 'Blog Photos' # Blog Photos
     43597ccb-dafa-4c5a-bcc5-5a0017246efb: 'Product Photos' # Product Photos
     48979a7b-9e8c-4be7-b24f-4714635f81d7: Collection # Collection
+    72640ef2-14a8-4b85-94d8-b700005825f8: Colour # Colour
+    838954d2-4ef6-4c09-8fe2-0203b415b633: Style # Style
     978520f0-e790-46cd-9e23-7f09141d0fbd: Home # Home
     6516610b-24f3-4763-840c-c7115929cf6d: Accessories # Accessories
     90004640-0fe5-425e-8935-922d75d8d641: Home # Home
@@ -169,8 +176,10 @@ meta:
     af8aef47-fb82-491f-a835-363b8f5d8995: Products # Products
     b370be02-0547-4865-bce1-32500f619a6c: 'Socal Links' # Socal Links
     b871443b-88e1-47c1-9fff-4ada87e917ac: Primary # Primary
+    bc2e621d-fb6d-4105-8932-a9c64ed14981: Material # Material
     bfd784b9-b276-406b-89cf-539b1d8f6750: 'Gift Vouchers' # Gift Vouchers
     c5a126f7-6e3d-4031-9d6b-74ef38546d5c: cart # cart
+    c511b290-68a9-43f6-970b-1cd171e7da3c: Price # Price
     c842f534-2b53-4157-b4ee-b83d5368e32a: 'Email address' # Email address
     c4932be2-4962-4751-bf3e-0894a3ea6799: Logos # Logos
     c7613314-594d-4ecd-9e3b-11245f68ded9: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet

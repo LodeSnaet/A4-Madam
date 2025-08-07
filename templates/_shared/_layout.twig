@@ -11,6 +11,20 @@
   {{ craft.vite.script('/src/js/app.js', true) }}
 </head>
 <body>
+<style>
+  html:not(.styles-loaded) body {
+    visibility: hidden;
+  }
+</style>
+
+{% if craft.app.config.env == 'dev' %}
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.documentElement.classList.add("styles-loaded");
+    });
+  </script>
+{% endif %}
+
 <nav class="c-navbar container">
   {% set transform = 'img2Webp' %}
   {% set logo = companyInfo.logo[0] %}

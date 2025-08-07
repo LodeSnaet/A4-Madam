@@ -17,13 +17,9 @@
   }
 </style>
 
-{% if craft.app.config.env == 'dev' %}
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.documentElement.classList.add("styles-loaded");
-    });
-  </script>
-{% endif %}
+<script>
+  document.documentElement.classList.add("styles-loaded");
+</script>
 
 <nav class="c-navbar container">
   {% set transform = 'img2Webp' %}

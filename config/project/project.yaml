@@ -1,4 +1,4 @@
-dateModified: 1754570142
+dateModified: 1754657424
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -161,6 +161,7 @@ meta:
     934ce298-c047-4f35-ad67-2ac598065d77: 'Company Info' # Company Info
     956a9245-46dc-4883-bec5-6e4750d386e9: Brand # Brand
     3629a7bb-4313-44bc-b6a8-483d582aa6c7: Review # Review
+    4569f930-a5e2-48d1-bf7f-fe087b362050: 'Order By Value' # Order By Value
     9305b33c-0caf-4986-ad17-86f8114e6de0: Socials # Socials
     32956aab-afca-40f2-99a9-2619b9a4f7b7: 'Blog Photos' # Blog Photos
     43597ccb-dafa-4c5a-bcc5-5a0017246efb: 'Product Photos' # Product Photos

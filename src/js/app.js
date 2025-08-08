@@ -7,6 +7,8 @@ import "./menu";
 import "./row-reverse";
 import "./email";
 import "./dropdown";
+import "./sortby";
+import "./popover-anchor-pollyfill";
 
 const init = function () {
   console.log("Hello World!");

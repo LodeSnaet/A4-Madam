@@ -1,0 +1,43 @@
+.c-sortby {
+  position: relative;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+
+    padding: 0.5rem;
+
+    cursor: pointer;
+    border: 1px solid var(--text-black-color);
+    border-radius: 0.5rem;
+
+    gap: 2rem;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    [popover] {
+      inset: unset;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.c-sortby__menu[popover]:popover-open {
+  position: absolute;
+  top: calc(anchor(bottom) + 0.5rem);
+  left: anchor(left);
+
+  padding: 0.5rem;
+  border: 1px solid var(--text-black-color);
+  border-radius: 0.5rem;
+  background-color: transparent;
+}

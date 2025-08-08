@@ -5,15 +5,24 @@
   <section class="c-shop container">
     <div class="row">
       <div class="col-12 col-lg-9 offset-lg-3">
-        {% set title = "Delvaux# Collection" %}
-        {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+        <div class="c-shop__order">
+          {% set title = "Delvaux# Collection" %}
+          {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
 
-        {% include '_components/_subtitle.twig' with {
-          title: parts[0] ?? '',
-          description: parts[1] ?? '',
-          additionalClasses: 'c-shop__title'
-        } %}
+          {% include '_components/_subtitle.twig' with {
+            title: parts[0] ?? '',
+            description: parts[1] ?? '',
+            additionalClasses: 'c-shop__title'
+          } %}
+
+          {% set rawOrder = craft.app.request.getQueryParam('order') ?? '' %}
+
+          {% include '_components/sortby.twig' with { rawOrder: rawOrder } %}
+        </div>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-12 col-lg-3">
         <div class="c-shop__filters">
           {% set currentProductType = craft.app.request.getQueryParam('productType') %}
@@ -23,15 +32,21 @@
             <h3 class="u-italic">Category</h3>
             <div class="c-shop__btns">
               {% set queryParams = craft.app.request.getQueryParams() %}
+              {% set currentOrder = queryParams.order ?? null %}
 
               {% for productType in craft.commerce.productTypes.allProductTypes %}
                 {% set isActive = (productType.handle == currentProductType) %}
 
-                {% set url = isActive
-                  ? url(baseUrl)
-                  : url(baseUrl, { productType: productType.handle }) %}
+                {% set baseParams = isActive
+                  ? {}
+                  : { productType: productType.handle } %}
 
-                <a href="{{ url }}"
+                {# Include order param only if it exists #}
+                {% if currentOrder %}
+                  {% set baseParams = baseParams | merge({ order: currentOrder }) %}
+                {% endif %}
+
+                <a href="{{ url(baseUrl, baseParams) }}"
                    class="c-btn {{ isActive ? 'c-btn--active' }}">
                   {{ productType.name }}
                 </a>
@@ -67,6 +82,20 @@
         <div class="o-grid">
           {% set categoryGroups = craft.app.categories.getAllGroups() %}
 
+          {% set orderMap = {
+            'title-asc': 'title ASC',
+            'title-desc': 'title DESC',
+            'default-price-asc': 'defaultPrice ASC',
+            'default-price-desc': 'defaultPrice DESC',
+            'post-date-asc': 'postDate ASC',
+            'post-date-desc': 'postDate DESC'
+          } %}
+
+          {% set order = orderMap[rawOrder] ?? orderMap['title-asc'] %}
+
+
+
+
           {% set matchedCategoryGroups = [] %}
           {% set matchedValues = [] %}
 
@@ -84,11 +113,14 @@
             {% endif %}
           {% endfor %}
 
+
+
+
           {% if matchedCategoryGroups is not empty and matchedValues is not empty %}
             {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %}
-            {% set products = craft.products.type(currentProductType).relatedTo(category).all() %}
+            {% set products = craft.products.type(currentProductType).relatedTo(category).orderBy(order).all() %}
           {% else %}
-            {% set products = craft.products.type(currentProductType).all() %}
+            {% set products = craft.products.type(currentProductType).orderBy(order).all() %}
           {% endif %}
 
           {% for product in products %}

@@ -7,6 +7,7 @@ import "./menu";
 import "./row-reverse";
 import "./email";
 import "./dropdown";
+import "./sortby";
 
 const init = function () {
   console.log("Hello World!");

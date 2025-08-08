@@ -36,6 +36,11 @@
     flex-direction: column;
     transform: translateX(30px);
     gap: 1rem;
+
+    @include media-breakpoint-down(lg) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   h3 {

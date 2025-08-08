@@ -1,4 +1,4 @@
-<form class="c-sortby js-sortby" method="get" aria-label="Sort products">
+<form class="c-sortby" method="get" aria-label="Sort products">
   {# Preserve existing query params (except "order") #}
   {% for key, value in craft.app.request.getQueryParams() %}
     {% if key != 'order' %}
@@ -13,7 +13,7 @@
   {% endfor %}
 
   {# Popover toggle button #}
-  <button type="button" class="c-sortby__toggle" popovertarget="sort-popover" anchor="sort-popover">
+  <button type="button" class="c-sortby__toggle js-toggle" popovertarget="sort-popover" anchor="sort-popover">
     <span class="c-sortby__title">
       <i class="fa-solid fa-filter"></i>
       <span>Sort By</span>
@@ -27,28 +27,32 @@
 
   {# Popover menu #}
   <ul class="c-sortby__menu" id="sort-popover" anchor="sort-anchor" popover>
-    <li data-value="title-asc" class="{{ rawOrder == 'title-asc' ? 'active' }}">Alphabetically A–Z
-      <hr>
+    <li data-value="title-asc" class="{{ rawOrder == 'title-asc' ? 'c-sortby__menu--active' }}  js-sortby">
+      <p>Alphabetically A–Z</p>
     </li>
 
-    <li data-value="title-desc" class="{{ rawOrder == 'title-desc' ? 'active' }}">Alphabetically Z–A
-      <hr>
+    <li data-value="title-desc" class="{{ rawOrder == 'title-desc' ? 'c-sortby__menu--active' }}  js-sortby">
+      <p>Alphabetically Z–A</p>
     </li>
 
-    <li data-value="default-price-asc" class="{{ rawOrder == 'default-price-asc' ? 'active' }}">Price Low–High
-      <hr>
+    <li data-value="default-price-asc"
+        class="{{ rawOrder == 'default-price-asc' ? 'c-sortby__menu--active' }}  js-sortby">
+      <p>Price Low–High</p>
     </li>
 
-    <li data-value="default-price-desc" class="{{ rawOrder == 'default-price-desc' ? 'active' }}">Price High–Low
-      <hr>
+    <li data-value="default-price-desc"
+        class="{{ rawOrder == 'default-price-desc' ? 'c-sortby__menu--active' }}  js-sortby">
+      <p>Price High–Low</p>
     </li>
 
-    <li data-value="post-date-asc" class="{{ rawOrder == 'post-date-asc' ? 'active' }}">Date Old–New
-      <hr>
+    <li data-value="post-date-asc" class="{{ rawOrder == 'post-date-asc' ? 'c-sortby__menu--active' }}  js-sortby">
+      <p>Date Old–New</p>
     </li>
 
-    <li data-value="post-date-desc" class="{{ rawOrder == 'post-date-desc' ? 'active' }}">Date New–Old</li>
+    <li data-value="post-date-desc" class="{{ rawOrder == 'post-date-desc' ? 'c-sortby__menu--active' }}  js-sortby">
+      <p>Date New–Old</p>
+    </li>
   </ul>
 
-  <input type="hidden" name="order" id="order-input" value="{{ rawOrder ?? '' }}">
+  <input type="hidden" name="order" id="order-input" value="{{ rawOrder ?? '' }}  js-sortby">
 </form>

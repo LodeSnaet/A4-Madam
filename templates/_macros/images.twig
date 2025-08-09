@@ -1,80 +1,130 @@
+{#
+Responsive Image Macro
+- Supports multiple breakpoints
+- Generates both WebP and JPG for each size
+- Option to only take the first image from an array
+- Easily configurable via the inputOptions parameter
+#}
+
 {% macro responsiveImage(assetFiles, inputOptions = {}) %}
-  {% set allImagesHtml = [] %}
 
-  {# Ensure assetFiles is iterable, even if it's a single asset or null #}
-  {% if assetFiles is not iterable %}
-    {% set assetFiles = [assetFiles] %}
-  {% endif %}
-
-  {% for assetFile in assetFiles %}
-    {# Skip if the current item is not a valid asset file object #}
-    {% if assetFile is not null and assetFile.getUrl is defined %}
-      {% set defaultBreakpoints = [
-        { media: '(min-width: 1440px)', width: 1600 },
-        { media: '(min-width: 1024px)', width: 1200 },
-        { media: '(min-width: 768px)', width: 900 },
-        { media: '(min-width: 480px)', width: 600 },
-        { media: 'default', width: 400 }
-      ] %}
-
-      {% set baseDefaults = {
-        aspectRatio: null, quality: 85, mode: 'crop', position: 'center-center',
-        alt: null, height: null, breakpoints: defaultBreakpoints,
-        transformHandle: null
-      } %}
-
-      {# Merge inputOptions, but baseDefaults still holds overall fallback #}
-      {% set finalConfig = baseDefaults | merge(inputOptions) %}
-
-      {% if finalConfig.transformHandle %}
-        {% set transform = craft.app.imageTransforms.getTransformByHandle(finalConfig.transformHandle) %}
-        {% if transform %}
-          {% set transformSettings = {
-            mode: transform.mode,
-            quality: transform.quality,
-            position: transform.position,
-            height: transform.height,
-            aspectRatio: (transform.width and transform.height) ? (transform.width ~ ':' ~ transform.height) : null
-          } %}
-          {# Merge transform settings first, then re-merge inputOptions to ensure they take highest priority #}
-          {% set finalConfig = transformSettings | merge(finalConfig) %}
-        {% endif %}
-      {% endif %}
-
-      {% if finalConfig.alt is null %}
-        {% set finalConfig = finalConfig | merge({ alt: assetFile.title is not empty ? assetFile.title : assetFile.filename }) %}
-      {% endif %}
-
-      {% set imageSourcesHtml = [] %}{% set fallbackImageSrc = '' %}{% set fallbackImageWidth = 0 %}{% set fallbackImageHeight = 0 %}
-      {% set aspectRatioWidth = 0 %}{% set aspectRatioHeight = 0 %}
-      {% if finalConfig.aspectRatio %}{% set ratioParts = finalConfig.aspectRatio | split(':') %}{% if ratioParts|length == 2 %}{% set aspectRatioWidth = ratioParts[0]|number_format %}{% set aspectRatioHeight = ratioParts[1]|number_format %}{% endif %}{% endif %}
-
-      {% for currentBreakpoint in finalConfig.breakpoints %}
-        {% set currentImageWidth = currentBreakpoint.width %}{% set currentImageHeight = null %}
-        {% if finalConfig.height is not null %}{% set currentImageHeight = finalConfig.height %}
-        {% elseif aspectRatioWidth > 0 and aspectRatioHeight > 0 %}{% set currentImageHeight = (currentImageWidth / aspectRatioWidth * aspectRatioHeight)|round %}
-        {% elseif finalConfig.mode == 'crop' %}{% set currentImageHeight = currentImageWidth %}{% endif %}
-
-        {% set transformSettings = { width: currentImageWidth, height: currentImageHeight, mode: finalConfig.mode, quality: finalConfig.quality, position: finalConfig.position } %}
-
-        {% set webpNormal = assetFile.getUrl(transformSettings | merge({ format: 'webp' })) %}
-        {% set webpRetina = assetFile.getUrl(transformSettings | merge({ width: currentImageWidth * 2, height: (currentImageHeight is not null ? currentImageHeight * 2 : null), format: 'webp' })) %}
-        {% set jpgNormal = assetFile.getUrl(transformSettings | merge({ format: 'jpg' })) %}
-        {% set jpgRetina = assetFile.getUrl(transformSettings | merge({ width: currentImageWidth * 2, height: (currentImageHeight is not null ? currentImageHeight * 2 : null), format: 'jpg' })) %}
-
-        {% if currentBreakpoint.media == 'default' %}
-          {% set fallbackImageSrc = jpgNormal %}{% set fallbackImageWidth = currentImageWidth %}{% set fallbackImageHeight = currentImageHeight %}
-        {% else %}
-          {% set sourceHtmlSegment = '<source srcset="' ~ webpNormal ~ ' 1x, ' ~ webpRetina ~ ' 2x" media="' ~ currentBreakpoint.media ~ '" type="image/webp">' %}
-          {% set sourceHtmlSegment = sourceHtmlSegment ~ '<source srcset="' ~ jpgNormal ~ ' 1x, ' ~ jpgRetina ~ ' 2x" media="' ~ currentBreakpoint.media ~ '" type="image/jpeg">' %}
-          {% set imageSourcesHtml = imageSourcesHtml | merge([sourceHtmlSegment]) %}
-        {% endif %}
-      {% endfor %}
-
-      {% set imageHtml = '<picture>' ~ (imageSourcesHtml | join('') | raw) ~ '<img src="' ~ fallbackImageSrc ~ '" alt="' ~ finalConfig.alt ~ '" loading="lazy" width="' ~ fallbackImageWidth ~ '" height="' ~ fallbackImageHeight ~ '"></picture>' %}
-      {% set allImagesHtml = allImagesHtml | merge([imageHtml]) %}
+    {# --- 1. Make sure we always work with an array --- #}
+    {% if assetFiles is not iterable %}
+        {% set assetFiles = [assetFiles] %}
     {% endif %}
-  {% endfor %}
 
-  {{ allImagesHtml | join('') | raw }}
+    {# --- 2. Default settings --- #}
+    {% set defaults = {
+        aspectRatio: null,
+        quality: 85,
+        mode: 'crop',
+        position: 'center-center',
+        alt: null,
+        height: null,
+        breakpoints: [
+            { media: '(min-width: 1440px)', width: 1600 },
+            { media: '(min-width: 1024px)', width: 1200 },
+            { media: '(min-width: 768px)',  width: 900 },
+            { media: '(min-width: 480px)',  width: 600 },
+            { media: 'default',             width: 400 }
+        ],
+        transformHandle: null,
+        onlyFirst: false
+    } %}
+
+    {# Merge user options into defaults #}
+    {% set config = defaults | merge(inputOptions) %}
+
+    {# --- 3. If onlyFirst is true, limit to the first image --- #}
+    {% if config.onlyFirst %}
+        {% set assetFiles = assetFiles|slice(0, 1) %}
+    {% endif %}
+
+    {# --- 4. Loop through each image and build HTML --- #}
+    {% set allImagesHtml = [] %}
+
+    {% for asset in assetFiles %}
+        {% if asset and asset.getUrl is defined %}
+
+            {# --- 4.1 Load transform from handle if given --- #}
+            {% if config.transformHandle %}
+                {% set transform = craft.app.imageTransforms.getTransformByHandle(config.transformHandle) %}
+                {% if transform %}
+                    {% set config = config | merge({
+                        mode: transform.mode,
+                        quality: transform.quality,
+                        position: transform.position,
+                        height: transform.height,
+                        aspectRatio: (transform.width and transform.height) ? (transform.width ~ ':' ~ transform.height) : config.aspectRatio
+                    }) %}
+                {% endif %}
+            {% endif %}
+
+            {# --- 4.2 Fallback alt text --- #}
+            {% if not config.alt %}
+                {% set config = config | merge({ alt: asset.title ?: asset.filename }) %}
+            {% endif %}
+
+            {# --- 4.3 Aspect ratio calculation --- #}
+            {% set ratioW = 0 %}
+            {% set ratioH = 0 %}
+            {% if config.aspectRatio %}
+                {% set parts = config.aspectRatio | split(':') %}
+                {% if parts|length == 2 %}
+                    {% set ratioW = parts[0]|number_format %}
+                    {% set ratioH = parts[1]|number_format %}
+                {% endif %}
+            {% endif %}
+
+            {# --- 4.4 Generate <source> tags for all breakpoints except default --- #}
+            {% set sources = [] %}
+            {% set fallbackSrc = '' %}
+            {% set fallbackW = 0 %}
+            {% set fallbackH = 0 %}
+
+            {% for bp in config.breakpoints %}
+                {% set w = bp.width %}
+                {% set h = null %}
+
+                {# Determine height #}
+                {% if config.height %}
+                    {% set h = config.height %}
+                {% elseif ratioW > 0 and ratioH > 0 %}
+                    {% set h = (w / ratioW * ratioH)|round %}
+                {% elseif config.mode == 'crop' %}
+                    {% set h = w %}
+                {% endif %}
+
+                {# Create transforms #}
+                {% set base = { width: w, height: h, mode: config.mode, quality: config.quality, position: config.position } %}
+                {% set webp1x = asset.getUrl(base | merge({ format: 'webp' })) %}
+                {% set webp2x = asset.getUrl(base | merge({ width: w * 2, height: (h ? h * 2 : null), format: 'webp' })) %}
+                {% set jpg1x  = asset.getUrl(base | merge({ format: 'jpg' })) %}
+                {% set jpg2x  = asset.getUrl(base | merge({ width: w * 2, height: (h ? h * 2 : null), format: 'jpg' })) %}
+
+                {% if bp.media == 'default' %}
+                    {# Default breakpoint is used for <img> fallback #}
+                    {% set fallbackSrc = jpg1x %}
+                    {% set fallbackW = w %}
+                    {% set fallbackH = h %}
+                {% else %}
+                    {# Add <source> for this breakpoint #}
+                    {% set sources = sources | merge([
+                        '<source srcset="' ~ webp1x ~ ' 1x, ' ~ webp2x ~ ' 2x" media="' ~ bp.media ~ '" type="image/webp">',
+                        '<source srcset="' ~ jpg1x ~ ' 1x, ' ~ jpg2x ~ ' 2x" media="' ~ bp.media ~ '" type="image/jpeg">'
+                    ]) %}
+                {% endif %}
+            {% endfor %}
+
+            {# --- 4.5 Build final <picture> --- #}
+            {% set html = '<picture>' ~ (sources | join('') | raw) ~
+                '<img src="' ~ fallbackSrc ~ '" alt="' ~ config.alt ~ '" loading="lazy" width="' ~ fallbackW ~ '" height="' ~ fallbackH ~ '">' ~
+                '</picture>' %}
+
+            {% set allImagesHtml = allImagesHtml | merge([html]) %}
+        {% endif %}
+    {% endfor %}
+
+    {# --- 5. Output all images --- #}
+    {{ allImagesHtml | join('') | raw }}
 {% endmacro %}

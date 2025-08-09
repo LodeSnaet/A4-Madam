@@ -1,4 +1,4 @@
-dateModified: 1754657424
+dateModified: 1754734876
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -187,7 +187,6 @@ meta:
     cffb2338-4ca7-451b-b20a-72f01860e7f1: mollie # mollie
     d25a7f51-e4af-4763-baae-3e8889bfb788: Copyright # Copyright
     dbeafd55-e635-450d-80d3-83a7539a5e6e: 'Menu Layout' # Menu Layout
-    e35e6c40-43cf-4847-a24c-c29d6641c54b: Collections # Collections
     ef00bb55-1f00-4476-982b-9c10e664b8aa: 'Phone Number' # Phone Number
     ef50746b-64cf-4839-9692-66daec250d96: Navbar # Navbar
     f3f391fe-c122-4353-8066-f4933e71a5bb: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet

@@ -13,7 +13,7 @@ settings:
   defaultUploadLocationSource: 'volume:8b62c7dd-2811-43a9-b770-a9f0a3e09a4e' # Product photos
   defaultUploadLocationSubpath: /productphotos
   maintainHierarchy: false
-  maxRelations: 1
+  maxRelations: 3
   minRelations: null
   previewMode: full
   restrictFiles: false

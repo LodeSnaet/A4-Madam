@@ -2,11 +2,11 @@
 
 <article class="c-product">
   <a href="/shop/{{ product.slug }}">
-
     {{ img.responsiveImage(product.productPhotos, {
       aspectRatio: '9:14',
       quality: 80,
-      transformHandle: 'img2Webp'
+      transformHandle: 'img2Webp',
+      onlyFirst: true
     }) }}
 
     <div class="c-product__description">

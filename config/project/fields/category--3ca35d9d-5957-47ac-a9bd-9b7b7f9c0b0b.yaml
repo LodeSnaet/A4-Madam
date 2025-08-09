@@ -17,7 +17,7 @@ settings:
   showUnpermittedEntries: false
   showUnpermittedSections: false
   sources:
-    - 'section:e35e6c40-43cf-4847-a24c-c29d6641c54b' # Collections
+    - 'section:e35e6c40-43cf-4847-a24c-c29d6641c54b'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: cards

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1110f4a520cf74e681d70e957944440d",
+    "content-hash": "95c32d450dd8c51ce3bbf444b7c51302",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2357,11 +2357,17 @@
         },
         {
             "name": "lode-snaet/craft-icon-picker",
-            "version": "dev-product-page",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LodeSnaet/IconPicker.git",
+                "reference": "ff3cd2636068316d30e4202e5ede6f6658cad502"
+            },
             "dist": {
-                "type": "path",
-                "url": "plugins/icon-picker",
-                "reference": "878a3da7b237a1a4bbcfa2b45cf741002a3b678a"
+                "type": "zip",
+                "url": "https://api.github.com/repos/LodeSnaet/IconPicker/zipball/ff3cd2636068316d30e4202e5ede6f6658cad502",
+                "reference": "ff3cd2636068316d30e4202e5ede6f6658cad502",
+                "shasum": ""
             },
             "require": {
                 "craftcms/cms": "^5.8.0",
@@ -2371,6 +2377,7 @@
                 "craftcms/ecs": "dev-main",
                 "craftcms/phpstan": "dev-main"
             },
+            "default-branch": true,
             "type": "craft-plugin",
             "extra": {
                 "handle": "icon-picker",
@@ -2406,9 +2413,7 @@
                 "docs": "https://github.com/lodesnaet/iconpicker.git",
                 "rss": "https://github.com/lodesnaet/iconpicker.git/releases.atom"
             },
-            "transport-options": {
-                "relative": true
-            }
+            "time": "2025-08-09T19:14:59+00:00"
         },
         {
             "name": "masterminds/html5",

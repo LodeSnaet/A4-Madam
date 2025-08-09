@@ -39,8 +39,8 @@
       "canonical": false
     },
     {
-      "type": "path",
-      "url": "plugins/icon-picker"
+      "type": "vcs",
+      "url": "https://github.com/LodeSnaet/IconPicker.git"
     }
   ],
   "autoload": {

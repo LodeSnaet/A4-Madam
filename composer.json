@@ -36,6 +36,10 @@
       "type": "composer",
       "url": "https://composer.craftcms.com",
       "canonical": false
+    },
+    {
+      "type": "path",
+      "url": "plugins/icon-picker"
     }
   ],
   "autoload": {

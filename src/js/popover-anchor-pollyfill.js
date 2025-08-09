@@ -2,8 +2,6 @@ const toggleButton = document.querySelector(".c-sortby__toggle");
 const popoverMenu = document.querySelector(".c-sortby__menu");
 
 function positionPopover() {
-  const toggleButton = document.querySelector(".c-sortby__toggle");
-  const popoverMenu = document.querySelector(".c-sortby__menu");
   const margin = 8;
 
   // Temporarily make it visible off-screen to measure
@@ -37,19 +35,21 @@ function positionPopover() {
   popoverMenu.style.display = "";
 }
 
-toggleButton.addEventListener("click", () => {
-  const isOpen = popoverMenu.classList.toggle("open");
+if (toggleButton && popoverMenu) {
+  toggleButton.addEventListener("click", () => {
+    const isOpen = popoverMenu.classList.toggle("open");
 
-  if (isOpen) {
-    positionPopover();
-  } else {
-    popoverMenu.style.top = "";
-    popoverMenu.style.left = "";
-  }
-});
+    if (isOpen) {
+      positionPopover();
+    } else {
+      popoverMenu.style.top = "";
+      popoverMenu.style.left = "";
+    }
+  });
 
-window.addEventListener("resize", () => {
-  if (popoverMenu.classList.contains("open")) {
-    positionPopover();
-  }
-});
+  window.addEventListener("resize", () => {
+    if (popoverMenu.classList.contains("open")) {
+      positionPopover();
+    }
+  });
+}

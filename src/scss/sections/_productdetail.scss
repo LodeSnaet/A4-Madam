@@ -16,7 +16,7 @@
   &__table {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
   }
 
   &__title {
@@ -48,5 +48,24 @@
 
   &__price {
     font-size: var(--h3-font-size);
+  }
+
+  &__condition {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    border-bottom: 1px solid var(--primary-color);
+
+    p {
+      display: flex;
+      gap: 0.2rem;
+    }
   }
 }

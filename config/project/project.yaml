@@ -1,4 +1,4 @@
-dateModified: 1754734876
+dateModified: 1754750913
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -43,6 +43,33 @@ elementSources:
         - shortNumber
         - dateUpdated
         - totalPrice
+      type: native
+  craft\elements\Category:
+    -
+      key: 'group:48979a7b-9e8c-4be7-b24f-4714635f81d7' # Collection
+      type: native
+    -
+      key: 'group:879c3a0a-5b69-4238-8ac9-c538fb3f6441' # Style
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'group:c511b290-68a9-43f6-970b-1cd171e7da3c' # Price
+      tableAttributes:
+        - status
+        - link
+      type: native
+    -
+      key: 'group:72640ef2-14a8-4b85-94d8-b700005825f8' # Colour
+      type: native
+    -
+      key: 'group:bc2e621d-fb6d-4105-8932-a9c64ed14981' # Material
+      type: native
+    -
+      key: 'group:3a90dbe2-25db-42a9-9c5b-600c36793485' # Condition
       type: native
 email:
   fromEmail: lode.snaet@student.howest.be
@@ -142,6 +169,7 @@ meta:
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     5f8cfd88-460f-4387-b1d1-c4c7408c39a9: 'Blog Link' # Blog Link
     6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
+    7bcdad0b-765b-4f33-9acd-73631a767a59: Certificate # Certificate
     7f060edf-62d8-4220-85b4-3b1f8aa69b12: Description # Description
     8a6cc43c-2409-4184-9196-b5974f34bf2b: Material # Material
     8ab333ec-a77f-4c59-bc0d-cd6b83a0d18a: Condition # Condition

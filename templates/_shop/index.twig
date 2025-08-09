@@ -92,10 +92,6 @@
           } %}
 
           {% set order = orderMap[rawOrder] ?? orderMap['title-asc'] %}
-
-
-
-
           {% set matchedCategoryGroups = [] %}
           {% set matchedValues = [] %}
 
@@ -114,8 +110,6 @@
           {% endfor %}
 
 
-
-
           {% if matchedCategoryGroups is not empty and matchedValues is not empty %}
             {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %}
             {% set products = craft.products.type(currentProductType).relatedTo(category).orderBy(order).all() %}
@@ -126,7 +120,6 @@
           {% for product in products %}
             {% include '_components/_productcard' with product %}
           {% endfor %}
-
         </div>
       </div>
     </div>

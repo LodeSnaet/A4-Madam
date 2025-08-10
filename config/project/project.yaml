@@ -1,4 +1,4 @@
-dateModified: 1754764204
+dateModified: 1754832129
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -160,6 +160,7 @@ meta:
     0a7147ff-00d0-400d-b9c6-a5b60295b4cb: img2webp # img2webp
     0db05413-f161-4551-8a65-e6a1599a263b: 'Review Photos' # Review Photos
     1ea0b14a-de19-4214-8c42-7ed67e65b61b: Logo # Logo
+    2b21e46c-e073-45a6-95ba-60da477afb35: 'Price Range' # Price Range
     2d2f39e1-6a53-4a47-a1be-f3915352a25e: 'New Section' # New Section
     3a90dbe2-25db-42a9-9c5b-600c36793485: Condition # Condition
     3c2a8ec8-0af0-410c-8825-09cc1334b3a6: Featured # Featured
@@ -169,6 +170,7 @@ meta:
     5f6fd9c7-7171-4031-a9b1-e79782bbf63e: Handbags # Handbags
     5f8cfd88-460f-4387-b1d1-c4c7408c39a9: 'Blog Link' # Blog Link
     6e36b952-2450-4694-be45-3489d7c759f3: Table # Table
+    6e83d1f0-b6e7-42b9-9aeb-a51cd5a89e9c: Size # Size
     7bcdad0b-765b-4f33-9acd-73631a767a59: Certificate # Certificate
     7f060edf-62d8-4220-85b4-3b1f8aa69b12: Description # Description
     8a6cc43c-2409-4184-9196-b5974f34bf2b: Material # Material

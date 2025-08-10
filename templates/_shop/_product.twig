@@ -53,7 +53,7 @@
               <p class="c-productdetail__description">{{ product.description }}</p>
 
               <div class="c-productdetail__condition">
-                {% set fieldHandles = ['colour', 'material', 'condition', 'certificate'] %}
+                {% set fieldHandles = ['colour', 'size', 'material', 'condition', 'certificate'] %}
 
                 {% for handle in fieldHandles %}
                   {% set field = craft.app.fields.getFieldByHandle(handle) %}
@@ -63,12 +63,19 @@
                       <p class="u-italic">{{ field.name }}</p>
                       <p>
                         {% if handle == 'certificate' %}
-                          {# For a boolean field, display Yes or No #}
+                          {# Boolean field #}
                           {{ product[handle] ? 'Yes' : 'No' }}
+
+                        {% elseif handle == 'size' %}
+                          {# Table field #}
+                          {% for size in product[handle] %}
+                            {{ size.x }} x {{ size.y }} x {{ size.z }}
+                          {% endfor %}
+
                         {% else %}
-                          {# For relational fields, loop through and display titles #}
+                          {# Relational fields #}
                           {% for title in product[handle].all() %}
-                            <span>{{ title.title }}{% if not loop.last %}, {% endif %}</span>
+                            {{ title.title }}{% if not loop.last %}, {% endif %}
                           {% endfor %}
                         {% endif %}
                       </p>

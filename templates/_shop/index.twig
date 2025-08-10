@@ -108,24 +108,41 @@
             {% endif %}
           {% endfor %}
 
-          {# Get the price category group separately by handle (outside the loop) #}
-          {% set priceCategory = craft.categories()
-            .group('price')
-            .slug(matchedValues)
-            .one() %}
+          {# Define the base products query once at the top #}
+          {% set productsQuery = craft.products.type(currentProductType).orderBy(order) %}
 
-
-          {% set minPrice = priceCategory.min.amount / 100 %}
-          {% set maxPrice = priceCategory.max.amount / 100 %}
-          {{ dump(['and', ">= #{minPrice}", "<= #{maxPrice}"]) }}
-
+          {# Handle category-based filtering #}
+          {% set matchedCategoryGroups = craft.app.request.get('groups') %}
+          {% set matchedValues = craft.app.request.get('values') %}
 
           {% if matchedCategoryGroups is not empty and matchedValues is not empty %}
-            {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %}
-            {% set products = craft.products.type(currentProductType).relatedTo(category).orderBy(order).all() %}
-          {% else %}
-            {% set products = craft.products.type(currentProductType).orderBy(order).defaultPrice(['and', ">= #{minPrice}", "<= #{maxPrice}"]).all() %}
+            {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues).one() %}
+            {% if category %}
+              {% set productsQuery = productsQuery.relatedTo(category) %}
+            {% endif %}
           {% endif %}
+
+          {# Handle price-based filtering #}
+          {% set budgetType = craft.app.request.getQueryParam('price') %}
+
+          {% if budgetType %}
+            {% set priceCategory = craft.categories()
+              .group('price')
+              .slug(budgetType)
+              .one() %}
+
+            {% if priceCategory %}
+              {% set minPrice = priceCategory.min.amount / 100 %}
+              {% set maxPrice = priceCategory.max.amount / 100 %}
+
+              {# Use the dynamic variables in your filter #}
+              {% set productsQuery = productsQuery.defaultPrice(['and', ">= #{minPrice}", "<= #{maxPrice}"]) %}
+            {% endif %}
+          {% endif %}
+
+          {# Get the final set of products after all filters are applied #}
+          {% set products = productsQuery.all() %}
+
 
           {% for product in products %}
             {% include '_components/_productcard' with product %}

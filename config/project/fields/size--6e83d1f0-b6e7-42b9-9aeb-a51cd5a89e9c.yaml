@@ -1,0 +1,75 @@
+columnSuffix: null
+handle: size
+instructions: null
+name: Size
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - X
+            -
+              - handle
+              - x
+            -
+              - width
+              - ''
+            -
+              - type
+              - number
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Y'
+            -
+              - handle
+              - 'y'
+            -
+              - width
+              - ''
+            -
+              - type
+              - number
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - Z
+            -
+              - handle
+              - z
+            -
+              - width
+              - ''
+            -
+              - type
+              - number
+  defaults:
+    -
+      __assoc__:
+        -
+          - col1
+          - ''
+        -
+          - col2
+          - ''
+        -
+          - col3
+          - ''
+  maxRows: 1
+  minRows: null
+  staticRows: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Table

@@ -1,0 +1,40 @@
+color: green
+description: null
+fieldLayouts:
+  cf7608ee-faf6-42cb-98ed-d02e758c09cb:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-08-10T13:42:20+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 2d2f39e1-6a53-4a47-a1be-f3915352a25e # New Section
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b2816305-7d25-4d20-b04b-a338a66719dc
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 84170dca-17d3-4b9a-819b-4ea7ea298e22
+        userCondition: null
+handle: sections
+hasTitleField: false
+icon: puzzle-piece
+name: sections
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

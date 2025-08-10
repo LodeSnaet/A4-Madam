@@ -5,6 +5,8 @@
     "craftcms/cms": "5.8.13.2",
     "craftcms/commerce": "5.4.4",
     "craftcms/commerce-mollie": "^4.4.0",
+    "lewisjenkins/craft-range-slider": "5.0.0",
+    "lode-snaet/craft-icon-picker": "@dev",
     "nystudio107/craft-seomatic": "5.1.16",
     "nystudio107/craft-vite": "5.0.1",
     "servd/craft-asset-storage": "4.1.2",
@@ -36,6 +38,10 @@
       "type": "composer",
       "url": "https://composer.craftcms.com",
       "canonical": false
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/LodeSnaet/IconPicker.git"
     }
   ],
   "autoload": {

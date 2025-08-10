@@ -7,13 +7,13 @@ settings:
   allowSelfRelations: false
   branchLimit: null
   defaultPlacement: end
-  maintainHierarchy: true
-  maxRelations: null
+  maintainHierarchy: false
+  maxRelations: 1
   minRelations: null
   selectionLabel: null
   showCardsInGrid: false
   showSearchInput: true
-  showSiteMenu: false
+  showSiteMenu: true
   source: 'group:bc2e621d-fb6d-4105-8932-a9c64ed14981' # Material
   targetSiteId: null
   validateRelatedElements: false

@@ -4,6 +4,10 @@
       color: var(--primary-color);
     }
 
+    &--last {
+      color: var(--primary-color);
+    }
+
     a {
       text-decoration: underline;
       text-transform: capitalize;

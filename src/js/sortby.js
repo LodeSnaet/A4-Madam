@@ -9,7 +9,9 @@ function toggleSortByDropdown() {
   });
 }
 
-toggleSortByDropdown();
+if (toggleDropdown && popover) {
+  toggleSortByDropdown();
+}
 
 const arrSortbyDropdown = document.querySelectorAll(".js-sortby");
 
@@ -30,4 +32,6 @@ const sortProductsBy = function () {
   }
 };
 
-sortProductsBy();
+if (arrSortbyDropdown) {
+  sortProductsBy();
+}

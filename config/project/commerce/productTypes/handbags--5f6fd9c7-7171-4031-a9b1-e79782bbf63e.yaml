@@ -2,7 +2,7 @@ defaultPlacement: end
 descriptionFormat: '{product.title} - {title}'
 enableVersioning: false
 handle: handbags
-hasDimensions: false
+hasDimensions: true
 hasProductTitleField: true
 hasVariantTitleField: true
 isStructure: false
@@ -84,10 +84,10 @@ productFieldLayouts:
             warning: null
             width: 100
           -
-            dateAdded: '2025-08-07T12:35:05+00:00'
+            dateAdded: '2025-08-09T14:40:24+00:00'
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
-            uid: ac800de1-5916-4dd0-a33a-af42769573c0
+            uid: 8f7d8f6e-5f88-40bd-a506-2c5dd6bcee46
             userCondition: null
           -
             dateAdded: '2025-08-06T15:36:03+00:00'
@@ -171,6 +171,23 @@ productFieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 153a3ec4-0f2a-4b17-ab5e-8dac00ca34c7
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            dateAdded: '2025-08-09T14:25:07+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 7bcdad0b-765b-4f33-9acd-73631a767a59 # Certificate
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9f6ada0c-f8d7-4c26-ae8b-5782559fac64
             userCondition: null
             warning: null
             width: 25

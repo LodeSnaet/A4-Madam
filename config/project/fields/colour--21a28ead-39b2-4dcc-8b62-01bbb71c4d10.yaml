@@ -7,13 +7,13 @@ settings:
   allowSelfRelations: false
   branchLimit: null
   defaultPlacement: end
-  maintainHierarchy: true
-  maxRelations: null
+  maintainHierarchy: false
+  maxRelations: 1
   minRelations: null
   selectionLabel: null
   showCardsInGrid: false
   showSearchInput: true
-  showSiteMenu: false
+  showSiteMenu: true
   source: 'group:72640ef2-14a8-4b85-94d8-b700005825f8' # Colour
   targetSiteId: null
   validateRelatedElements: false

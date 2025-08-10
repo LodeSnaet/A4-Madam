@@ -15,11 +15,8 @@
       {% include '_sections/email.twig' with section %}
     {% elseif section.type.handle == 'featuredCollection' %}
       {% include '_sections/featured.twig' with section %}
-    {% else %}
-      <section class="container">
-        <h2>{{ section.title }}</h2>
-      </section>
     {% endif %}
+
   {% endfor %}
 
 

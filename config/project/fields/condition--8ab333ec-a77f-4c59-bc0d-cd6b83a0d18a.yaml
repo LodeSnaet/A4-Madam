@@ -7,8 +7,8 @@ settings:
   allowSelfRelations: false
   branchLimit: null
   defaultPlacement: end
-  maintainHierarchy: true
-  maxRelations: null
+  maintainHierarchy: false
+  maxRelations: 3
   minRelations: null
   selectionLabel: null
   showCardsInGrid: false

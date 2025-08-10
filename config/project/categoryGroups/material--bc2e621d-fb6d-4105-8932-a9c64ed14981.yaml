@@ -45,7 +45,7 @@ siteSettings:
   f3f391fe-c122-4353-8066-f4933e71a5bb: # A4-Madam-LodeSnaet
     hasUrls: true
     template: material/_category.twig
-    uriFormat: 'material/{slug}'
+    uriFormat: 'shop?material={slug}'
 structure:
   maxLevels: null
   uid: f1e2b789-f2a5-4bcb-a3d2-d4c56435b73a

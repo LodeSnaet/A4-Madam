@@ -92,10 +92,6 @@
           } %}
 
           {% set order = orderMap[rawOrder] ?? orderMap['title-asc'] %}
-
-
-
-
           {% set matchedCategoryGroups = [] %}
           {% set matchedValues = [] %}
 
@@ -114,8 +110,6 @@
           {% endfor %}
 
 
-
-
           {% if matchedCategoryGroups is not empty and matchedValues is not empty %}
             {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %}
             {% set products = craft.products.type(currentProductType).relatedTo(category).orderBy(order).all() %}
@@ -126,10 +120,24 @@
           {% for product in products %}
             {% include '_components/_productcard' with product %}
           {% endfor %}
-
         </div>
       </div>
     </div>
   </section>
 
+  {% for section in entry.newSection %}
+    {% if section.type.handle == 'blogPosts' %}
+      {% include '_sections/blog.twig' with section %}
+    {% elseif section.type.handle == 'newProducts' %}
+      {% include '_sections/newproducts.twig' with section %}
+    {% elseif section.type.handle == 'review' %}
+      {% include '_sections/review.twig' with section %}
+    {% elseif section.type.handle == 'email' %}
+      {% include '_sections/email.twig' with section %}
+    {% elseif section.type.handle == 'featuredCollection' %}
+      {% include '_sections/featured.twig' with section %}
+    {% endif %}
+  {% endfor %}
+
 {% endblock %}
+

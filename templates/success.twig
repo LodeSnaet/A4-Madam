@@ -7,8 +7,9 @@
      .one() %}
 
    {% if order %}
-     <h1>Your Completed Order</h1>
-     <section>
+     <section class="container">
+       <h1>Your Completed Order</h1>
+
        <ul>
          <li>
            <strong>Order #{{ order.number }}</strong> – {{ order.totalPrice | commerceCurrency }}

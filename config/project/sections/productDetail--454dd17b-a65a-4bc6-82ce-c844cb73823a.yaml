@@ -3,9 +3,9 @@ enableVersioning: true
 entryTypes:
   -
     uid: f0399099-c3dd-4522-a280-b436ff29345a # sections
-handle: shop
+handle: productDetail
 maxAuthors: 1
-name: Shop
+name: 'Product Detail'
 previewTargets:
   -
     __assoc__:
@@ -23,6 +23,6 @@ siteSettings:
   f3f391fe-c122-4353-8066-f4933e71a5bb: # A4-Madam-LodeSnaet
     enabledByDefault: true
     hasUrls: true
-    template: _shop/index.twig
-    uriFormat: shop
+    template: _shop/_product.twig
+    uriFormat: 'shop/{slug}'
 type: single

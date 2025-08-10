@@ -1,22 +1,57 @@
 <section class="c-newproducts container">
-  <div class="row">
-    <div class="col-lg-4">
-      {% set title = section.title ?? '' %}
-      {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+  {% if craft.app.request.segments|length > 1 %}
+    {% set currentStyle = product.style.one() %}
+    {% set currentColour = product.colour.one() %}
 
-      {% include '_components/_subtitle.twig' with {
-        title: parts[0] ?? '',
-        description: parts[1] ?? ''
-      } %}
+    {% set relatedElements = [] %}
+    {% if currentStyle %}{% set relatedElements = relatedElements|merge([currentStyle]) %}{% endif %}
+    {% if currentColour %}{% set relatedElements = relatedElements|merge([currentColour]) %}{% endif %}
+
+    {% set products = section.newestProducts
+      ? craft.products.type('handbags').limit(4).id(['not', product.id]).relatedTo(relatedElements).orderBy('postDate DESC').all()
+      : section.featuredProducts.all() %}
+
+    {% if products is not empty %}
+      <div class="row">
+        <div class="col-12 col-lg-9 offset-lg-3">
+          {% set title = section.title ?? '' %}
+          {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+          {% include '_components/_subtitle.twig' with {
+            title: parts[0] ?? '',
+            description: parts[1] ?? ''
+          } %}
+
+          <div class="o-grid mt-4">
+            {% for product in products %}
+              {% include '_components/_productcard.twig' with { product: product } %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
     </div>
-    <div class="col-lg-8">
-      <div class="o-grid">
-        {% set products = section.newestProducts ? craft.products.type('handbags').limit(4).orderBy('postDate DESC').all() : section.featuredProducts.all() %}
 
-        {% for product in products %}
-          {% include'_components/_productcard.twig' with product %}
-        {% endfor %}
+  {% else %}
+    {# Homepage layout (title left, products right) #}
+    <div class="row">
+      <div class="col-lg-4">
+        {% set title = section.title ?? '' %}
+        {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+        {% include '_components/_subtitle.twig' with {
+          title: parts[0] ?? '',
+          description: parts[1] ?? ''
+        } %}
+      </div>
+      <div class="col-lg-8">
+        <div class="o-grid">
+          {% set products = section.newestProducts
+            ? craft.products.type('handbags').limit(4).orderBy('postDate DESC').all()
+            : section.featuredProducts.all() %}
+          {% for product in products %}
+            {% include '_components/_productcard.twig' with product %}
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 </section>

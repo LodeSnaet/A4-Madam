@@ -1,4 +1,4 @@
-dateModified: 1754832129
+dateModified: 1754834107
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -185,6 +185,7 @@ meta:
     84cbb83b-f415-4a70-a2f8-02cbe755fd8d: 'Public Schema' # Public Schema
     89c6e739-006e-415e-88bc-052190cddb2e: Category # Category
     392c0803-5557-414c-9823-6a92be5b3ab6: Blog # Blog
+    454dd17b-a65a-4bc6-82ce-c844cb73823a: 'Product Detail' # Product Detail
     761a01d0-8414-40af-8d2b-2d4edde3401d: Dummy # Dummy
     879c3a0a-5b69-4238-8ac9-c538fb3f6441: Style # Style
     880e5a63-3f9c-49c5-b677-7cc7002b9509: 'Company Address' # Company Address
@@ -219,6 +220,7 @@ meta:
     dbeafd55-e635-450d-80d3-83a7539a5e6e: 'Menu Layout' # Menu Layout
     ef00bb55-1f00-4476-982b-9c10e664b8aa: 'Phone Number' # Phone Number
     ef50746b-64cf-4839-9692-66daec250d96: Navbar # Navbar
+    f0399099-c3dd-4522-a280-b436ff29345a: sections # sections
     f3f391fe-c122-4353-8066-f4933e71a5bb: A4-Madam-LodeSnaet # A4-Madam-LodeSnaet
     f9ff1ecb-2804-4771-96af-331574c00970: 'Legal Links' # Legal Links
     f31dd96b-308e-4557-8ab1-e45693fd7d0f: 'Featured Collection' # Featured Collection

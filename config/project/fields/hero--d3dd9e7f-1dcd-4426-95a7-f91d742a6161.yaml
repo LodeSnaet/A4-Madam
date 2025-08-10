@@ -1,7 +1,7 @@
 columnSuffix: null
-handle: featured
+handle: hero
 instructions: null
-name: Featured
+name: Hero
 searchable: false
 settings:
   allowSelfRelations: false
@@ -10,10 +10,10 @@ settings:
   allowedKinds: null
   branchLimit: null
   defaultPlacement: end
-  defaultUploadLocationSource: 'volume:f31dd96b-308e-4557-8ab1-e45693fd7d0f' # Featured Collection
+  defaultUploadLocationSource: 'volume:c22769b6-75f6-446b-bc6a-493aecaa434d' # Hero
   defaultUploadLocationSubpath: null
   maintainHierarchy: false
-  maxRelations: 4
+  maxRelations: null
   minRelations: null
   previewMode: full
   restrictFiles: false
@@ -24,14 +24,14 @@ settings:
   selectionLabel: null
   showCardsInGrid: false
   showSearchInput: true
-  showSiteMenu: true
+  showSiteMenu: false
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   sources:
-    - 'volume:f31dd96b-308e-4557-8ab1-e45693fd7d0f' # Featured Collection
+    - 'volume:c22769b6-75f6-446b-bc6a-493aecaa434d' # Hero
   targetSiteId: null
   validateRelatedElements: false
-  viewMode: large
+  viewMode: list
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Assets

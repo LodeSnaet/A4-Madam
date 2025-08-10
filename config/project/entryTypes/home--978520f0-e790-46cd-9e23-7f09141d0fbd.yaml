@@ -38,6 +38,40 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-08-10T17:57:03+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: d3dd9e7f-1dcd-4426-95a7-f91d742a6161 # Hero
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2810d72d-a327-4db0-a6b8-b1b2cd3f11f3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-08-10T17:59:57+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: d25a7f51-e4af-4763-baae-3e8889bfb788 # Copyright
+            handle: search
+            includeInCards: false
+            instructions: null
+            label: Search
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9f0a1da3-3fa0-4a42-8201-b5b63d0a43de
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-07-31T10:25:39+00:00'
             editCondition: null
             elementCondition: null

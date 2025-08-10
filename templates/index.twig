@@ -2,7 +2,7 @@
 
 
 {% block main %}
-
+  {% include '_components/header.twig' %}
 
   {% for section in home.sections.all() %}
     {% if section.type.handle == 'blogPosts' %}
@@ -16,7 +16,6 @@
     {% elseif section.type.handle == 'featuredCollection' %}
       {% include '_sections/featured.twig' with section %}
     {% endif %}
-
   {% endfor %}
 
 

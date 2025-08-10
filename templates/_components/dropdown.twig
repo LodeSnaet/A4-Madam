@@ -1,6 +1,14 @@
 {% set baseUrl = craft.app.request.getPathInfo() %}
 {% set allParams = craft.app.request.getQueryParams() %}
 {% set key = dropdown.title|kebab %}
+
+{# Set whether multiple filters are allowed based on handle #}
+{% if key in [ 'colour', 'condition', 'material',  'style'] %}
+  {% set multipleFiltersAllowed = true %}
+{% else %}
+  {% set multipleFiltersAllowed = false %}
+{% endif %}
+
 {% set selected = (allParams[key] ?? '')|split(',')|filter(v => v != '') %}
 
 <div class="c-dropdown js-dropdown">
@@ -10,7 +18,13 @@
     {% for filter in dropdown.filters %}
       {% set val = filter.title|kebab %}
       {% set isActive = val in selected %}
-      {% set newSelected = isActive ? selected|filter(v => v != val) : selected|merge([val]) %}
+
+      {# Handle single vs multiple selection #}
+      {% if multipleFiltersAllowed %}
+        {% set newSelected = isActive ? selected|filter(v => v != val) : selected|merge([val]) %}
+      {% else %}
+        {% set newSelected = isActive ? [] : [val] %}
+      {% endif %}
 
       {# Copy all other params except the current key #}
       {% set newParams = {} %}

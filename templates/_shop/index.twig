@@ -100,7 +100,6 @@
             {% if queryParams[kebabName] is defined %}
               {% set matchedCategoryGroups = matchedCategoryGroups | merge([kebabName]) %}
               {% set value = queryParams[kebabName] %}
-
               {% if value is iterable %}
                 {% set matchedValues = matchedValues | merge(value) %}
               {% else %}
@@ -109,12 +108,23 @@
             {% endif %}
           {% endfor %}
 
+          {# Get the price category group separately by handle (outside the loop) #}
+          {% set priceCategory = craft.categories()
+            .group('price')
+            .slug(matchedValues)
+            .one() %}
+
+
+          {% set minPrice = priceCategory.min.amount / 100 %}
+          {% set maxPrice = priceCategory.max.amount / 100 %}
+          {{ dump(['and', ">= #{minPrice}", "<= #{maxPrice}"]) }}
+
 
           {% if matchedCategoryGroups is not empty and matchedValues is not empty %}
             {% set category = craft.categories.group(matchedCategoryGroups).slug(matchedValues) %}
             {% set products = craft.products.type(currentProductType).relatedTo(category).orderBy(order).all() %}
           {% else %}
-            {% set products = craft.products.type(currentProductType).orderBy(order).all() %}
+            {% set products = craft.products.type(currentProductType).orderBy(order).defaultPrice(['and', ">= #{minPrice}", "<= #{maxPrice}"]).all() %}
           {% endif %}
 
           {% for product in products %}
@@ -122,6 +132,8 @@
           {% endfor %}
         </div>
       </div>
+
+    </div>
     </div>
   </section>
 

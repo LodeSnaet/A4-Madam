@@ -42,7 +42,7 @@
     <form method="post">
       {{ csrfInput() }}
       {{ actionInput('commerce/payments/pay') }}
-      {{ redirectInput('checkout/success') }}
+      {{ redirectInput('success') }}
       <input type="hidden" name="gatewayId" value="{{ gateway.id }}">
       <input type="hidden" name="amount" value="{{ cart.totalPrice }}">
       <input type="hidden" name="currency" value="{{ cart.currency }}">

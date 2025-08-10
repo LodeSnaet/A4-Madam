@@ -2,8 +2,15 @@
 
 <nav class="c-breadcrumbs container">
   <ul>
-    <li class="c-breadcrumbs__item {% if segments | length == 0 %}c-breadcrumbs__item--active{% endif %}">
-      <a href="{{ siteUrl }}">Home</a>
+    <li class="c-breadcrumbs__item
+  {%- if segments | length == 0 %} c-breadcrumbs__item--last
+  {%- elseif segments | length >= 1 %} c-breadcrumbs__item--active
+  {%- endif -%}">
+      {% if segments | length == 0 %}
+        <p>Home</p>
+      {% else %}
+        <a href="{{ siteUrl }}">Home</a>
+      {% endif %}
     </li>
 
     {% set currentPath = '' %}
@@ -13,8 +20,12 @@
         {% set currentPath = currentPath ~ '/' ~ segment %}
 
         <i class="fa-solid fa-{{ breadcrumbs.arrow }}"></i>
-        <li class="c-breadcrumbs__item {% if loop.last %}c-breadcrumbs__item--active{% endif %}">
-          <a href="{{ url(currentPath) }}">{{ segment | replace('-', ' ') | title }}</a>
+        <li class="c-breadcrumbs__item {% if loop.last %}c-breadcrumbs__item--last{% endif %}">
+          {% if loop.last %}
+            <p>{{ segment | replace('-', ' ') | title }}</p>
+          {% else %}
+            <a href="{{ url(currentPath) }}">{{ segment | replace('-', ' ') | title }}</a>
+          {% endif %}
         </li>
       {% endfor %}
     {% endif %}

@@ -1,12 +1,6 @@
 .c-breadcrumbs {
   &__item {
-    &--active {
-      color: var(--primary-color);
-    }
-
-    &--last {
-      color: var(--primary-color);
-    }
+    color: var(--primary-color);
 
     a {
       text-decoration: underline;

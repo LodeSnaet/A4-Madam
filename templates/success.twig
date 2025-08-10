@@ -12,7 +12,7 @@
 
        <ul>
          <li>
-           <strong>Order #{{ order.number }}</strong> – {{ order.totalPrice | commerceCurrency }}
+           <strong>Order #{{ order.number }}</strong>
            <ul>
              {% for item in order.lineItems %}
                <li>

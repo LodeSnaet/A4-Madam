@@ -53,27 +53,33 @@
               <p class="c-productdetail__description">{{ product.description }}</p>
 
               <div class="c-productdetail__condition">
-                {% set fieldHandles = ['colour', 'size', 'material', 'condition', 'certificate'] %}
+                {% set fieldHandles = ['colour', 'material', 'condition', 'certificate'] %}
 
                 {% for handle in fieldHandles %}
+                  {% set loopIndex = loop.index %}
+
+                  {# Manually insert the Size item at the second position #}
+                  {% if loopIndex == 2 %}
+                    {% set variant = product.defaultVariant %}
+                    {% if variant %}
+                      <div class="c-productdetail__item">
+                        <p class="u-italic">Size</p>
+                        <p>{{ variant.length }} x {{ variant.width }} x {{ variant.height }}</p>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+
+                  {# Render the fields from your `fieldHandles` array #}
                   {% set field = craft.app.fields.getFieldByHandle(handle) %}
 
-                  {% if field and product[handle] is not empty %}
+                  {# Check if the field is defined, not if it's empty #}
+                  {% if field and product[handle] is defined %}
                     <div class="c-productdetail__item">
                       <p class="u-italic">{{ field.name }}</p>
                       <p>
                         {% if handle == 'certificate' %}
-                          {# Boolean field #}
                           {{ product[handle] ? 'Yes' : 'No' }}
-
-                        {% elseif handle == 'size' %}
-                          {# Table field #}
-                          {% for size in product[handle] %}
-                            {{ size.x }} x {{ size.y }} x {{ size.z }}
-                          {% endfor %}
-
                         {% else %}
-                          {# Relational fields #}
                           {% for title in product[handle].all() %}
                             {{ title.title }}{% if not loop.last %}, {% endif %}
                           {% endfor %}
@@ -91,7 +97,7 @@
   </section>
 
   {% set layoutEntry = craft.entries.section('productDetail').one() %}
-  
+
   {% for section in layoutEntry.newSection %}
     {% if section.type.handle == 'blogPosts' %}
       {% include '_sections/blog.twig' with section %}

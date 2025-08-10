@@ -2,7 +2,7 @@ defaultPlacement: end
 descriptionFormat: '{product.title} - {title}'
 enableVersioning: false
 handle: handbags
-hasDimensions: false
+hasDimensions: true
 hasProductTitleField: true
 hasVariantTitleField: true
 isStructure: false
@@ -88,29 +88,6 @@ productFieldLayouts:
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
             uid: 8f7d8f6e-5f88-40bd-a506-2c5dd6bcee46
-            userCondition: null
-          -
-            dateAdded: '2025-08-10T12:58:00+00:00'
-            editCondition: null
-            elementCondition: null
-            fieldUid: 6e83d1f0-b6e7-42b9-9aeb-a51cd5a89e9c # Size
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: false
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 87f634e6-fcdd-4147-9411-c0dfe44e51d0
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-08-07T12:35:05+00:00'
-            elementCondition: null
-            type: craft\fieldlayoutelements\HorizontalRule
-            uid: ac800de1-5916-4dd0-a33a-af42769573c0
             userCondition: null
           -
             dateAdded: '2025-08-06T15:36:03+00:00'

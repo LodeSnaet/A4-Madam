@@ -37,19 +37,36 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            dateAdded: '2025-08-10T13:22:09+00:00'
+            dateAdded: '2025-08-10T19:58:38+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: 2b21e46c-e073-45a6-95ba-60da477afb35 # Price Range
+            fieldUid: a1aeea18-853e-493d-9338-42e58ca3ae51 # Min
             handle: null
             includeInCards: false
             instructions: null
             label: null
             providesThumbs: false
-            required: false
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e650adef-47b6-473a-9bf5-63de2dd45ede
+            uid: 7bf5d503-3375-4e46-adcc-7c48d0798c2e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-08-10T19:58:38+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: a1aeea18-853e-493d-9338-42e58ca3ae51 # Min
+            handle: max
+            includeInCards: false
+            instructions: null
+            label: Max
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 19620570-ae4b-457f-9c86-97ea34a34b0a
             userCondition: null
             warning: null
             width: 100

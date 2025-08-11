@@ -1,0 +1,90 @@
+{% import '_macros/images.twig' as img %}
+
+<header class="c-header container">
+  <div class="row g-4">
+    <div class="col-12 col-lg-6">
+      <div class="c-header__hero u-uneven">
+        {{ img.responsiveImage(home.hero, {
+          aspectRatio: '9:14',
+          quality: 80,
+          transformHandle: 'img2Webp',
+          onlyFirst: true
+        }) }}
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="c-header__description">
+        {% set title = home.title ?? '' %}
+        {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+        <p>{{ parts[0] }} <span>{{ parts[1] }}</span></p>
+
+        {% set product = craft.products()
+          .type('handbags')
+          .one() %}
+
+        {% if product %}
+          {% set photo = product.productPhotos.all() %}
+          {% if photo %}
+            <div class="c-header__img">
+              {{ img.responsiveImage(photo, {
+                aspectRatio: '9:14',
+                quality: 80,
+                transformHandle: 'img2Webp',
+                onlyFirst: true
+              }) }}
+            </div>
+          {% endif %}
+        {% endif %}
+        <div class="c-header__filter">
+          <p>
+            I am looking for a
+            <label>
+              {% set styles = craft.categories()
+                .group('style')
+                .all() %}
+              <select class="js-style-options" name="bagType">
+                {% for style in styles %}
+                  <option value="{{ style.slug }}">{{ style.title }}</option>
+                {% endfor %}
+              </select>
+            </label>
+
+            bag between
+            <label>
+              {% set prices = craft.categories()
+                .group('price')
+                .all() %}
+
+              <select name="priceRange" class="js-price-options">
+                {% for price  in prices %}
+
+                  <option
+                    value="{{ price.slug }}">{{ price.min|money }} -
+                    {{ price.max|money }}
+                  </option>
+                {% endfor %}
+
+              </select>
+            </label>
+            from the
+            <label>
+              {% set collections = craft.categories()
+                .group('collection')
+                .all() %}
+              <select name="collections" class="js-collection-options">
+                {% for collection in collections %}
+                  <option value="{{ collection.slug }}"><p>{{ collection.title }}</p></option>
+                {% endfor %}
+              </select>
+            </label>
+            collection.
+          </p>
+
+          <a class="c-btn js-search-filters"
+             href="/shop?style[0]=top-handle-bags&collection[0]=balenciaga&price[1]=low-budget">{{ home.search }}</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

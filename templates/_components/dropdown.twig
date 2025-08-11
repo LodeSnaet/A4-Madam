@@ -1,7 +1,12 @@
 {% set baseUrl = craft.app.request.getPathInfo() %}
 {% set allParams = craft.app.request.getQueryParams() %}
 {% set key = dropdown.title|kebab %}
-{% set selected = (allParams[key] ?? '')|split(',')|filter(v => v != '') %}
+
+{# Set whether multiple filters are allowed #}
+{% set multipleFiltersAllowed = key in ['colour', 'condition',  'style'] %}
+
+{# Directly access the query parameter as an array #}
+{% set selected = allParams[key] ?? [] %}
 
 <div class="c-dropdown js-dropdown">
   <p class="c-dropdown__title js-dropdown-btn">{{ dropdown.title }}</p>
@@ -10,19 +15,25 @@
     {% for filter in dropdown.filters %}
       {% set val = filter.title|kebab %}
       {% set isActive = val in selected %}
-      {% set newSelected = isActive ? selected|filter(v => v != val) : selected|merge([val]) %}
 
-      {# Copy all other params except the current key #}
+      {# Construct the new array of selected values #}
+      {% if multipleFiltersAllowed %}
+        {% set newSelected = isActive ? selected|filter(v => v != val) : selected|merge([val]) %}
+      {% else %}
+        {% set newSelected = isActive ? [] : [val] %}
+      {% endif %}
+
+      {# Rebuild the newParams array without the old key #}
       {% set newParams = {} %}
       {% for groupKey, groupVal in allParams %}
         {% if groupKey != key and groupVal is not empty %}
-          {% set newParams = newParams | merge({ (groupKey): groupVal }) %}
+          {% set newParams = newParams|merge({ (groupKey): groupVal }) %}
         {% endif %}
       {% endfor %}
 
-      {# Add the key only if newSelected has values #}
+      {# Add the newSelected array to your query parameters #}
       {% if newSelected is not empty %}
-        {% set newParams = newParams | merge({ (key): newSelected|join(',') }) %}
+        {% set newParams = newParams|merge({ (key): newSelected }) %}
       {% endif %}
 
       {% set link = url(baseUrl, newParams) %}

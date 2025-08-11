@@ -9,6 +9,7 @@ import "./email";
 import "./dropdown";
 import "./sortby";
 import "./popover-anchor-pollyfill";
+import "./hero-filter";
 
 const init = function () {
   console.log("Hello World!");

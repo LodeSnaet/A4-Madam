@@ -175,6 +175,29 @@ productFieldLayouts:
             warning: null
             width: 25
           -
+            dateAdded: '2025-08-11T00:15:43+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: e8a1789f-43b8-4844-9955-d0a77ecb961c # Price
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8fc2bb01-8d56-4c94-83ac-7733a46371e2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-08-11T00:15:43+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 8c98cc82-66cb-4e0d-aa0f-d6a7f61ce27d
+            userCondition: null
+          -
             dateAdded: '2025-08-09T14:25:07+00:00'
             editCondition: null
             elementCondition: null

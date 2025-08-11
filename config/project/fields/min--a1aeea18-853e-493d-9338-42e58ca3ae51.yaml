@@ -1,0 +1,15 @@
+columnSuffix: null
+handle: min
+instructions: null
+name: Min
+searchable: false
+settings:
+  currency: EUR
+  defaultValue: 0
+  max: null
+  min: 0
+  showCurrency: true
+  size: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Money

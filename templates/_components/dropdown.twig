@@ -2,14 +2,11 @@
 {% set allParams = craft.app.request.getQueryParams() %}
 {% set key = dropdown.title|kebab %}
 
-{# Set whether multiple filters are allowed based on handle #}
-{% if key in [ 'colour', 'condition', 'material',  'style'] %}
-  {% set multipleFiltersAllowed = true %}
-{% else %}
-  {% set multipleFiltersAllowed = false %}
-{% endif %}
+{# Set whether multiple filters are allowed #}
+{% set multipleFiltersAllowed = key in ['colour', 'condition',  'style'] %}
 
-{% set selected = (allParams[key] ?? '')|split(',')|filter(v => v != '') %}
+{# Directly access the query parameter as an array #}
+{% set selected = allParams[key] ?? [] %}
 
 <div class="c-dropdown js-dropdown">
   <p class="c-dropdown__title js-dropdown-btn">{{ dropdown.title }}</p>
@@ -19,24 +16,24 @@
       {% set val = filter.title|kebab %}
       {% set isActive = val in selected %}
 
-      {# Handle single vs multiple selection #}
+      {# Construct the new array of selected values #}
       {% if multipleFiltersAllowed %}
         {% set newSelected = isActive ? selected|filter(v => v != val) : selected|merge([val]) %}
       {% else %}
         {% set newSelected = isActive ? [] : [val] %}
       {% endif %}
 
-      {# Copy all other params except the current key #}
+      {# Rebuild the newParams array without the old key #}
       {% set newParams = {} %}
       {% for groupKey, groupVal in allParams %}
         {% if groupKey != key and groupVal is not empty %}
-          {% set newParams = newParams | merge({ (groupKey): groupVal }) %}
+          {% set newParams = newParams|merge({ (groupKey): groupVal }) %}
         {% endif %}
       {% endfor %}
 
-      {# Add the key only if newSelected has values #}
+      {# Add the newSelected array to your query parameters #}
       {% if newSelected is not empty %}
-        {% set newParams = newParams | merge({ (key): newSelected|join(',') }) %}
+        {% set newParams = newParams|merge({ (key): newSelected }) %}
       {% endif %}
 
       {% set link = url(baseUrl, newParams) %}

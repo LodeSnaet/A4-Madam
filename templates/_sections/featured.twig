@@ -1,14 +1,52 @@
 {% import '_macros/images.twig' as img %}
 
+
+{% set featuredCollection = section.collection2.one() %}
+
+{% set products = craft.products()
+  .relatedTo(featuredCollection)
+  .with(['productPhotos'])
+  .orderBy('RAND()')
+  .all() %}
+
+{% set images = [] %}
+
+{% if products|length == 1 %}
+  {# Case 1: Only 1 product - get up to 4 random images from it #}
+  {% set images = products[0].productPhotos|shuffle|slice(0, 4) %}
+{% else %}
+  {# Case 2: Multiple products - get first image from each #}
+  {% set count = 0 %}
+  {% for product in products %}
+    {% if count < 4 %}
+      {% set image = product.productPhotos.one() %}
+      {% if image %}
+        {% set images = images|merge([image]) %}
+        {% set count = count + 1 %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {# Fill with extras if still less than 4 #}
+  {% if images|length < 4 %}
+    {% set allImages = [] %}
+    {% for product in products %}
+      {% set allImages = allImages|merge(product.productPhotos.all()) %}
+    {% endfor %}
+    {% set remaining = allImages|filter(image => image not in images) %}
+    {% set images = images|merge(remaining|shuffle|slice(0, 4 - images|length)) %}
+  {% endif %}
+{% endif %}
+
 <section class="c-feature container">
   <div class="c-feature__description">
-    {% set title = section.title|kebab %}
-    <h2>{{ section.title }}</h2>
-    <a class="c-btn" href="{{ section.collection.url }}?collection={{ title }}">{{ section.collection.label }}</a>
+    <h2>{{ featuredCollection.title }}</h2>
+    <a class="c-btn"
+       href="/{{ featuredCollection.uri }}">{{ section.buttonLabel }}</a>
   </div>
 
   <div class="c-feature__imgs">
-    {{ img.responsiveImage(section.featured, {
+    {{ img.responsiveImage(images, {
       aspectRatio: '1:1',
       quality: 80,
       transformHandle: 'img2Webp'

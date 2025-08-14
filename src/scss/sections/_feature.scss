@@ -21,11 +21,13 @@
     h2 {
       font-family: "Chapman", sans-serif;
       font-size: var(--h1-font-size);
+      line-height: 130px;
+      text-align: center;
       text-transform: uppercase;
     }
 
     a {
-      background-color: var(--background-30-color);
+      background-color: var(--background-90-color);
     }
   }
 

@@ -11,9 +11,9 @@ settings:
   branchLimit: null
   defaultPlacement: end
   defaultUploadLocationSource: 'volume:8b62c7dd-2811-43a9-b770-a9f0a3e09a4e' # Product photos
-  defaultUploadLocationSubpath: /productphotos
+  defaultUploadLocationSubpath: '/{slug}'
   maintainHierarchy: false
-  maxRelations: 3
+  maxRelations: null
   minRelations: null
   previewMode: full
   restrictFiles: false

@@ -5,9 +5,16 @@ orderCondition:
   class: craft\commerce\elements\conditions\orders\GatewayOrderCondition
   elementType: craft\commerce\elements\Order
   fieldContext: global
-paymentType: purchase
+paymentType: authorize
 settings:
   apiKey: $MOLLIE_API_KEY
-  sendCartInfo: false
+  carrier: ''
+  completeBanktransferOrders: false
+  profileId: $VITE_MOLLIE_PROFILE_ID
+  sendCartInfo: true
+  testMode: '0'
+  trackAndTrace: ''
+  trackingEnabled: false
+  trackingUrl: ''
 sortOrder: 99
-type: craft\commerce\mollie\gateways\Gateway
+type: white\commerce\mollie\plus\gateways\Gateway

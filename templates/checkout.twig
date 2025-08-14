@@ -2,12 +2,17 @@
 
 {% set cart = craft.commerce.carts.cart %}
 {% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+{% set paymentNamespace = 'paymentForm' %}
 
 {% block main %}
     <section class="container">
         {% if cart and cart.lineItems|length %}
             <h2>Payment Information</h2>
-            <form method="post" class="c-checkout" id="mcForm">
+            <form method="post" class="c-checkout" id="{{ paymentNamespace }}">
+                {{ csrfInput() }}
+                {{ actionInput('commerce/payments/pay') }}
+                {{ redirectInput('success') }}
+                {{ hiddenInput('gatewayId', gateway.id) }}
                 <div class="c-checkout__fields">
                     <div class="c-checkout__element">
                         <label for="card-holder">Name</label>
@@ -35,11 +40,11 @@
                     </div>
                 </div>
 
-                <button class="c-btn" id="submit-button" type="submit">
+                <button class="c-btn" id="{{ paymentNamespace }}-submit" type="submit">
                     Pay {{ cart.totalPrice|commerceCurrency }}
                 </button>
 
-                <div id="form-error" class="field-error"></div>
+                <div id="{{ paymentNamespace }}-form-error" class="field-error"></div>
             </form>
         {% else %}
             <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>

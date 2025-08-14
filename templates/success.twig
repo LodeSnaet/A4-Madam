@@ -11,17 +11,15 @@
        <h1>Your Completed Order</h1>
 
        <ul>
-         <li>
-           <strong>Order #{{ order.number }}</strong>
-           <ul>
-             {% for item in order.lineItems %}
-               <li>
-                 ({{ item.qty }}) {{ item.sku }} – {{ item.subtotal | commerceCurrency }}
-               </li>
-             {% endfor %}
-           </ul>
-         </li>
+         <strong>Order #{{ order.number }}</strong>
+
+         {% for item in order.lineItems %}
+           <li>
+             ({{ item.qty }}) {{ item.snapshot.title }} – {{ item.subtotal | commerceCurrency }}
+           </li>
+         {% endfor %}
        </ul>
+
      </section>
    {% else %}
      <p>No completed orders found.</p>

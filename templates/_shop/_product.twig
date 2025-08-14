@@ -2,7 +2,6 @@
 
 {% block main %}
 
-
   <section class="c-productdetail">
     {% import '_macros/images.twig' as img %}
 
@@ -33,20 +32,10 @@
                 description: product.title ?? '',
                 additionalClasses: 'c-shop__title'
               } %}
-              <p class="c-productdetail__price">{{ product.defaultPrice|commerceCurrency }}</p>
 
-              {% if product.defaultVariant %}
-                <form method="post">
-                  {{ csrfInput() }}
-                  {{ actionInput('commerce/cart/update-cart') }}
-                  <input aria-label="productId" type="hidden" name="purchasableId"
-                         value="{{ product.defaultVariant.id }}" />
-                  <input aria-label="Quantity" type="hidden" name="qty" value="1" step="1" min="1">
-                  <button class="c-btn">Add item</button>
-                </form>
-              {% else %}
-                <p>This product is currently unavailable for purchase.</p>
-              {% endif %}
+
+              {% include '_components/_productform' with {products: product.variants} %}
+
             </div>
 
             <div class="c-productdetail__table">

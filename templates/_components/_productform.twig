@@ -1,0 +1,30 @@
+{% if products|length %}
+  <form method="post">
+    {{ csrfInput() }}
+    {{ actionInput('commerce/cart/update-cart') }}
+    <input type="hidden" name="qty" value="1">
+    <div class="c-productdetail__variants">
+
+      {% if products|length > 1 %}
+        <select name="purchasableId" aria-label="product variants">
+          {% for variant in products %}
+            <option value="{{ variant.id }}">
+              {{ variant.price|commerceCurrency }}
+              {% if variant.stock <= 0 %}
+                (Out of Stock)
+              {% endif %}
+            </option>
+          {% endfor %}
+        </select>
+      {% else %}
+        <p class="c-productdetail__price">
+          {{ products[0].price|commerceCurrency }}
+        </p>
+        <input type="hidden" name="purchasableId" value="{{ products[0].id }}">
+      {% endif %}
+
+      <button type="submit" class="c-btn">Add to Cart</button>
+    </div>
+
+  </form>
+{% endif %}

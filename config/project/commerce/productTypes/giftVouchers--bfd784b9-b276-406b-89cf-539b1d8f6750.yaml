@@ -136,8 +136,8 @@ siteSettings:
   f3f391fe-c122-4353-8066-f4933e71a5bb: # A4-Madam-LodeSnaet
     enabledByDefault: true
     hasUrls: true
-    template: ''
-    uriFormat: 'gift-vouchers/{slug}'
+    template: _shop/_giftvoucher.twig
+    uriFormat: 'shop/{slug}'
 skuFormat: ''
 variantFieldLayouts:
   41aebddb-269f-420b-8a17-a75a5c413ab6:

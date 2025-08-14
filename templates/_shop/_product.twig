@@ -16,7 +16,7 @@
 
         <div class="col-12 col-lg-4">
           <div class="c-productdetail__imgs">
-            {{ img.responsiveImage(product.productPhotos, {
+            {{ img.responsiveImage(product.productPhotos.limit(3), {
               aspectRatio: '9:14',
               quality: 80,
               transformHandle: 'img2Webp',

@@ -8,58 +8,28 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
-            autocapitalize: true
-            autocomplete: false
-            autocorrect: true
-            class: null
-            dateAdded: '2025-08-05T13:29:51+00:00'
-            disabled: false
-            elementCondition: null
-            id: null
-            includeInCards: false
-            inputType: null
-            instructions: null
-            label: null
-            max: null
-            min: null
-            name: null
-            orientation: null
-            placeholder: null
-            providesThumbs: false
-            readonly: false
-            required: true
-            size: null
-            step: null
-            tip: null
-            title: null
-            type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 521f6f90-e243-4cee-ac81-f25681fea368
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-08-05T13:32:38+00:00'
+            dateAdded: '2025-08-14T09:39:25+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: 5f8cfd88-460f-4387-b1d1-c4c7408c39a9 # Blog Link
-            handle: collection
+            fieldUid: d25a7f51-e4af-4763-baae-3e8889bfb788 # Copyright
+            handle: buttonLabel
             includeInCards: false
             instructions: null
-            label: Collection
+            label: 'Button label'
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e57a6a27-14f6-43ab-a851-2dff98697c85
+            uid: 407a6210-4823-4883-8efb-3b0b1efe10e8
             userCondition: null
             warning: null
             width: 100
           -
-            dateAdded: '2025-08-05T13:40:46+00:00'
+            dateAdded: '2025-08-14T08:51:38+00:00'
             editCondition: null
             elementCondition: null
-            fieldUid: 3c2a8ec8-0af0-410c-8825-09cc1334b3a6 # Featured
-            handle: null
+            fieldUid: fcc24a04-69b5-4437-b473-3fb2d2fd38a7 # Collection
+            handle: collection2
             includeInCards: false
             instructions: null
             label: null
@@ -67,7 +37,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 42e90bb8-ceb5-4bac-8025-9fd5e46fad7d
+            uid: 920a4bbf-6afd-4b34-812a-ff53b2213990
             userCondition: null
             warning: null
             width: 100
@@ -75,7 +45,7 @@ fieldLayouts:
         uid: 5714932f-228d-4fb6-9a7e-29264a2edf80
         userCondition: null
 handle: featuredCollection
-hasTitleField: true
+hasTitleField: false
 icon: grid-dividers
 name: 'Featured Collection'
 showSlugField: true

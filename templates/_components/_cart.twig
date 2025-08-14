@@ -22,14 +22,18 @@
 
   <div class="c-cart__body">
     <ul>
-      {% for lineItem in cart.lineItems %}
-        <li>
-          ({{ lineItem.qty }}) {{ lineItem.sku }} -
-          {{ lineItem.subtotal|commerceCurrency }}
-        </li>
-      {% else %}
-        <li>Your cart is empty.</li>
-      {% endfor %}
+      {% if cart.lineItems| length >= 1 %}
+
+
+        {% for lineItem in cart.lineItems %}
+          <li>
+            ({{ lineItem.qty }}) {{ lineItem.snapshot.title }} -
+            {{ lineItem.subtotal|commerceCurrency }}
+          </li>
+        {% else %}
+          <li>Your cart is empty.</li>
+        {% endfor %}
+      {% endif %}
     </ul>
 
     <hr>

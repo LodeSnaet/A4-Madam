@@ -1,3 +1,42 @@
-<section>
-  <h2>{{ product.title }}</h2>
-</section>
+{% extends '_shared/_layout.twig' %}
+
+{% block main %}
+
+
+  <section class="c-productdetail">
+    {% import '_macros/images.twig' as img %}
+
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-3">
+          <div class="c-productdetail__btn">
+            <a href="/shop" class="c-btn">Back to Overview</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <div class="c-productdetail__imgs">
+            {{ img.responsiveImage(product.productPhotos.limit(3), {
+              aspectRatio: '9:14',
+              quality: 80,
+              transformHandle: 'img2Webp',
+              onlyFirst: false
+            }) }}
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-5">
+          <div class="c-productdetail__info">
+            <div class="c-productdetail__title">
+              <h2>{{ product.title }}</h2>
+              {% include '_components/_productform' with {products: product.variants} %}
+            </div>
+
+            <p>{{ product.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

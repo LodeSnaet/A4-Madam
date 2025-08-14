@@ -13,6 +13,16 @@
     gap: 5rem;
   }
 
+  &__variants {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    select {
+      width: fit-content;
+    }
+  }
+
   &__table {
     display: flex;
     flex-direction: column;

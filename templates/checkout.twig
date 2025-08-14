@@ -1,0 +1,50 @@
+{% extends '_shared/_layout.twig' %}
+
+{% set cart = craft.commerce.carts.cart %}
+{% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+
+{% set mollieComponentsProfileId = getenv('MOLLIE_API_KEY_PUBLIC') %}
+
+{% block main %}
+  <section class="container">
+    {% if cart and cart.lineItems|length %}
+
+      <div class="c-checkout__summary">
+        <h1>Order Summary</h1>
+        <ul>
+          {% for lineItem in cart.lineItems %}
+            <li>
+              ({{ lineItem.qty }}) {{ lineItem.snapshot.title }} - {{ lineItem.subtotal|commerceCurrency }}
+            </li>
+          {% endfor %}
+        </ul>
+        <p><strong>Total:</strong> {{ cart.totalPrice|commerceCurrency }}</p>
+      </div>
+
+      <hr>
+
+      <h2>Payment Information</h2>
+      <form id="payment-form" method="post">
+        {{ csrfInput() }}
+        {{ actionInput('commerce/payments/pay') }}
+        {{ redirectInput('checkout/success') }}
+
+        {# Hidden fields for the payment action #}
+        <input type="hidden" name="gatewayId" value="{{ gateway.id }}">
+        <input type="hidden" name="orderId" value="{{ cart.id }}">
+        <input type="hidden" name="payment[cardToken]" id="card-token">
+
+        {# Placeholder for Mollie Components #}
+        <div class="form-group">
+          <label for="card">Card details</label>
+          <div id="card"></div>
+        </div>
+
+        <button class="c-btn" type="submit">Pay Now</button>
+      </form>
+
+    {% else %}
+      <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>
+    {% endif %}
+  </section>
+{% endblock %}

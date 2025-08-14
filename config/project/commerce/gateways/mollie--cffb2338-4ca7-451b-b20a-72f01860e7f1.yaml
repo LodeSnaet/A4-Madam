@@ -7,7 +7,7 @@ orderCondition:
   fieldContext: global
 paymentType: purchase
 settings:
-  apiKey: test_Jk9NVg2QQeM9JK4m8Pud7Rq2vmej5G
+  apiKey: $MOLLIE_API_KEY
   sendCartInfo: false
 sortOrder: 99
 type: craft\commerce\mollie\gateways\Gateway

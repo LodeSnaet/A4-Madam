@@ -1,0 +1,21 @@
+.c-checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    background-color: var(--text-white-color);
+    padding-block: 0.5rem;
+    padding-inline: 0.3rem;
+  }
+}

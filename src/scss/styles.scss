@@ -18,13 +18,16 @@
 @import "sections/header";
 @import "sections/shop";
 
-// ****** COMPONENTS ******
+// ****** NAVIGATION ******
 @import "components/navigation/breadcrumbs";
 @import "components/navigation/footer";
 @import "components/navigation/navbar";
 @import "components/navigation/menu";
 @import "components/navigation/btn";
+
+// ****** COMPONENTS ******
 @import "components/dropdown";
+@import "components/checkout";
 @import "components/product";
 @import "components/sortby";
 @import "components/review";

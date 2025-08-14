@@ -3,48 +3,46 @@
 {% set cart = craft.commerce.carts.cart %}
 {% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
 
-{% set mollieComponentsProfileId = getenv('MOLLIE_API_KEY_PUBLIC') %}
-
 {% block main %}
-  <section class="container">
-    {% if cart and cart.lineItems|length %}
+    <section class="container">
+        {% if cart and cart.lineItems|length %}
+            <h2>Payment Information</h2>
+            <form method="post" class="c-checkout" id="mcForm">
+                <div class="c-checkout__fields">
+                    <div class="c-checkout__element">
+                        <label for="card-holder">Name</label>
+                        <div class="c-checkout__input" id="card-holder"></div>
+                        <div id="card-holder-error" class="field-error"></div>
+                    </div>
 
-      <div class="c-checkout__summary">
-        <h1>Order Summary</h1>
-        <ul>
-          {% for lineItem in cart.lineItems %}
-            <li>
-              ({{ lineItem.qty }}) {{ lineItem.snapshot.title }} - {{ lineItem.subtotal|commerceCurrency }}
-            </li>
-          {% endfor %}
-        </ul>
-        <p><strong>Total:</strong> {{ cart.totalPrice|commerceCurrency }}</p>
-      </div>
+                    <div class="c-checkout__element">
+                        <p>4111 1111 1111 1111</p>
+                        <label for="card-number">Card number</label>
+                        <div class="c-checkout__input" id="card-number"></div>
+                        <div id="card-number-error" class="field-error"></div>
+                    </div>
 
-      <hr>
+                    <div class="c-checkout__element">
+                        <label for="expiry-date">Expiry date</label>
+                        <div class="c-checkout__input" id="expiry-date"></div>
+                        <div id="expiry-date-error" class="field-error"></div>
+                    </div>
 
-      <h2>Payment Information</h2>
-      <form id="payment-form" method="post">
-        {{ csrfInput() }}
-        {{ actionInput('commerce/payments/pay') }}
-        {{ redirectInput('checkout/success') }}
+                    <div class="c-checkout__element">
+                        <label for="verification-code">CVC</label>
+                        <div class="c-checkout__input" id="verification-code"></div>
+                        <div id="verification-code-error" class="field-error"></div>
+                    </div>
+                </div>
 
-        {# Hidden fields for the payment action #}
-        <input type="hidden" name="gatewayId" value="{{ gateway.id }}">
-        <input type="hidden" name="orderId" value="{{ cart.id }}">
-        <input type="hidden" name="payment[cardToken]" id="card-token">
+                <button class="c-btn" id="submit-button" type="submit">
+                    Pay {{ cart.totalPrice|commerceCurrency }}
+                </button>
 
-        {# Placeholder for Mollie Components #}
-        <div class="form-group">
-          <label for="card">Card details</label>
-          <div id="card"></div>
-        </div>
-
-        <button class="c-btn" type="submit">Pay Now</button>
-      </form>
-
-    {% else %}
-      <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>
-    {% endif %}
-  </section>
+                <div id="form-error" class="field-error"></div>
+            </form>
+        {% else %}
+            <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>
+        {% endif %}
+    </section>
 {% endblock %}

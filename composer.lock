@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfeed8bc02a9985d9be7033b9fdd35af",
+    "content-hash": "2a28f3a80f9202093a17cf8d9f5c4b5c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2389,119 +2389,6 @@
                 "ws"
             ],
             "time": "2024-12-08T08:18:47+00:00"
-        },
-        {
-            "name": "lewisjenkins/craft-range-slider",
-            "version": "5.0.0",
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lewisjenkins/craft-range-slider/zipball/b5fb4cfbe0d44370bca16a26e06989421a7d03af",
-                "reference": "b5fb4cfbe0d44370bca16a26e06989421a7d03af",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^5.0.0"
-            },
-            "type": "craft-plugin",
-            "extra": {
-                "name": "LJ Range Slider",
-                "handle": "craft-range-slider",
-                "developer": "Lewis Jenkins",
-                "developerUrl": "https://lj.io",
-                "hasCpSettings": false,
-                "hasCpSection": false,
-                "changelogUrl": "https://raw.githubusercontent.com/lewisjenkins/craft-range-slider/master/CHANGELOG.md",
-                "class": "lewisjenkins\\craftrangeslider\\CraftRangeSlider"
-            },
-            "autoload": {
-                "psr-4": {
-                    "lewisjenkins\\craftrangeslider\\": "src/"
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Lewis Jenkins",
-                    "homepage": "https://lj.io"
-                }
-            ],
-            "description": "An easy-to-use, flexible and responsive range slider for Craft CMS.",
-            "keywords": [
-                "cms",
-                "craft",
-                "craft range slider",
-                "craft-plugin",
-                "craftcms",
-                "lj range slider"
-            ],
-            "support": {
-                "docs": "https://github.com/lewisjenkins/craft-range-slider/blob/master/README.md",
-                "issues": "https://github.com/lewisjenkins/craft-range-slider/issues",
-                "email": "lewis@lj.io"
-            },
-            "time": "2024-03-27T21:30:24+00:00"
-        },
-        {
-            "name": "lode-snaet/craft-icon-picker",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LodeSnaet/IconPicker.git",
-                "reference": "0e18dbc7881e895cbc8047b975637b70384d8053"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LodeSnaet/IconPicker/zipball/0e18dbc7881e895cbc8047b975637b70384d8053",
-                "reference": "0e18dbc7881e895cbc8047b975637b70384d8053",
-                "shasum": ""
-            },
-            "require": {
-                "craftcms/cms": "^5.8.0",
-                "php": ">=8.2"
-            },
-            "require-dev": {
-                "craftcms/ecs": "dev-main",
-                "craftcms/phpstan": "dev-main"
-            },
-            "default-branch": true,
-            "type": "craft-plugin",
-            "extra": {
-                "handle": "icon-picker",
-                "name": "IconPicker",
-                "developer": "LodeSnaet",
-                "documentationUrl": "https://github.com/lodesnaet/iconpicker.git",
-                "class": "lodesnaet\\crafticonpicker\\IconPicker"
-            },
-            "autoload": {
-                "psr-4": {
-                    "lodesnaet\\crafticonpicker\\": "src/"
-                }
-            },
-            "scripts": {
-                "check-cs": [
-                    "ecs check --ansi"
-                ],
-                "fix-cs": [
-                    "ecs check --ansi --fix"
-                ],
-                "phpstan": [
-                    "phpstan --memory-limit=1G"
-                ]
-            },
-            "license": [
-                "proprietary"
-            ],
-            "description": "This plugin lets you configure a fontawesome kit.",
-            "support": {
-                "email": "lode.snaet@outlook.com",
-                "issues": "https://github.com/lodesnaet/iconpicker.git/issues?state=open",
-                "source": "https://github.com/lodesnaet/iconpicker.git",
-                "docs": "https://github.com/lodesnaet/iconpicker.git",
-                "rss": "https://github.com/lodesnaet/iconpicker.git/releases.atom"
-            },
-            "time": "2025-08-10T12:42:40+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -8485,6 +8372,57 @@
             "time": "2023-07-05T14:23:37+00:00"
         },
         {
+            "name": "white-nl/commerce-mollie-plus",
+            "version": "3.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/white-nl/commerce-mollie-plus/zipball/ffe49c8e2f190d84bd6b64e88262ff1867cd3acd",
+                "reference": "ffe49c8e2f190d84bd6b64e88262ff1867cd3acd",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^5.0.0",
+                "craftcms/commerce": "^5.0.0",
+                "craftcms/commerce-omnipay": "^4.1.0",
+                "nystudio107/craft-code-editor": "^1.0",
+                "omnipay/mollie": "^5.5",
+                "php": "^8.2"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "handle": "commerce-mollie-plus",
+                "name": "Commerce Mollie Plus",
+                "developer": "Digital Agency WHITE",
+                "developerUrl": "https://white.nl",
+                "hasCpSettings": false,
+                "hasCpSection": false,
+                "class": "white\\commerce\\mollie\\plus\\CommerceMolliePlusPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "white\\commerce\\mollie\\plus\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Digital Agency WHITE",
+                    "homepage": "https://white.nl"
+                }
+            ],
+            "description": "Commerce Mollie Plus Plugin for Craft 5",
+            "keywords": [
+                "commerce",
+                "craftcms",
+                "mollie",
+                "omnipay",
+                "yii2"
+            ],
+            "time": "2024-09-16T11:39:48+00:00"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "2.0.52",
             "source": {
@@ -9489,9 +9427,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "lode-snaet/craft-icon-picker": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

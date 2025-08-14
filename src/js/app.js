@@ -10,7 +10,7 @@ import "./dropdown";
 import "./sortby";
 import "./popover-anchor-pollyfill";
 import "./hero-filter";
-// import "./mollie-checkout";
+import "./mollie-checkout";
 
 const init = function () {
   console.log("Hello World!");

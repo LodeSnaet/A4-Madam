@@ -1,30 +1,31 @@
-export default function initMollie() {
+/**
+ * Initializes the Mollie payment form, handling dynamic field display
+ * and secure credit card tokenization via Mollie Components.
+ */
+function initMollie() {
+  const form = document.querySelector("#paymentForm");
+  const wrapper = document.querySelector(".mollie-plus-form");
+
+  if (!form || !wrapper) {
+    console.error("Form or wrapper not found!");
+    return;
+  }
+
   if (typeof Mollie === "undefined") {
     setTimeout(initMollie, 200);
     return;
   }
 
-  const form = document.querySelector("#paymentForm");
-  const wrapper = document.querySelector(".mollie-plus-form");
-  if (!form || !wrapper) return;
+  const submitButton = document.getElementById("paymentForm-submit");
+  const formError = document.getElementById("paymentForm-form-error");
 
-  const paymentFormNamespace = "paymentForm";
-  const submitButton = document.getElementById(
-    paymentFormNamespace + "-submit",
-  );
-  const formError = document.getElementById(
-    paymentFormNamespace + "-form-error",
-  );
-
+  const paymentFormNamespace = wrapper.dataset.paymentFormNamespace;
+  const paymentNamespace = wrapper.dataset.paymentNamespace;
   const profileId = wrapper.dataset.profileId;
   const locale = wrapper.dataset.locale;
-  const testMode =
-    wrapper.dataset.testMode === "1" || wrapper.dataset.testMode === "true";
+  const testMode = wrapper.dataset.testMode;
 
-  const mollie = Mollie(profileId, {
-    locale: locale,
-    testmode: testMode,
-  });
+  const mollie = Mollie(profileId, { locale: locale, testmode: testMode });
 
   const options = {
     styles: {
@@ -44,41 +45,41 @@ export default function initMollie() {
       return;
     }
 
-    mollieComponents.cardHolder = mollie.createComponent("cardHolder", options);
-    mollieComponents.cardHolder.mount("#card-holder");
-    const cardHolderError = document.getElementById("card-holder-error");
-    mollieComponents.cardHolder.addEventListener("change", (event) => {
-      cardHolderError.textContent =
-        event.error && event.touched ? event.error : "";
-    });
+    const componentConfigs = [
+      {
+        name: "cardHolder",
+        id: `#${paymentNamespace}-card-holder`,
+        errorId: `#${paymentNamespace}-card-holder-error`,
+      },
+      {
+        name: "cardNumber",
+        id: `#${paymentNamespace}-card-number`,
+        errorId: `#${paymentNamespace}-card-number-error`,
+      },
+      {
+        name: "expiryDate",
+        id: `#${paymentNamespace}-expiry-date`,
+        errorId: `#${paymentNamespace}-expiry-date-error`,
+      },
+      {
+        name: "verificationCode",
+        id: `#${paymentNamespace}-verification-code`,
+        errorId: `#${paymentNamespace}-verification-code-error`,
+      },
+    ];
 
-    mollieComponents.cardNumber = mollie.createComponent("cardNumber", options);
-    mollieComponents.cardNumber.mount("#card-number");
-    const cardNumberError = document.getElementById("card-number-error");
-    mollieComponents.cardNumber.addEventListener("change", (event) => {
-      cardNumberError.textContent =
-        event.error && event.touched ? event.error : "";
-    });
+    componentConfigs.forEach((config) => {
+      const component = mollie.createComponent(config.name, options);
+      component.mount(config.id);
+      mollieComponents[config.name] = component;
 
-    mollieComponents.expiryDate = mollie.createComponent("expiryDate", options);
-    mollieComponents.expiryDate.mount("#expiry-date");
-    const expiryDateError = document.getElementById("expiry-date-error");
-    mollieComponents.expiryDate.addEventListener("change", (event) => {
-      expiryDateError.textContent =
-        event.error && event.touched ? event.error : "";
-    });
-
-    mollieComponents.verificationCode = mollie.createComponent(
-      "verificationCode",
-      options,
-    );
-    mollieComponents.verificationCode.mount("#verification-code");
-    const verificationCodeError = document.getElementById(
-      "verification-code-error",
-    );
-    mollieComponents.verificationCode.addEventListener("change", (event) => {
-      verificationCodeError.textContent =
-        event.error && event.touched ? event.error : "";
+      const errorElement = document.querySelector(config.errorId);
+      component.addEventListener("change", (event) => {
+        if (errorElement) {
+          errorElement.textContent =
+            event.error && event.touched ? event.error : "";
+        }
+      });
     });
   }
 
@@ -90,38 +91,28 @@ export default function initMollie() {
   }
 
   const paymentMethodRadios = form.querySelectorAll(
-    'input[name="paymentMethod"]',
+    'input[name="' + paymentFormNamespace + '[paymentMethod]"]',
   );
-  const dynamicFieldsContainer = document.getElementById(
-    "dynamic-payment-fields",
-  );
-  const fieldContainers = dynamicFieldsContainer
-    ? dynamicFieldsContainer.querySelectorAll("div[id^='fields-']")
-    : [];
+  const dynamicFields = form.querySelectorAll(".c-checkout__fields");
 
   function resetFormState() {
-    fieldContainers.forEach((container) => {
-      container.style.display = "none";
-    });
+    dynamicFields.forEach((field) => (field.style.display = "none"));
     unmountMollieComponents();
   }
 
   function updateFormState() {
-    let selectedMethod = null;
-    paymentMethodRadios.forEach((radio) => {
-      if (radio.checked) {
-        selectedMethod = radio.value;
-      }
-    });
-
     resetFormState();
-
-    if (selectedMethod) {
-      const selectedFields = document.getElementById(
+    const selectedRadio = form.querySelector(
+      'input[name="' + paymentFormNamespace + '[paymentMethod]"]:checked',
+    );
+    if (selectedRadio) {
+      const selectedMethod = selectedRadio.value.toLowerCase();
+      const selectedFieldsContainer = document.getElementById(
         `fields-${selectedMethod}`,
       );
-      if (selectedFields) {
-        selectedFields.style.display = "block";
+
+      if (selectedFieldsContainer) {
+        selectedFieldsContainer.style.display = "grid";
         if (selectedMethod === "creditcard") {
           mountMollieComponents();
         }
@@ -133,35 +124,50 @@ export default function initMollie() {
     radio.addEventListener("change", updateFormState);
   });
 
-  updateFormState();
-
   form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    const selectedRadio = form.querySelector(
+      'input[name="' + paymentFormNamespace + '[paymentMethod]"]:checked',
+    );
+    const selectedMethod = selectedRadio
+      ? selectedRadio.value.toLowerCase()
+      : null;
 
-    submitButton.disabled = true;
+    if (!selectedMethod) {
+      e.preventDefault();
+      formError.textContent = "Please select a payment method.";
+      return;
+    }
+
     formError.textContent = "";
 
-    const selectedMethod = form.querySelector(
-      'input[name="paymentMethod"]:checked',
-    ).value;
-
     if (selectedMethod === "creditcard") {
-      const { token, error } = await mollie.createToken();
-      if (error) {
+      e.preventDefault();
+      submitButton.disabled = true;
+
+      try {
+        const { token, error } = await mollie.createToken();
+
+        if (error) {
+          submitButton.disabled = false;
+          formError.textContent = error.message;
+          return;
+        }
+
+        const tokenInput = document.createElement("input");
+        tokenInput.setAttribute("type", "hidden");
+        tokenInput.setAttribute("name", paymentFormNamespace + "[cardToken]");
+        tokenInput.setAttribute("value", token);
+        form.appendChild(tokenInput);
+
+        form.submit();
+      } catch (error) {
         submitButton.disabled = false;
-        formError.textContent = error.message;
-        return;
+        formError.textContent = "An error occurred during payment processing.";
       }
-
-      const tokenInput = document.createElement("input");
-      tokenInput.setAttribute("type", "hidden");
-      tokenInput.setAttribute("name", "cardToken");
-      tokenInput.setAttribute("value", token);
-      form.appendChild(tokenInput);
-
-      form.submit();
-    } else {
-      form.submit();
     }
   });
+
+  updateFormState();
 }
+
+window.addEventListener("DOMContentLoaded", initMollie);

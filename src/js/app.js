@@ -10,11 +10,10 @@ import "./dropdown";
 import "./sortby";
 import "./popover-anchor-pollyfill";
 import "./hero-filter";
-import initMollie from "./mollie-checkout";
+import "./mollie-checkout";
 
 const init = function () {
   console.log("Hello World!");
-  initMollie();
 };
 
 document.addEventListener("DOMContentLoaded", init);

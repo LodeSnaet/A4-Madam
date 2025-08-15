@@ -1,0 +1,87 @@
+{#
+# This template provides a dynamic payment form for Mollie, supporting multiple
+# payment methods with fields that are shown or hidden based on user selection.
+# It's designed to work with the accompanying JavaScript to handle form state
+# and tokenization for credit card payments.
+#}
+
+{% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+{% set paymentMethods = gateway.fetchPaymentMethods() %}
+{% set paymentNamespace = 'paymentForm' %}
+
+<form method="post" class="c-checkout" id="{{ paymentNamespace }}">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/payments/pay') }}
+  {{ redirectInput('success') }}
+  {{ hiddenInput('cancelUrl', craft.app.security.hashData(url('cancel'))) }}
+  {{ hiddenInput('returnUrl', craft.app.security.hashData(url('return'))) }}
+  {{ hiddenInput('gatewayId', gateway.id) }}
+
+  <div class="mollie-plus-form"
+       data-payment-form-namespace="{{ paymentNamespace }}"
+       data-profile-id="{{ parseEnv(gateway.getProfileId) }}"
+       data-test-mode="{{ parseEnv(gateway.testMode) }}"
+       data-locale="{{ currentSite.locale in ['en_US'] ? currentSite.locale : 'en_US' }}"
+  >
+    {# Loop through the available payment methods to create radio buttons #}
+    {% for method in paymentMethods %}
+      <label class="c-checkout__paymentmethod">
+        {{ input('radio', 'paymentMethod', method.id, {
+          checked: loop.first,
+        }) }}
+        <img src="{{ method.logo }}" alt="{{ method.name }}" />
+      </label>
+    {% endfor %}
+
+    {# Container for dynamically rendered fields #}
+    <div id="dynamic-payment-fields">
+      {% for method in paymentMethods %}
+        {#
+        # Credit Card fields require Mollie.js components to be mounted.
+        #}
+        {% if method.id == 'creditcard' %}
+          <div id="fields-creditcard" class="c-checkout__fields mt-4" style="display: none;">
+            <div class="c-checkout__element">
+              <label class="label" for="card-holder">{{ "Name"|t }}</label>
+              <div class="c-checkout__input" id="card-holder"></div>
+              <div id="card-holder-error" class="field-error" role="alert"></div>
+            </div>
+            <div class="c-checkout__element">
+              <label class="label" for="card-number">{{ "Card number"|t }}</label>
+              <div class="c-checkout__input" id="card-number"></div>
+              <div id="card-number-error" class="field-error" role="alert"></div>
+            </div>
+            <div class="c-checkout__element">
+              <label class="label" for="expiry-date">{{ "Expiry date"|t }}</label>
+              <div class="c-checkout__input" id="expiry-date"></div>
+              <div id="expiry-date-error" class="field-error" role="alert"></div>
+            </div>
+            <div class="c-checkout__element">
+              <label class="label" for="verification-code">{{ "CVC"|t }}</label>
+              <div class="c-checkout__input" id="verification-code"></div>
+              <div id="verification-code-error" class="field-error" role="alert"></div>
+            </div>
+          </div>
+        {% endif %}
+
+        {#
+        # SEPA Direct Debit requires the customer's IBAN.
+        # The method ID for SEPA is 'directdebit'.
+        #}
+        {% if method.id == 'directdebit' %}
+          <div id="fields-directdebit" class="c-checkout__fields mt-4" style="display: none;">
+            <div class="c-checkout__element">
+              <label for="iban">{{ "IBAN"|t }}</label>
+              <input type="text" id="iban" name="iban" placeholder="NL91 ABNA 0417 1643 00">
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <button class="c-btn" id="{{ paymentNamespace }}-submit" type="submit">
+    Pay {{ cart.totalPrice|commerceCurrency }}
+  </button>
+  <div id="{{ paymentNamespace }}-form-error" class="field-error"></div>
+</form>

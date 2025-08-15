@@ -1,6 +1,5 @@
 export default function initMollie() {
   if (typeof Mollie === "undefined") {
-    // Retry initialization if the Mollie script isn't loaded yet.
     setTimeout(initMollie, 200);
     return;
   }
@@ -9,7 +8,6 @@ export default function initMollie() {
   const wrapper = document.querySelector(".mollie-plus-form");
   if (!form || !wrapper) return;
 
-  // These IDs have the 'paymentForm-' prefix, so we keep using the namespace
   const paymentFormNamespace = "paymentForm";
   const submitButton = document.getElementById(
     paymentFormNamespace + "-submit",
@@ -18,7 +16,6 @@ export default function initMollie() {
     paymentFormNamespace + "-form-error",
   );
 
-  // These IDs are static in the HTML, so we don't need the namespace prefix
   const profileId = wrapper.dataset.profileId;
   const locale = wrapper.dataset.locale;
   const testMode =
@@ -40,11 +37,9 @@ export default function initMollie() {
     },
   };
 
-  // Store Mollie components to be able to destroy them
   let mollieComponents = {};
 
   function mountMollieComponents() {
-    // Check if components are already mounted
     if (Object.keys(mollieComponents).length > 0) {
       return;
     }
@@ -94,12 +89,23 @@ export default function initMollie() {
     }
   }
 
-  const creditCardFields = document.getElementById("creditcard-fields");
   const paymentMethodRadios = form.querySelectorAll(
     'input[name="paymentMethod"]',
   );
+  const dynamicFieldsContainer = document.getElementById(
+    "dynamic-payment-fields",
+  );
+  const fieldContainers = dynamicFieldsContainer
+    ? dynamicFieldsContainer.querySelectorAll("div[id^='fields-']")
+    : [];
 
-  // Function to handle the form's state based on the selected payment method
+  function resetFormState() {
+    fieldContainers.forEach((container) => {
+      container.style.display = "none";
+    });
+    unmountMollieComponents();
+  }
+
   function updateFormState() {
     let selectedMethod = null;
     paymentMethodRadios.forEach((radio) => {
@@ -108,25 +114,27 @@ export default function initMollie() {
       }
     });
 
-    // Check if the selected method is a credit card (mollie's id is 'creditcard')
-    if (selectedMethod === "creditcard") {
-      creditCardFields.style.display = "block";
-      mountMollieComponents();
-    } else {
-      creditCardFields.style.display = "none";
-      unmountMollieComponents();
+    resetFormState();
+
+    if (selectedMethod) {
+      const selectedFields = document.getElementById(
+        `fields-${selectedMethod}`,
+      );
+      if (selectedFields) {
+        selectedFields.style.display = "block";
+        if (selectedMethod === "creditcard") {
+          mountMollieComponents();
+        }
+      }
     }
   }
 
-  // Add event listener to all payment method radio buttons
   paymentMethodRadios.forEach((radio) => {
     radio.addEventListener("change", updateFormState);
   });
 
-  // Call the function once on page load to set the initial state
   updateFormState();
 
-  // Submit handler
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -137,7 +145,6 @@ export default function initMollie() {
       'input[name="paymentMethod"]:checked',
     ).value;
 
-    // Only create a token if the selected payment method is a credit card
     if (selectedMethod === "creditcard") {
       const { token, error } = await mollie.createToken();
       if (error) {
@@ -148,12 +155,13 @@ export default function initMollie() {
 
       const tokenInput = document.createElement("input");
       tokenInput.setAttribute("type", "hidden");
-      tokenInput.setAttribute("name", paymentFormNamespace + "[cardToken]");
+      tokenInput.setAttribute("name", "cardToken");
       tokenInput.setAttribute("value", token);
       form.appendChild(tokenInput);
-    }
 
-    // Submit the form
-    form.submit();
+      form.submit();
+    } else {
+      form.submit();
+    }
   });
 }

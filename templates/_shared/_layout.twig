@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="utf-8" />
-    <title>Madam Gent</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="referrer" content="origin-when-cross-origin" />
-    <script src="https://kit.fontawesome.com/6415d5e4b3.js" crossorigin="anonymous"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/promise-polyfill/8.2.0/polyfill.min.js"
-            integrity="sha512-YK+bAjUuYdjPksbGQIIIsUn5hgYFsc+nXgx21Wwby9Mv+rJd8WZH2FRe1RdlTjFu1vxlGia9/RqmUMcZtX+BrA=="
-            crossorigin="anonymous"
-    ></script>
-    <script src="https://js.mollie.com/v1/mollie.js"></script>
-    {{ craft.vite.script('/src/js/app.js', true) }}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8" />
+  <title>Madam Gent</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="referrer" content="origin-when-cross-origin" />
+  <script src="https://kit.fontawesome.com/6415d5e4b3.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/promise-polyfill/8.2.0/polyfill.min.js"
+          integrity="sha512-YK+bAjUuYdjPksbGQIIIsUn5hgYFsc+nXgx21Wwby9Mv+rJd8WZH2FRe1RdlTjFu1vxlGia9/RqmUMcZtX+BrA=="
+          crossorigin="anonymous"
+  ></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://js.mollie.com/v1/mollie.js"></script>
+  {{ craft.vite.script('/src/js/app.js', true) }}
 </head>
 <body>
 <style>
-    html:not(.styles-loaded) body {
-        visibility: hidden;
-    }
+  html:not(.styles-loaded) body {
+    visibility: hidden;
+  }
 </style>
 
 <script>
-    window.addEventListener("DOMContentLoaded", () => {
-        document.documentElement.classList.add("styles-loaded");
-    });
+  window.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.classList.add("styles-loaded");
+  });
 </script>
 
 <nav class="c-navbar container">
-    {% set transform = 'img2Webp' %}
-    {% set logo = companyInfo.logo[0] %}
-    <a href="/">{{ svg(logo) }}</a>
-    <i class="c-navbar__menuicon js-open-menu fa-solid fa-{{ navbar.menu }}"></i>
+  {% set transform = 'img2Webp' %}
+  {% set logo = companyInfo.logo[0] %}
+  <a href="/">{{ svg(logo) }}</a>
+  <i class="c-navbar__menuicon js-open-menu fa-solid fa-{{ navbar.menu }}"></i>
 
-    <div class="c-navbar__offcanvas js-menu">
-        <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
-            {% include '_shared/_menu' with {links: navbar.menuLinks} %}
-        </ul>
+  <div class="c-navbar__offcanvas js-menu">
+    <ul class="c-menu c-menu--{{ navbar.menuLayout }}">
+      {% include '_shared/_menu' with {links: navbar.menuLinks} %}
+    </ul>
 
-        <div class="c-navbar__icons">
-            <i class="fa-solid fa-{{ navbar.search }}"></i>
-            {% include '_components/_cart.twig' with { icon: navbar.cart} %}
-            <i class="c-navbar__menuicon js-close-menu fa-solid fa-{{ navbar.close }}"></i>
-        </div>
+    <div class="c-navbar__icons">
+      <i class="fa-solid fa-{{ navbar.search }}"></i>
+      {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+      <i class="c-navbar__menuicon js-close-menu fa-solid fa-{{ navbar.close }}"></i>
     </div>
+  </div>
 
-    <span class="c-navbar__backdrop js-backdrop-menu"></span>
+  <span class="c-navbar__backdrop js-backdrop-menu"></span>
 </nav>
 
 <main>
 
-    {% block main %}
+  {% block main %}
 
-    {% endblock %}
+  {% endblock %}
 
 
-    {% include '_components/navigation/breadcrumbs.twig' %}
+  {% include '_components/navigation/breadcrumbs.twig' %}
 </main>
 
 {% include '_components/navigation/footer.twig' %}
 <p class="c-banner">Deze site werd gemaakt als schoolopdracht voor <a
-            href="https://www.howest.be/nl/opleidingen/graduaat/digitale-vormgeving/web-development-design-front-end-web"
-            target="_blank">Howest Web Development & Design</a
-    >.</p>
+    href="https://www.howest.be/nl/opleidingen/graduaat/digitale-vormgeving/web-development-design-front-end-web"
+    target="_blank">Howest Web Development & Design</a
+  >.</p>
 </body>
 
 </html>

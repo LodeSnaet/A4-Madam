@@ -1,0 +1,32 @@
+<h2>Billing & Shipping Address</h2>
+
+<div id="map"></div>
+
+<form method="post" id="checkout-form">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/cart/update-cart') }}
+  {{ redirectInput('checkout') }}
+
+  {# Shipping Address (visible) #}
+  <input type="text" name="shippingAddress[streetAndNumber]" id="shipping-street-input" placeholder="Street & Number"
+         required>
+  <input type="text" name="shippingAddress[city]" id="city-input" placeholder="City" required>
+  <input type="text" name="shippingAddress[postalCode]" id="postal-code-input" placeholder="Postal Code" required>
+  <input type="hidden" name="shippingAddress[countryCode]" value="BE">
+
+  {# Billing Address (hidden, auto-synced from shipping) #}
+  <input type="hidden" name="billingAddress[streetAndNumber]" id="billing-street-input">
+  <input type="hidden" name="billingAddress[city]" id="billing-city-input">
+  <input type="hidden" name="billingAddress[postalCode]" id="billing-postal-code-input">
+  <input type="hidden" name="billingAddress[countryCode]" value="BE">
+
+  <button class="c-btn" type="submit">Continue to Checkout</button>
+</form>
+
+<style>
+  #map {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+</style>

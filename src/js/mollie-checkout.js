@@ -2,15 +2,16 @@
  * Initializes the Mollie payment form, handling dynamic field display
  * and secure credit card tokenization via Mollie Components.
  */
-function initMollie() {
-  const form = document.querySelector("#paymentForm");
-  const wrapper = document.querySelector(".mollie-plus-form");
+const form = document.querySelector("#paymentForm");
+const wrapper = document.querySelector(".mollie-plus-form");
 
+function initMollie() {
   if (!form || !wrapper) {
     console.error("Form or wrapper not found!");
     return;
   }
 
+  // Check for Mollie.js; retry after a delay if not found
   if (typeof Mollie === "undefined") {
     setTimeout(initMollie, 200);
     return;
@@ -18,9 +19,8 @@ function initMollie() {
 
   const submitButton = document.getElementById("paymentForm-submit");
   const formError = document.getElementById("paymentForm-form-error");
-
   const paymentFormNamespace = wrapper.dataset.paymentFormNamespace;
-  const paymentNamespace = wrapper.dataset.paymentNamespace;
+
   const profileId = wrapper.dataset.profileId;
   const locale = wrapper.dataset.locale;
   const testMode = wrapper.dataset.testMode;
@@ -48,23 +48,23 @@ function initMollie() {
     const componentConfigs = [
       {
         name: "cardHolder",
-        id: `#${paymentNamespace}-card-holder`,
-        errorId: `#${paymentNamespace}-card-holder-error`,
+        id: `#${paymentFormNamespace}-card-holder`,
+        errorId: `#${paymentFormNamespace}-card-holder-error`,
       },
       {
         name: "cardNumber",
-        id: `#${paymentNamespace}-card-number`,
-        errorId: `#${paymentNamespace}-card-number-error`,
+        id: `#${paymentFormNamespace}-card-number`,
+        errorId: `#${paymentFormNamespace}-card-number-error`,
       },
       {
         name: "expiryDate",
-        id: `#${paymentNamespace}-expiry-date`,
-        errorId: `#${paymentNamespace}-expiry-date-error`,
+        id: `#${paymentFormNamespace}-expiry-date`,
+        errorId: `#${paymentFormNamespace}-expiry-date-error`,
       },
       {
         name: "verificationCode",
-        id: `#${paymentNamespace}-verification-code`,
-        errorId: `#${paymentNamespace}-verification-code-error`,
+        id: `#${paymentFormNamespace}-verification-code`,
+        errorId: `#${paymentFormNamespace}-verification-code-error`,
       },
     ];
 
@@ -93,29 +93,25 @@ function initMollie() {
   const paymentMethodRadios = form.querySelectorAll(
     'input[name="' + paymentFormNamespace + '[paymentMethod]"]',
   );
-  const dynamicFields = form.querySelectorAll(".c-checkout__fields");
 
-  function resetFormState() {
-    dynamicFields.forEach((field) => (field.style.display = "none"));
-    unmountMollieComponents();
-  }
+  const dynamicFields = form.querySelectorAll(".c-checkout__fields");
+  const creditCardFieldsContainer =
+    document.getElementById("creditcard-fields");
 
   function updateFormState() {
-    resetFormState();
+    dynamicFields.forEach((field) => (field.style.display = "none"));
+    unmountMollieComponents();
+
     const selectedRadio = form.querySelector(
       'input[name="' + paymentFormNamespace + '[paymentMethod]"]:checked',
     );
     if (selectedRadio) {
       const selectedMethod = selectedRadio.value.toLowerCase();
-      const selectedFieldsContainer = document.getElementById(
-        `fields-${selectedMethod}`,
-      );
 
-      if (selectedFieldsContainer) {
-        selectedFieldsContainer.style.display = "grid";
-        if (selectedMethod === "creditcard") {
-          mountMollieComponents();
-        }
+      // Corrected logic to match your new HTML structure
+      if (selectedMethod === "creditcard") {
+        creditCardFieldsContainer.style.display = "grid";
+        mountMollieComponents();
       }
     }
   }
@@ -125,6 +121,10 @@ function initMollie() {
   });
 
   form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitButton.disabled = true;
+
+    // Correctly define selectedMethod at the top of the function
     const selectedRadio = form.querySelector(
       'input[name="' + paymentFormNamespace + '[paymentMethod]"]:checked',
     );
@@ -133,41 +133,54 @@ function initMollie() {
       : null;
 
     if (!selectedMethod) {
-      e.preventDefault();
+      submitButton.disabled = false;
       formError.textContent = "Please select a payment method.";
       return;
     }
 
     formError.textContent = "";
 
-    if (selectedMethod === "creditcard") {
-      e.preventDefault();
-      submitButton.disabled = true;
+    try {
+      let token = null;
+      let error = null;
 
-      try {
-        const { token, error } = await mollie.createToken();
-
-        if (error) {
+      if (selectedMethod === "creditcard") {
+        if (Object.keys(mollieComponents).length === 0) {
           submitButton.disabled = false;
-          formError.textContent = error.message;
+          formError.textContent = "Please wait for the payment fields to load.";
           return;
         }
 
+        const result = await mollie.createToken();
+        token = result.token;
+        error = result.error;
+      }
+
+      if (error) {
+        submitButton.disabled = false;
+        formError.textContent = error.message;
+        return;
+      }
+
+      if (token) {
         const tokenInput = document.createElement("input");
         tokenInput.setAttribute("type", "hidden");
         tokenInput.setAttribute("name", paymentFormNamespace + "[cardToken]");
         tokenInput.setAttribute("value", token);
         form.appendChild(tokenInput);
-
-        form.submit();
-      } catch (error) {
-        submitButton.disabled = false;
-        formError.textContent = "An error occurred during payment processing.";
       }
+      form.submit();
+    } catch (error) {
+      submitButton.disabled = false;
+      formError.textContent = "An error occurred during payment processing.";
     }
   });
 
   updateFormState();
 }
 
-window.addEventListener("DOMContentLoaded", initMollie);
+window.addEventListener("DOMContentLoaded", function () {
+  if (wrapper) {
+    initMollie();
+  }
+});

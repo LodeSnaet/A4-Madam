@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 101;
   top: 0;
-  right: -100%;
+  right: -127%;
   display: flex;
   flex-direction: column;
   width: 50vw;
@@ -11,7 +11,15 @@
   transition: right 0.3s ease;
   background: white;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  
+
+  &__no {
+    padding-inline: 1.2rem;
+  }
+
+  a {
+    width: fit-content;
+  }
+
   @include media-breakpoint-down(lg) {
     width: 70vw;
   }
@@ -41,7 +49,10 @@
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
+    gap: 1rem;
   }
 
   &__button {

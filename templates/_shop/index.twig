@@ -6,15 +6,23 @@
     <div class="row">
       <div class="col-12 col-lg-9 offset-lg-3 mb-5">
         <div class="c-shop__order">
-          {% set title = "Delvaux# Collection" %}
-          {% set parts = title|split('#')|filter(v => v|trim is not empty) %}
+          {% set collection = craft.app.request.getQueryParam('collection') %}
+
+          {% set subtitleTitle = 'All' %}
+          {% set subtitleDescription = 'collections' %}
+
+          {% if collection is not empty %}
+            {# Access the first item in the collection array #}
+            {% set selectedCollectionName = collection[0] %}
+            {% set subtitleTitle = selectedCollectionName %}
+            {% set subtitleDescription = 'collection' %}
+          {% endif %}
 
           {% include '_components/_subtitle.twig' with {
-            title: parts[0] ?? '',
-            description: parts[1] ?? '',
+            title: subtitleTitle,
+            description: subtitleDescription,
             additionalClasses: 'c-shop__title'
           } %}
-
           {% set rawOrder = craft.app.request.getQueryParam('order') ?? '' %}
 
           {% include '_components/sortby.twig' with { rawOrder: rawOrder } %}
@@ -79,53 +87,51 @@
       </div>
 
       <div class="col-12 col-lg-9">
-        <div class="o-grid">
+        {% set orderMap = {
+          'title-asc': 'title ASC',
+          'title-desc': 'title DESC',
+          'default-price-asc': 'defaultPrice ASC',
+          'default-price-desc': 'defaultPrice DESC',
+          'post-date-asc': 'postDate ASC',
+          'post-date-desc': 'postDate DESC'
+        } %}
 
-          {% set orderMap = {
-            'title-asc': 'title ASC',
-            'title-desc': 'title DESC',
-            'default-price-asc': 'defaultPrice ASC',
-            'default-price-desc': 'defaultPrice DESC',
-            'post-date-asc': 'postDate ASC',
-            'post-date-desc': 'postDate DESC'
-          } %}
+        {% set order = orderMap[rawOrder] ?? orderMap['title-asc'] %}
 
-          {% set order = orderMap[rawOrder] ?? orderMap['title-asc'] %}
+        {% set productsQuery = craft.products %}
+        {% set filterGroups = craft.app.categories.getAllGroups() %}
 
+        {# Check for the productType parameter first #}
+        {% set productTypeHandle = craft.app.request.getQueryParam('productType') %}
+        {% if productTypeHandle is not empty %}
+          {% do productsQuery.type(productTypeHandle) %}
+        {% endif %}
 
+        {# Loop through other category filters, applying them on top of the productType filter #}
+        {% for filterGroup in filterGroups %}
+          {% set groupHandle = filterGroup.handle %}
+          {% set groupValues = craft.app.request.getQueryParam(groupHandle) %}
 
-
-          {% set productsQuery = craft.products %}
-          {% set filterGroups = craft.app.categories.getAllGroups() %}
-
-          {# Check for the productType parameter first #}
-          {% set productTypeHandle = craft.app.request.getQueryParam('productType') %}
-
-          {% if productTypeHandle is not empty %}
-            {# If productType is set, filter the query to only include that product type #}
-            {% do productsQuery.type(productTypeHandle) %}
+          {% if groupValues is not empty %}
+            {% set categories = craft.categories().group(groupHandle).slug(groupValues).all() %}
+            {% do productsQuery.andRelatedTo(categories) %}
           {% endif %}
+        {% endfor %}
 
-          {# Loop through other category filters, applying them on top of the productType filter #}
-          {% for filterGroup in filterGroups %}
-            {% set groupHandle = filterGroup.handle %}
-            {% set groupValues = craft.app.request.getQueryParam(groupHandle) %}
+        {# Execute the final query #}
+        {% set products = productsQuery.orderBy(order).all() %}
 
-            {% if groupValues is not empty %}
-              {% set categories = craft.categories().group(groupHandle).slug(groupValues).all() %}
-              {% do productsQuery.andRelatedTo(categories) %}
-            {% endif %}
-          {% endfor %}
-
-          {# Execute the final query #}
-          {% set products = productsQuery.orderBy(order).all() %}
-
-          {# Loop through the filtered products and include the product card component #}
-          {% for product in products %}
-            {% include '_components/_productcard' with { product: product } %}
-          {% endfor %}
-
-        </div>
+        {# Check if the products array is empty #}
+        {% if products is not empty %}
+          <div class="o-grid">
+            {# Loop through the filtered products and include the product card component #}
+            {% for product in products %}
+              {% include '_components/_productcard' with { product: product } %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>There are no products that match these filters.</p>
+        {% endif %}
       </div>
 
     </div>

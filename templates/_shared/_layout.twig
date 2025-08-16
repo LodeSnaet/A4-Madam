@@ -42,9 +42,11 @@
     </ul>
 
     <div class="c-navbar__icons">
-      <i class="fa-solid fa-{{ navbar.search }}"></i>
-      {% include '_components/_cart.twig' with { icon: navbar.cart} %}
-      <i class="c-navbar__menuicon js-close-menu fa-solid fa-{{ navbar.close }}"></i>
+      <div class="c-navbar__action">
+        <i class="c-navbar__menuicon fa-solid fa-{{ navbar.search }}"></i>
+        {% include '_components/_cart.twig' with { icon: navbar.cart} %}
+      </div>
+      <i class="c-navbar__menuicon u-x js-close-menu fa-solid fa-{{ navbar.close }}"></i>
     </div>
   </div>
 

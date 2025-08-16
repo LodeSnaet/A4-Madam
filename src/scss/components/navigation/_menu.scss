@@ -1,7 +1,7 @@
 .c-menu {
   display: flex;
-  height: fit-content;
-
+  justify-content: space-between;
+  height: 100%;
   gap: 3.5rem;
 
   &--horizontal {
@@ -19,10 +19,8 @@
 
   &__item {
     position: relative;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    @include active-item(absolute, null, -20px);
+
+    @include active-item(absolute, 8px, -20px);
 
     &--active {
       transition: color 0.3s ease;

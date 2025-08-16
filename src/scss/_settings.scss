@@ -21,21 +21,39 @@
   --bold: 500;
 
   /* font settings */
-  --regular-font-size: 1.125rem;
+  //--regular-font-size: 1.125rem;
+  //--regular-font-weight: var(--regular);
+  //
+  //--h1-font-size: 9.375rem;
+  //--h1-font-weight: var(--bold);
+  //
+  //--h2-font-size: 3.375rem;
+  //--h2-font-weight: var(--regular);
+  //
+  //--h3-font-size: 1.5rem;
+  //--h3-font-weight: var(--regular);
+  //
+  //--extralight-font-size: var(--h3-font-size);
+  //--extralight-font-weight: var(--light);
+  //
+  //--italic-font-size: 4rem;
+  //--italic-font-weight: var(--bold);
+
+  --regular-font-size: clamp(1rem, 1.25vw, 1.125rem);
   --regular-font-weight: var(--regular);
 
-  --h1-font-size: 9.375rem;
+  --h1-font-size: clamp(3rem, 10.417vw, 9.375rem);
   --h1-font-weight: var(--bold);
 
-  --h2-font-size: 3.375rem;
+  --h2-font-size: clamp(2rem, 3.75vw, 3.375rem);
   --h2-font-weight: var(--regular);
 
-  --h3-font-size: 1.5rem;
+  --h3-font-size: clamp(1.25rem, 1.667vw, 1.5rem);
   --h3-font-weight: var(--regular);
 
   --extralight-font-size: var(--h3-font-size);
   --extralight-font-weight: var(--light);
 
-  --italic-font-size: 4rem;
+  --italic-font-size: clamp(2.5rem, 4.444vw, 4rem);
   --italic-font-weight: var(--bold);
 }

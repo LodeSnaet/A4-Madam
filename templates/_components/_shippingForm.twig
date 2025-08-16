@@ -140,3 +140,8 @@
   }
 </style>
 
+<script>
+  const mapboxAccessToken = "{{ getenv('VITE_MAPBOX_ACCESS_TOKEN') }}";
+  mapboxgl.accessToken = mapboxAccessToken;
+</script>
+

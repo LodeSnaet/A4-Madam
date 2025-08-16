@@ -10,7 +10,6 @@ import "./dropdown";
 import "./sortby";
 import "./popover-anchor-pollyfill";
 import "./hero-filter";
-import "./mollie-checkout";
 
 import "./need-billing-address";
 

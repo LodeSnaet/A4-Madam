@@ -46,3 +46,12 @@
     }
   }
 }
+
+.u-scroll {
+  width: 97%;
+  height: 447px;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--background-90-color);
+}

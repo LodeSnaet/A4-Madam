@@ -1,0 +1,56 @@
+{% extends '_shared/_layout.twig' %}
+
+{% set cart = craft.commerce.carts.cart %}
+
+
+{% block main %}
+  <section class="container">
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h1>Your order</h1>
+        {% if cart.lineItems|length %}
+
+          <div class="c-order u-scroll">
+            {% for lineItem in cart.lineItems %}
+              <article class="c-order__item">
+                <div class="c-order__title">
+                  <a href="{{ lineItem.snapshot.url }}">{{ lineItem.snapshot.title }}</a>
+                  <form method="post">
+                    {{ csrfInput() }}
+                    {{ actionInput('commerce/cart/update-cart') }}
+                    <input type="hidden" name="lineItems[{{ lineItem.id }}][remove]" value="1">
+                    <button type="submit">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </form>
+                </div>
+
+                <div class="c-order__description">
+                  <p>Quantity: {{ lineItem.qty }}</p>
+                  <span>{{ lineItem.total|commerceCurrency }}</span>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+
+          {% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+          {% set paymentMethods = gateway.fetchPaymentMethods() %}
+          {% set paymentNamespace = 'paymentForm' %}
+          <form method="post">
+            {{ csrfInput() }}
+            {{ actionInput('commerce/payments/pay') }}
+            {{ redirectInput('success') }}
+            {{ hiddenInput('cancelUrl', craft.app.security.hashData(url('cancel'))) }}
+            {{ hiddenInput('returnUrl', craft.app.security.hashData(url('return'))) }}
+            {{ hiddenInput('gatewayId', gateway.id) }}
+            <button class="c-btn" type="submit">
+              Pay {{ cart.totalPrice|commerceCurrency }}
+            </button>
+          </form>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </section>
+{% endblock %}

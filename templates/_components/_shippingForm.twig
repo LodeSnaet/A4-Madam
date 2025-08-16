@@ -1,0 +1,157 @@
+<h2>Billing & Shipping Address</h2>
+
+<form class="c-shipping" method="post" id="checkout-form">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/cart/update-cart') }}
+  {{ redirectInput('checkout') }}
+
+  {# Allowed countries for this store #}
+  {% set allowedCountries = currentStore.settings.countriesList %}
+
+  {# Checkbox to use shipping as billing #}
+  <div class="c-shipping__checkbox">
+    <label>
+      <input class="js-checkbox" type="checkbox" name="billingAddressSameAsShipping"
+             id="billingAddressSameAsShipping" value="1"
+             checked>
+      Do you want to use the same address for billing?
+    </label>
+  </div>
+
+  {# --- Shipping Address --- #}
+  <div class="c-shipping__fields">
+    <div class="c-shipping__shipping">
+      <h3>Shipping Address</h3>
+
+      <div class="c-shipping__group">
+        <label>
+          First Name
+          <input type="text" name="shippingAddress[firstName]" value="{{ cart.shippingAddress.firstName ?? '' }}"
+                 required>
+        </label>
+
+        <label>
+          Last Name
+          <input type="text" name="shippingAddress[lastName]" value="{{ cart.shippingAddress.lastName ?? '' }}"
+                 required>
+        </label>
+      </div>
+
+      <label>
+        Address
+        <input type="text" name="shippingAddress[addressLine1]" id="shipping-street-input"
+               value="{{ cart.shippingAddress.addressLine1 ?? '' }}" required>
+      </label>
+      <div class="c-shipping__group">
+        <label>
+          City
+          <input type="text" name="shippingAddress[locality]" id="city-input"
+                 value="{{ cart.shippingAddress.locality ?? '' }}" required>
+        </label>
+
+        <label>
+          Zip / Postal Code
+          <input type="text" name="shippingAddress[postalCode]" id="postal-code-input"
+                 value="{{ cart.shippingAddress.postalCode ?? '' }}" required>
+        </label>
+      </div>
+
+      <div class="c-shipping__country">
+        <label for="shipping-country">Country</label>
+        {% if allowedCountries|length == 1 %}
+          {% set code = allowedCountries|keys|first %}
+          {% set country = allowedCountries[code] %}
+          <p>{{ country }}</p>
+          <input type="hidden" name="shippingAddress[countryCode]" value="{{ code }}" required>
+        {% else %}
+          <select name="shippingAddress[countryCode]" id="shipping-country" required>
+            {% for code, country in allowedCountries %}
+              <option value="{{ code }}"
+                      {% if cart.shippingAddress and cart.shippingAddress.countryCode == code %}selected{% endif %}>
+                {{ country }}
+              </option>
+            {% endfor %}
+          </select>
+        {% endif %}
+      </div>
+    </div>
+
+    <hr>
+
+    {# --- Billing Address (only used if not same as shipping) --- #}
+    <div class="c-shipping__shipping c-shipping__shipping--billing js-billing-fields" id="billing-fields">
+      <h3>Billing Address</h3>
+
+      <div class="c-shipping__group">
+        <label>
+          First Name
+          <input type="text" name="billingAddress[firstName]" id="billing-first-name"
+                 value="{{ cart.billingAddress.firstName ?? '' }}" required>
+        </label>
+
+        <label>
+          Last Name
+          <input type="text" name="billingAddress[lastName]" id="billing-last-name"
+                 value="{{ cart.billingAddress.lastName ?? '' }}" required>
+        </label>
+      </div>
+
+      <label>
+        Address
+        <input type="text" name="billingAddress[addressLine1]" id="billing-street-input"
+               value="{{ cart.billingAddress.addressLine1 ?? '' }}" required>
+      </label>
+      <div class="c-shipping__group">
+        <label>
+          City
+          <input type="text" name="billingAddress[locality]" id="billing-city-input"
+                 value="{{ cart.billingAddress.locality ?? '' }}" required>
+        </label>
+
+        <label>
+          Zip / Postal Code
+          <input type="text" name="billingAddress[postalCode]" id="billing-postal-code-input"
+                 value="{{ cart.billingAddress.postalCode ?? '' }}" required>
+        </label>
+      </div>
+      <div class="c-shipping__country">
+        <label for="billing-country">Country</label>
+        {% if allowedCountries|length == 1 %}
+          {% set code = allowedCountries|keys|first %}
+          {% set country = allowedCountries[code] %}
+          <p>{{ country }}</p>
+          <input type="hidden" name="billingAddress[countryCode]" value="{{ code }}" required>
+        {% else %}
+          <select name="billingAddress[countryCode]" id="billing-country" required>
+            {% for code, country in allowedCountries %}
+              <option value="{{ code }}"
+                      {% if cart.billingAddress and cart.billingAddress.countryCode == code %}selected{% endif %}>
+                {{ country }}
+              </option>
+            {% endfor %}
+          </select>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="c-shipping__wrapper">
+    <div id="map"></div>
+  </div>
+
+  <button class="c-btn" type="submit">Continue</button>
+</form>
+<style>
+  #map {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  const mapboxAccessToken = "{{ getenv('VITE_MAPBOX_ACCESS_TOKEN') }}";
+  mapboxgl.accessToken = mapboxAccessToken;
+</script>
+

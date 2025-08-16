@@ -1,0 +1,62 @@
+{% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+{% set paymentMethods = gateway.fetchPaymentMethods() %}
+{% set paymentNamespace = 'paymentForm' %}
+
+<h2>Payment Information</h2>
+
+<form method="post" class="c-checkout" id="{{ paymentNamespace }}">
+  {{ csrfInput() }}
+  {{ actionInput('commerce/payments/pay') }}
+  {{ redirectInput('success') }}
+  {{ hiddenInput('cancelUrl', craft.app.security.hashData(url('cancel'))) }}
+  {{ hiddenInput('returnUrl', craft.app.security.hashData(url('return'))) }}
+  {{ hiddenInput('gatewayId', gateway.id) }}
+
+  <div class="mollie-plus-form"
+       data-payment-form-namespace="{{ paymentNamespace }}"
+       data-profile-id="{{ parseEnv(gateway.getProfileId) }}"
+       data-test-mode="{{ parseEnv(gateway.testMode) }}"
+       data-locale="{{ currentSite.locale in ['en_US'] ? currentSite.locale : 'en_US' }}"
+  >
+    {# Loop through the available payment methods to create radio buttons #}
+    {% for method in paymentMethods %}
+      <label class="c-checkout__paymentmethod">
+        {{ input('radio', paymentNamespace ~ '[paymentMethod]', method.id, {
+          checked: loop.first,
+        }) }}
+        <img src="{{ method.logo }}" alt="{{ method.name }}" />
+      </label>
+    {% endfor %}
+
+    {# Credit card fields, initially hidden #}
+    <div id="creditcard-fields" class="c-checkout__fields mt-4" style="display: none;">
+      <div class="c-checkout__element">
+        <label class="label" for="{{ paymentNamespace }}-card-holder">{{ "Name"|t }}</label>
+        <div class="c-checkout__input" id="{{ paymentNamespace }}-card-holder"></div>
+        <div id="{{ paymentNamespace }}-card-holder-error" class="field-error" role="alert"></div>
+      </div>
+      <div class="c-checkout__element">
+        <label class="label" for="{{ paymentNamespace }}-card-number">{{ "Card number"|t }}</label>
+        <div class="c-checkout__input" id="{{ paymentNamespace }}-card-number"></div>
+        <div id="{{ paymentNamespace }}-card-number-error" class="field-error" role="alert"></div>
+      </div>
+      <div class="c-checkout__element">
+        <label class="label" for="{{ paymentNamespace }}-expiry-date">{{ "Expiry date"|t }}</label>
+        <div class="c-checkout__input" id="{{ paymentNamespace }}-expiry-date"></div>
+        <div id="{{ paymentNamespace }}-expiry-date-error" class="field-error"
+             role="alert"></div>
+      </div>
+      <div class="c-checkout__element">
+        <label class="label" for="{{ paymentNamespace }}-verification-code">{{ "CVC"|t }}</label>
+        <div class="c-checkout__input" id="{{ paymentNamespace }}-verification-code"></div>
+        <div id="{{ paymentNamespace }}-verification-code-error" class="field-error" role="alert"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="c-btn" id="{{ paymentNamespace }}-submit" type="submit">
+    Pay {{ cart.totalPrice|commerceCurrency }}
+  </button>
+
+  <div id="{{ paymentNamespace }}-form-error" class="field-error"></div>
+</form>

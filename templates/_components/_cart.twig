@@ -1,9 +1,4 @@
-{% set commerce = craft.commerce %}
-{% set cart = commerce.carts.cart %}
-{% set gateway = commerce.gateways.getGatewayByHandle('mollie') %}
-{% set paymentMethods = gateway.fetchPaymentMethods() %}
-{% set returnUrl = url('checkout/success') %}
-{% set cancelUrl = url('checkout/payment') | hash %}
+{% set cart = craft.commerce.carts.cart %}
 
 <!-- Cart Button -->
 <button class="js-open-cart c-cart__button">
@@ -43,19 +38,7 @@
       <strong>Total:</strong> {{ cart.totalPrice | commerceCurrency }}
     </p>
 
-    <form method="post">
-      {{ csrfInput() }}
-      {{ actionInput('commerce/payments/pay') }}
-      {{ redirectInput('success') }}
-      <input type="hidden" name="gatewayId" value="{{ gateway.id }}">
-      <input type="hidden" name="amount" value="{{ cart.totalPrice }}">
-      <input type="hidden" name="currency" value="{{ cart.currency }}">
-      <input type="hidden" name="orderNumber" value="{{ cart.number }}">
-      <input type="hidden" name="returnUrl" value="{{ returnUrl }}">
-      <input type="hidden" name="cancelUrl" value="{{ cancelUrl }}">
-
-      <button class="c-btn" type="submit">Pay Now</button>
-    </form>
+    <a href="/shipping" class="c-btn" type="submit">Pay Now</a>
 
   </div>
 </div>

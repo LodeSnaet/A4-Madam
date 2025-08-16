@@ -1,0 +1,18 @@
+{% extends '_shared/_layout.twig' %}
+
+{% set cart = craft.commerce.carts.cart %}
+
+
+{% block main %}
+  <section class="container">
+    <div class="row g-4">
+
+      {% if cart and cart.lineItems|length %}
+
+        {% include '_components/_shippingForm.twig' with cart %}
+      {% else %}
+        <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

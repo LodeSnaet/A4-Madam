@@ -49,6 +49,8 @@ const createPriceUrl = function () {
   });
 };
 
-createCollectionUrl();
-createStyleUrl();
-createPriceUrl();
+if (styleOption && priceUrl && searchFilterBtn && collectionOption) {
+  createCollectionUrl();
+  createStyleUrl();
+  createPriceUrl();
+}

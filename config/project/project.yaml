@@ -1,4 +1,4 @@
-dateModified: 1755170873
+dateModified: 1755198893
 elementSources:
   craft\commerce\elements\Order:
     -
@@ -271,16 +271,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
-  craft-range-slider:
+  commerce-mollie-plus:
     edition: standard
     enabled: true
-    licenseKey: E6WDAU68HRMDSWVD80ZSALN9
-    schemaVersion: 1.0.0
-  icon-picker:
-    edition: standard
-    enabled: true
-    licenseKey: TR2PMUNKV8186RP524XLXHGR
-    schemaVersion: 1.0.0
+    schemaVersion: 1.0.1
   seomatic:
     edition: standard
     enabled: true

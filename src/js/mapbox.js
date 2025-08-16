@@ -12,40 +12,75 @@ const map = new mapboxgl.Map({
 });
 
 // --- Inputs ---
-const streetInput = document.getElementById("shipping-street-input");
-const cityInput = document.getElementById("city-input");
-const postalInput = document.getElementById("postal-code-input");
+const shippingStreet = document.getElementById("shipping-street-input");
+const shippingCity = document.getElementById("city-input");
+const shippingPostal = document.getElementById("postal-code-input");
+const shippingFirstName = document.querySelector(
+  'input[name="shippingAddress[firstName]"]',
+);
+const shippingLastName = document.querySelector(
+  'input[name="shippingAddress[lastName]"]',
+);
+
 const billingStreet = document.getElementById("billing-street-input");
 const billingCity = document.getElementById("billing-city-input");
 const billingPostal = document.getElementById("billing-postal-code-input");
+const billingFirstName = document.querySelector(
+  'input[name="billingAddress[firstName]"]',
+);
+const billingLastName = document.querySelector(
+  'input[name="billingAddress[lastName]"]',
+);
+
 const billingSameAsShippingCheckbox = document.getElementById(
   "billingAddressSameAsShipping",
+);
+const billingFields = document.querySelectorAll(
+  ".js-billing-fields input, .js-billing-fields select",
 );
 const form = document.getElementById("checkout-form");
 
 // --- Selected address ---
 let selectedAddress = "shipping"; // default
 
+// --- Sync helpers ---
+const syncFirstAndLastNames = () => {
+  if (billingSameAsShippingCheckbox.checked) {
+    billingFirstName.value = shippingFirstName.value;
+    billingLastName.value = shippingLastName.value;
+  }
+};
+
+const syncAddressFields = () => {
+  if (billingSameAsShippingCheckbox.checked) {
+    billingStreet.value = shippingStreet.value;
+    billingCity.value = shippingCity.value;
+    billingPostal.value = shippingPostal.value;
+  }
+};
+
 // --- Update UI based on checkbox ---
 function updateBillingUI() {
+  const isChecked = billingSameAsShippingCheckbox.checked;
   const mapBillingShipping = document.querySelector(".js-map-billing-shipping");
 
   // Hide/show billing marker
   if (billingMarker) {
-    billingMarker.getElement().style.display =
-      billingSameAsShippingCheckbox.checked ? "none" : "block";
+    billingMarker.getElement().style.display = isChecked ? "none" : "block";
   }
 
   // Hide/show radio buttons
   if (mapBillingShipping) {
-    mapBillingShipping.classList.toggle(
-      "hidden",
-      billingSameAsShippingCheckbox.checked,
-    );
+    mapBillingShipping.classList.toggle("hidden", isChecked);
   }
 
+  // Disable/enable billing fields
+  billingFields.forEach((field) => {
+    field.disabled = isChecked;
+  });
+
   // Force selectedAddress to "shipping" if checkbox is checked
-  if (billingSameAsShippingCheckbox.checked) {
+  if (isChecked) {
     selectedAddress = "shipping";
     if (mapBillingShipping) {
       mapBillingShipping
@@ -55,27 +90,29 @@ function updateBillingUI() {
         .querySelector('[data-address="shipping"]')
         ?.classList.add("selected");
     }
+    // Sync all fields immediately when the box is checked
+    syncFirstAndLastNames();
+    syncAddressFields();
   }
 }
 
 // --- Checkbox listener ---
 if (billingSameAsShippingCheckbox) {
   billingSameAsShippingCheckbox.addEventListener("change", updateBillingUI);
-  // Run once at page load to hide radio buttons if checkbox is checked by default
-  updateBillingUI();
+  updateBillingUI(); // initial state
 }
 
 // --- Address selector buttons ---
 function createMapButtons() {
   const container = document.createElement("div");
   container.className =
-    "mapboxgl-ctrl address-selector js-map-billing-shipping hidden"; // hidden by default
+    "mapboxgl-ctrl address-selector js-map-billing-shipping hidden";
 
   const shippingBtn = document.createElement("button");
   shippingBtn.type = "button";
   shippingBtn.textContent = "Shipping";
   shippingBtn.dataset.address = "shipping";
-  shippingBtn.classList.add("selected"); // default
+  shippingBtn.classList.add("selected");
 
   const billingBtn = document.createElement("button");
   billingBtn.type = "button";
@@ -92,7 +129,6 @@ function createMapButtons() {
     });
     container.appendChild(btn);
   });
-
   return container;
 }
 
@@ -117,14 +153,6 @@ const fitMapToMarkers = () => {
   }
 };
 
-const syncBillingFields = () => {
-  if (billingSameAsShippingCheckbox.checked) {
-    billingStreet.value = streetInput.value;
-    billingCity.value = cityInput.value;
-    billingPostal.value = postalInput.value;
-  }
-};
-
 // --- Marker updates ---
 function updateMarker(marker, lngLat, color) {
   if (!marker) {
@@ -141,9 +169,7 @@ const geocodeAndUpdateShipping = (street, city, postalCode) => {
   forwardGeocodeTimeout = setTimeout(() => {
     const query = `${street}, ${city}, ${postalCode}, Belgium`;
     fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-        query,
-      )}.json?access_token=${mapboxgl.accessToken}&country=be&limit=1`,
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${mapboxgl.accessToken}&country=be&limit=1`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -164,9 +190,7 @@ const geocodeAndUpdateBilling = (street, city, postalCode) => {
   billingGeocodeTimeout = setTimeout(() => {
     const query = `${street}, ${city}, ${postalCode}, Belgium`;
     fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-        query,
-      )}.json?access_token=${mapboxgl.accessToken}&country=be&limit=1`,
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${mapboxgl.accessToken}&country=be&limit=1`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -176,24 +200,29 @@ const geocodeAndUpdateBilling = (street, city, postalCode) => {
           data.features[0].center,
           "#ff0000",
         );
-
         if (billingSameAsShippingCheckbox.checked) {
           billingMarker.getElement().style.display = "none";
         }
-
         fitMapToMarkers();
       });
   }, 500);
 };
 
 // --- Input listeners ---
-[streetInput, cityInput, postalInput].forEach((input) =>
+[
+  shippingStreet,
+  shippingCity,
+  shippingPostal,
+  shippingFirstName,
+  shippingLastName,
+].forEach((input) =>
   input?.addEventListener("input", () => {
-    syncBillingFields();
+    syncFirstAndLastNames();
+    syncAddressFields();
     geocodeAndUpdateShipping(
-      streetInput.value,
-      cityInput.value,
-      postalInput.value,
+      shippingStreet.value,
+      shippingCity.value,
+      shippingPostal.value,
     );
   }),
 );
@@ -213,7 +242,6 @@ const geocodeAndUpdateBilling = (street, city, postalCode) => {
 // --- Map click ---
 map.on("click", (e) => {
   const mapSelectorHidden = isMapSelectorHidden();
-
   if (
     selectedAddress === "billing" &&
     (billingSameAsShippingCheckbox.checked || mapSelectorHidden)
@@ -239,10 +267,11 @@ map.on("click", (e) => {
 
       if (selectedAddress === "shipping") {
         shippingMarker = updateMarker(shippingMarker, e.lngLat, "#3b82f6");
-        cityInput.value = cityFeature.text;
-        postalInput.value = postalCodeFeature.text;
-        streetInput.value = street;
-        syncBillingFields();
+        shippingCity.value = cityFeature.text;
+        shippingPostal.value = postalCodeFeature.text;
+        shippingStreet.value = street;
+        syncFirstAndLastNames();
+        syncAddressFields();
       } else {
         billingMarker = updateMarker(billingMarker, e.lngLat, "#ff0000");
         billingCity.value = cityFeature.text;
@@ -252,25 +281,18 @@ map.on("click", (e) => {
           billingMarker.getElement().style.display = "none";
         }
       }
-
       fitMapToMarkers();
     });
 });
 
 // --- Form submit ---
 form.addEventListener("submit", () => {
-  syncBillingFields();
+  syncFirstAndLastNames();
+  syncAddressFields();
 });
 
 // --- Helpers ---
 function isMapSelectorHidden() {
   const el = document.querySelector(".js-map-billing-shipping");
   return el ? el.classList.contains("hidden") : false;
-}
-
-function toggleMapSelector(hide) {
-  const el = document.querySelector(".js-map-billing-shipping");
-  if (!el) return;
-  if (hide) el.classList.add("hidden");
-  else el.classList.remove("hidden");
 }

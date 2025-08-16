@@ -32,17 +32,25 @@
               </article>
             {% endfor %}
           </div>
+
+          {% set gateway = craft.commerce.gateways.getGatewayByHandle('mollie') %}
+          {% set paymentMethods = gateway.fetchPaymentMethods() %}
+          {% set paymentNamespace = 'paymentForm' %}
+          <form method="post">
+            {{ csrfInput() }}
+            {{ actionInput('commerce/payments/pay') }}
+            {{ redirectInput('success') }}
+            {{ hiddenInput('cancelUrl', craft.app.security.hashData(url('cancel'))) }}
+            {{ hiddenInput('returnUrl', craft.app.security.hashData(url('return'))) }}
+            {{ hiddenInput('gatewayId', gateway.id) }}
+            <button class="c-btn" type="submit">
+              Pay {{ cart.totalPrice|commerceCurrency }}
+            </button>
+          </form>
         {% endif %}
+
       </div>
 
-      <div class="col-12 col-lg-6">
-        {% if cart and cart.lineItems|length %}
-
-          {% include '_components/_paymentForm.twig' %}
-        {% else %}
-          <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>
-        {% endif %}
-      </div>
     </div>
   </section>
 {% endblock %}

@@ -54,6 +54,32 @@
   button {
     width: fit-content;
   }
+
+  &__group {
+    display: flex;
+    width: 100%;
+
+    gap: 1rem;
+
+    label {
+      width: 100%;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  &__country {
+    width: fit-content;
+  }
+
+  input:disabled,
+  input:autofill {
+    cursor: not-allowed;
+    color: #888;
+    background-color: #f2f2f2;
+  }
 }
 
 .mapboxgl-ctrl.address-selector {
@@ -61,14 +87,33 @@
   flex-direction: column;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background: white;
+  background: var(--background-color);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   gap: 0.5rem;
 }
 
-.mapboxgl-ctrl.address-selector button.selected {
-  color: white;
-  background: #007bff;
+.mapboxgl-ctrl.address-selector button.selected,
+.mapboxgl-ctrl.address-selector button:hover {
+  padding: 5px;
+  color: var(--text-white-color);
+  border-radius: 5px;
+
+  &:nth-child(2) {
+    background: var(--primary-color);
+  }
+
+  &:nth-child(1) {
+    background: #3c82f6;
+  }
+}
+
+.mapboxgl-ctrl.address-selector button {
+  width: 100%;
+
+  padding: 5px;
+  text-align: left;
+  color: var(--text-black-color);
+  border-radius: 5px;
 }
 
 .js-map-billing-shipping.hidden {

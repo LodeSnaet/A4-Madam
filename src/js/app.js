@@ -11,7 +11,12 @@ import "./sortby";
 import "./popover-anchor-pollyfill";
 import "./hero-filter";
 import "./mollie-checkout";
-import "./mapbox";
+
+import "./need-billing-address";
+
+if (window.location.pathname === "/shipping") {
+  import("./mapbox");
+}
 
 const init = function () {
   console.log("Hello World!");

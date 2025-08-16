@@ -6,43 +6,13 @@
 {% block main %}
   <section class="container">
     <div class="row g-4">
-      <div class="col-12 col-lg-6">
-        <h1>Your order</h1>
-        {% if cart.lineItems|length %}
 
-          <div class="c-order u-scroll">
-            {% for lineItem in cart.lineItems %}
-              <article class="c-order__item">
-                <div class="c-order__title">
-                  <a href="{{ lineItem.snapshot.url }}">{{ lineItem.snapshot.title }}</a>
-                  <form method="post">
-                    {{ csrfInput() }}
-                    {{ actionInput('commerce/cart/update-cart') }}
-                    <input type="hidden" name="lineItems[{{ lineItem.id }}][remove]" value="1">
-                    <button type="submit">
-                      <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                  </form>
-                </div>
+      {% if cart and cart.lineItems|length %}
 
-                <div class="c-order__description">
-                  <p>Quantity: {{ lineItem.qty }}</p>
-                  <span>{{ lineItem.total|commerceCurrency }}</span>
-                </div>
-              </article>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
-
-      <div class="col-12 col-lg-6">
-        {% if cart and cart.lineItems|length %}
-
-          {% include '_components/_shippingForm.twig' %}
-        {% else %}
-          <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>
-        {% endif %}
-      </div>
+        {% include '_components/_shippingForm.twig' with cart %}
+      {% else %}
+        <p>Your cart is empty. Please <a href="/">add some items</a> to continue.</p>
+      {% endif %}
     </div>
   </section>
 {% endblock %}

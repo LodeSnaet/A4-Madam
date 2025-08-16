@@ -6,7 +6,16 @@
   padding-block: 2.5rem;
   padding-inline: 0;
 
+  a {
+    width: 50%;
+
+    svg {
+      width: 100%;
+    }
+  }
+
   &__menuicon {
+    font-size: 1.3rem;
     opacity: 0;
     @include media-breakpoint-down(lg) {
       opacity: 1;
@@ -72,13 +81,45 @@
         opacity: 1;
       }
     }
+
+    @include media-breakpoint-down(md) {
+      &--open {
+        width: 100vw;
+        max-width: 100vw;
+      }
+    }
   }
 
   &__icons {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 
+    width: fit-content;
+    padding-inline: 1rem;
+    padding-block: 1rem;
+
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(md) {
+      .c-navbar__action * {
+        opacity: 1;
+      }
+    }
+
+    .u-x {
+      @include media-breakpoint-up(lg) {
+        display: none;
+      }
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
     gap: 1rem;
   }
 

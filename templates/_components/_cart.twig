@@ -2,7 +2,7 @@
 
 <!-- Cart Button -->
 <button class="js-open-cart c-cart__button">
-  <i class="fa-solid fa-{{ icon }}"></i>
+  <i class="c-navbar__menuicon fa-solid fa-{{ icon }}"></i>
   {% if cart.totalQty is not null and cart.totalQty > 0 %}
     <span class="c-cart__totall">{{ cart.totalQty }}</span>
   {% endif %}
@@ -11,36 +11,42 @@
 <!-- Offcanvas Cart -->
 <div class="c-cart js-canvas">
   <div class="c-cart__header">
-    <i class="fa-solid fa-{{ icon }}"></i>
-    <button class="js-close-cart">&times;</button>
+    <i class="c-navbar__menuicon fa-solid fa-{{ icon }}"></i>
+    <button class="js-close-cart">
+      <i class="c-navbar__menuicon fa-solid fa-xmark"></i>
+    </button>
   </div>
+  {% if cart.totalQty is not null and cart.totalQty > 0 %}
 
-  <div class="c-cart__body">
-    <ul>
-      {% if cart.lineItems| length >= 1 %}
+    <div class="c-cart__body">
+      <ul>
+        {% if cart.lineItems| length >= 1 %}
 
 
-        {% for lineItem in cart.lineItems %}
-          <li>
-            ({{ lineItem.qty }}) {{ lineItem.snapshot.title }} -
-            {{ lineItem.subtotal|commerceCurrency }}
-          </li>
-        {% else %}
-          <li>Your cart is empty.</li>
-        {% endfor %}
-      {% endif %}
-    </ul>
+          {% for lineItem in cart.lineItems %}
+            <li>
+              ({{ lineItem.qty }}) {{ lineItem.snapshot.title }} -
+              {{ lineItem.subtotal|commerceCurrency }}
+            </li>
+          {% else %}
+            <li>Your cart is empty.</li>
+          {% endfor %}
+        {% endif %}
+      </ul>
 
-    <hr>
+      <hr>
 
-    <p>
-      <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
-      <strong>Total:</strong> {{ cart.totalPrice | commerceCurrency }}
-    </p>
+      <p>
+        <strong>Qty:</strong> {{ cart.totalQty ?? 0 }}<br>
+        <strong>Total:</strong> {{ cart.totalPrice | commerceCurrency }}
+      </p>
 
-    <a href="/shipping" class="c-btn" type="submit">Pay Now</a>
+      <a href="/shipping" class="c-btn">Pay Now</a>
 
-  </div>
+    </div>
+  {% else %}
+    <p class="c-cart__no">Er zijn geen producten in het winkelmandje</p>
+  {% endif %}
 </div>
 
 <!-- Overlay -->

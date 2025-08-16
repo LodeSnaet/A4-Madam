@@ -6,6 +6,10 @@
   &__fields {
     display: flex;
     gap: 1rem;
+
+    @include media-breakpoint-down(lg) {
+      flex-direction: column;
+    }
   }
 
   &__shipping {

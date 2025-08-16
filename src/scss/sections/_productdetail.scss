@@ -40,9 +40,17 @@
     flex-direction: column;
     gap: 1rem;
 
+    @include media-breakpoint-down(lg) {
+      flex-direction: row;
+    }
+
     picture {
       display: block;
       width: 80%;
+
+      @include media-breakpoint-down(lg) {
+        width: calc(100% / 3);
+      }
 
       img {
         width: 100%;
